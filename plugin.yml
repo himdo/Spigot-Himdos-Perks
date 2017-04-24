@@ -1,0 +1,8 @@
+name: Traits
+main: com.himdo.traits.MainPlugin
+version: 1.0
+commands:
+  traits:
+    description: opens traits menu
+    usage: /traits menu
+    
