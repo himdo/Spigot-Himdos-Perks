@@ -1,5 +1,9 @@
 package com.himdo.perks.Menus;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -8,21 +12,25 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
 
+import com.himdo.perks.CalculatePoints;
 import com.himdo.perks.MainPlugin;
+import com.himdo.perks.MenuChecker;
 import com.himdo.perks.init.initHashMap;
 
 public class TraitsMenuMain implements Listener{
 	private Inventory inv;
 	private ItemStack playerSkull;
-	Player player;
+	//Player player;
 	Plugin plugin;	
-	
+	static public HashMap<String,Inventory> playerInventory = new HashMap<String,Inventory>();
+	//static ArrayList<Inventory> inventorys;
 	
 	public TraitsMenuMain(Plugin plugin) {
-		inv = Bukkit.getServer().createInventory(null, 9*3,"Menu");
+		inv = Bukkit.getServer().createInventory(null, 9*3,"[Perks] Menu");
 		playerSkull = new ItemStack(Material.SKULL_ITEM,1,(byte)3);
 		
 		this.plugin = plugin;
@@ -32,16 +40,37 @@ public class TraitsMenuMain implements Listener{
 	
 	
 	public void show(Player p){
-		this.player = p;
+		//this.player = p;
+		if(!playerInventory.containsKey(p.getName())){
+			SkullMeta skullmeta = (SkullMeta) playerSkull.getItemMeta();
+			
+			skullmeta.setOwner(p.getName());
+			playerSkull.setItemMeta(skullmeta);
+			ItemMeta itemMeta = playerSkull.getItemMeta();
+			itemMeta.setDisplayName(p.getName()+"'s Choosen Perks");
+			itemMeta.setLore(Arrays.asList(MainPlugin.playerPerks.get(p).size()+"/9 Perks Choosen",CalculatePoints.getCurrentPoints(p)+"/150 Points"));
+			playerSkull.setItemMeta(itemMeta);
+			inv.setItem(16, playerSkull);
+			Inventory playered = Bukkit.getServer().createInventory(null, 9*3,"[Perks] "+p.getName()+" Menu");
+			playered.setContents(inv.getContents());// = inv;
+			playerInventory.put(p.getName(), playered);
+		}
+		Inventory playerInv = playerInventory.get(p.getName());
 		SkullMeta skullmeta = (SkullMeta) playerSkull.getItemMeta();
 		
-		skullmeta.setOwner(player.getName());
+		skullmeta.setOwner(p.getName());
 		playerSkull.setItemMeta(skullmeta);
-		inv.setItem(16, playerSkull);
+		ItemMeta itemMeta = playerSkull.getItemMeta();
+		itemMeta.setDisplayName(p.getName()+"'s Choosen Perks");
+		itemMeta.setLore(Arrays.asList(MainPlugin.playerPerks.get(p).size()+"/9 Perks Choosen",CalculatePoints.getCurrentPoints(p)+"/150 Points"));
+		playerSkull.setItemMeta(itemMeta);
+		playerInv.setItem(16, playerSkull);
+		//playered.setContents(inv.getContents());// = inv;
+		playerInventory.put(p.getName(), playerInv);
 		
 		
-		p.openInventory(inv);
-		p.updateInventory();
+		p.openInventory(playerInventory.get(p.getName()));
+		//p.updateInventory();
 		
 	}
 	
@@ -60,84 +89,61 @@ public class TraitsMenuMain implements Listener{
 		
 	}
 	
-	Boolean debug=false;
 	@EventHandler
 	public void onInventoryClicker(InventoryClickEvent e){
-		
+		//e.getWhoClicked().sendMessage(e.getCurrentItem()+"");
 		//if the menu is not the correct menu like if a normal chest is opened
-		if(!e.getInventory().getName().equals(inv.getName())) {
+		if(e.getWhoClicked().getOpenInventory().getTitle()==null)
+			return;
+		if(playerInventory.get(e.getWhoClicked().getName())==null)
+			return;
+		if(!e.getInventory().getName().equals(playerInventory.get(e.getWhoClicked().getName()).getName())) {
 			return;
 		}
-		/*File playerfile = new File(plugin.getDataFolder()+"/playerData/"+e.getWhoClicked().getUniqueId()+".yml");
-		FileConfiguration playerData= new YamlConfiguration();
-		
-		try {
-			playerData.load(playerfile);
-		} catch (FileNotFoundException e2) {
-			e2.printStackTrace();
-		} catch (IOException e2) {
-			e2.printStackTrace();
-		} catch (InvalidConfigurationException e2) {
-			e2.printStackTrace();
+		if(e.getCurrentItem()==null)
+			return;
+		if(e.getCurrentItem().equals(Material.AIR)){
+			return;
 		}
-		//playerData.set("ChoosenPerks", new ArrayList<>());
-		*/
+		if(e.getCurrentItem().equals(null)){
+			return;
+		}
+		if(e.getCurrentItem().getItemMeta()==null){
+			return;
+		}
+		
+		//if(!MenuChecker.menuChecker(e))
+		//	return;
 		
 		Player pa = (Player) e.getWhoClicked();
 		//if the inventory open is called "menu"
-		if(pa.getOpenInventory().getTitle().equals(inv.getName())){
+		if(pa.getOpenInventory().getTitle().equals(playerInventory.get(e.getWhoClicked().getName()).getName())){
 			
-			if(debug)
-				pa.sendMessage("clicked");
-			
-			if(debug){
-				pa.sendMessage(e.getCurrentItem()+"");
-			}
+		
 			ItemStack selectedItem = e.getCurrentItem();
 			
-			/*if(selectedItem.equals(initHashMap.items.get("Night Vision"))){
-				if(debug)
-					pa.sendMessage("you clicked it");
-				
-				ArrayList perks = (ArrayList) playerData.get("ChoosenPerks");
-				if(!perks.contains("Night Vision")){
-					perks.add("Night Vision");
-					playerData.set("ChoosenPerks", perks);
-				}
-				pa.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,Integer.MAX_VALUE,0));
-				
-			}else*/
+			if(selectedItem==null)
+				return;
 			//Perks Menu
 			if(selectedItem.equals(initHashMap.items.get("Perks"))){
-				//PerksSubMain perksMenu = new PerksSubMain(plugin);
-				//perksMenu.show(player);
-				//initShops.perksSubMain.show(player);
-				MainPlugin.perksSubMain.show(player);
+				MainPlugin.perksSubMain.show(pa);
 			}
 			//Player Menu
-			if(selectedItem.equals(playerSkull)){
-				//playermenu = new PlayerMenu(this.plugin, this.player);
-				//playermenu.show();
-				MainPlugin.playerMenu.show(player);
+			if(selectedItem.equals(playerInventory.get(e.getWhoClicked().getName()).getItem(9+7))){
+				MainPlugin.playerMenu.show(pa);
 			}
 			
 		}
-		/*
-		try {
-			playerData.save(playerfile);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}*/
 	}
 	
 	@EventHandler
 	public void InventoryClickEvent(InventoryClickEvent e){
 		Player pa = (Player) e.getWhoClicked();
-		if(debug)
-			pa.sendMessage(pa.getOpenInventory().getTitle()+"");
-		if(pa.getOpenInventory().getTitle().equals(inv.getName())){
-			if(debug)
-				pa.sendMessage("Canceled");
+		if(pa.getOpenInventory().getTitle()==null)
+			return;
+		if(playerInventory.get(e.getWhoClicked().getName())==null)
+			return;
+		if(pa.getOpenInventory().getTitle().equals(playerInventory.get(e.getWhoClicked().getName()).getName())){
 			e.setCancelled(true);
 		}
 	}

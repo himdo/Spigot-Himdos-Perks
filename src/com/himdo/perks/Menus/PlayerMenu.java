@@ -1,11 +1,11 @@
 package com.himdo.perks.Menus;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,22 +13,23 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.potion.PotionEffect;
 
 import com.himdo.perks.MainPlugin;
+import com.himdo.perks.MenuChecker;
+import com.himdo.perks.SaveAndLoading.FileLocation;
 import com.himdo.perks.init.initHashMap;
-
-import SaveAndLoading.FileLocation;
 
 public class PlayerMenu implements Listener{
 	//this menu pops up when they click on their head
 	private Inventory inv;
-	Player player;
-	Plugin plugin;
+	//Player player;
+	static public HashMap<String,Inventory> playerInventory = new HashMap<String,Inventory>();
+	
 	
 	public PlayerMenu(Plugin plugin) {
 		
-		this.plugin = plugin;
-		inv = Bukkit.getServer().createInventory(null, 9*3,"Player Menu");
+		inv = Bukkit.getServer().createInventory(null, 9*3,"[Perks]Player Menu");
 		
 		Bukkit.getServer().getPluginManager().registerEvents( this, plugin);
 	}
@@ -36,43 +37,95 @@ public class PlayerMenu implements Listener{
 	
 	public void show(Player player){
 		
-		this.player=player;
+		//this.player=player;
+		if(!playerInventory.containsKey(player.getName())){
+			Inventory playered = Bukkit.getServer().createInventory(null, 9*3,"[Perks]Player Menu");
+			playered.setContents(inv.getContents());
+			playerInventory.put(player.getName(), playered);
+		}
 		
-		YamlConfiguration playerConfig = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder()+"/playerData/"+player.getUniqueId()+".yml"));
+		YamlConfiguration playerConfig = YamlConfiguration.loadConfiguration(new File(MainPlugin.plugin.getDataFolder()+"/playerData/"+player.getUniqueId()+".yml"));
+		Inventory playered = playerInventory.get(player.getName());
 		
 		@SuppressWarnings("rawtypes")
 		ArrayList perks = (ArrayList) playerConfig.get("ChoosenPerks");
-		for(int i=0;i<perks.size();i++){
-			inv.setItem(9+i,initHashMap.items.get(perks.get(i)));
+		for(int i = 0; i<9;i++){
+			playered.clear(9+i);
 		}
-		player.openInventory(inv);
+		for(int i=0;i<perks.size();i++){
+			playered.setItem(9+i,initHashMap.items.get(perks.get(i)));
+		}
+		
+		//playered.setContents(playered.getContents());// = inv;
+		playerInventory.put(player.getName(), playered);
+		
+		player.openInventory(playerInventory.get(player.getName()));
 		
 	}
-	
-	@SuppressWarnings("unchecked")
 	@EventHandler
-	public void InventoryClickEvent(InventoryClickEvent e){
-		Player pa = (Player) e.getWhoClicked();
-		if(pa.getOpenInventory().getTitle().equals(inv.getName())){
+	public void onInventoryClicker(InventoryClickEvent e){
+		//Player pa = (Player) e.getWhoClicked();
+		Player player = (Player) e.getWhoClicked();
+		
+		if(player.getOpenInventory().getTitle().equals(inv.getName())){//playerInventory.get(player.getName()).getName())){
+			
+			
+			if(e.getCurrentItem()==null)
+				return;
+			if(e.getCurrentItem().equals(Material.AIR)){
+				return;
+			}
+			if(e.getCurrentItem().equals(null)){
+				return;
+			}
+			if(e.getCurrentItem().getItemMeta()==null){
+				return;
+			}
+			if(e.getCurrentItem().equals(initHashMap.items.get("Back"))){
+				MainPlugin.mainMenu.show(player);
+				return;
+			}
+			
 			if(e.getClick().isRightClick()){
-				FileConfiguration playerData = FileLocation.playerData(pa, plugin);
-
-				ArrayList<String> perks = (ArrayList<String>) playerData.get("ChoosenPerks");
-				perks.remove(e.getCurrentItem().getItemMeta().getDisplayName());
-				playerData.set("ChoosenPerks", perks);
-				try {
-					playerData.save(FileLocation.playerFile(pa, plugin));
-				} catch (IOException e1) {
-					e1.printStackTrace();
+				
+				//pa.sendMessage("in right click");
+				@SuppressWarnings("rawtypes")
+				ArrayList perks = (ArrayList) MainPlugin.playerPerks.get(player);
+				//pa.sendMessage(perks+"");
+				
+				if(perks==null||perks.isEmpty())
+					return;
+				
+				if(perks.contains(e.getCurrentItem().getItemMeta().getDisplayName())){
+					perks.remove(e.getCurrentItem().getItemMeta().getDisplayName());
+					//inv.clear(e.getSlot());
+					Inventory temp = playerInventory.get(player.getName());
+					temp.clear(e.getSlot());
+					playerInventory.put(player.getName(), temp);
 				}
 				
-			}else{
-				if(e.getCurrentItem().equals(initHashMap.items.get("Back"))){
-					MainPlugin.mainMenu.show(player);
+				//pa.sendMessage(perks+"");
+				FileLocation.save(player);
+				for (PotionEffect effect : player.getActivePotionEffects()){
+					player.removePotionEffect(effect.getType());
 				}
+				
 			}
-			e.setCancelled(true);
 		}
+	}
+	
+	
+	@EventHandler
+	public void InventoryClickEvent(InventoryClickEvent e){
+		
+		
+		
+		Player player = (Player) e.getWhoClicked();
+		if(player.getOpenInventory()==null)
+			return;
+		if(e.getWhoClicked().getOpenInventory().getTitle().equals(inv.getName())){
+			e.setCancelled(true);
+		} 
 	}
 
 

@@ -1,4 +1,4 @@
-package SaveAndLoading;
+package com.himdo.perks.SaveAndLoading;
 
 import java.io.File;
 
