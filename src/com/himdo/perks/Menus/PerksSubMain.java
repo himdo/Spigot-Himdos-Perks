@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 
 import com.himdo.perks.MainPlugin;
 import com.himdo.perks.MenuChecker;
-import com.himdo.perks.init.initHashMap;
+import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
 public class PerksSubMain  implements Listener{
 	private Inventory inv;
@@ -33,21 +33,21 @@ public class PerksSubMain  implements Listener{
 	
 	public void init(){
 		for(int i = 0; i<9; i++){
-			inv.setItem(i, initHashMap.items.get("Border Purple"));
-			inv.setItem(18+i, initHashMap.items.get("Border Purple"));
+			inv.setItem(i, MainDataBaseHashMap.items.get("Border Purple"));
+			inv.setItem(18+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear(18+1);
-		inv.setItem(18+1, initHashMap.items.get("Back"));
+		inv.setItem(18+1, MainDataBaseHashMap.items.get("Back"));
 
-		inv.setItem(9,   initHashMap.items.get("Buffs"));
-		inv.setItem(9+1, initHashMap.items.get("Weapon Perks"));
-		inv.setItem(9+2, initHashMap.items.get("Strike/Revenge Perks"));
-		inv.setItem(9+3, initHashMap.items.get("Feed/Starve/Heal/Harm Perks"));
-		inv.setItem(9+4, initHashMap.items.get("Food Perks"));
-		inv.setItem(9+5, initHashMap.items.get("Immune Perks"));
-		inv.setItem(9+6, initHashMap.items.get("Flying Perks"));
-		inv.setItem(9+7, initHashMap.items.get("Truce Perks"));
-		inv.setItem(9+8, initHashMap.items.get("Misc Perks"));
+		inv.setItem(9,   MainDataBaseHashMap.items.get("Buffs"));
+		inv.setItem(9+1, MainDataBaseHashMap.items.get("Weapon Perks"));
+		inv.setItem(9+2, MainDataBaseHashMap.items.get("Strike/Revenge Perks"));
+		inv.setItem(9+3, MainDataBaseHashMap.items.get("Feed/Starve/Heal/Harm Perks"));
+		inv.setItem(9+4, MainDataBaseHashMap.items.get("Food Perks"));
+		inv.setItem(9+5, MainDataBaseHashMap.items.get("Immune Perks"));
+		inv.setItem(9+6, MainDataBaseHashMap.items.get("Flying Perks"));
+		inv.setItem(9+7, MainDataBaseHashMap.items.get("Truce Perks"));
+		inv.setItem(9+8, MainDataBaseHashMap.items.get("Misc Perks"));
 		
 		
 	}
@@ -73,27 +73,27 @@ public class PerksSubMain  implements Listener{
 		Player player = (Player) e.getWhoClicked();
 		
 		
-		if(e.getCurrentItem().equals(initHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
 			MainPlugin.mainMenu.show(player);
 			return;
 		}
-		if(e.getCurrentItem().equals(initHashMap.items.get("Buffs"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Buffs"))){
 			MainPlugin.buffPerkMenu.show(player);
-		}else if(e.getCurrentItem().equals(initHashMap.items.get("Weapon Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Weapon Perks"))){
 			MainPlugin.weaponPerksMenu.show(player);
-		}else if(e.getCurrentItem().equals(initHashMap.items.get("Strike/Revenge Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Strike/Revenge Perks"))){
 			MainPlugin.strikePerksMenu.show(player);
-		}else if(e.getCurrentItem().equals(initHashMap.items.get("Feed/Starve/Heal/Harm Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Feed/Starve/Heal/Harm Perks"))){
 			MainPlugin.healHarmMenu.show(player);
-		}else if(e.getCurrentItem().equals(initHashMap.items.get("Food Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Food Perks"))){
 			MainPlugin.foodPerkMenu.show(player);
-		}else if(e.getCurrentItem().equals(initHashMap.items.get("Immune Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Immune Perks"))){
 			MainPlugin.immunePerkMenu.show(player);
-		}else if(e.getCurrentItem().equals(initHashMap.items.get("Flying Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Flying Perks"))){
 			MainPlugin.flyingPerkMenu.show(player);
-		}else if(e.getCurrentItem().equals(initHashMap.items.get("Truce Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Truce Perks"))){
 			MainPlugin.trucePerksMenu.show(player);
-		}else if(e.getCurrentItem().equals(initHashMap.items.get("Misc Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Misc Perks"))){
 			MainPlugin.miscPerksMenu.show(player);
 		}
 		

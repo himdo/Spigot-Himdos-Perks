@@ -10,7 +10,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.himdo.perks.init.initHashMap;
+import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
 public class CalculatePoints {
 	public static int getCurrentPoints(Player player){
@@ -22,7 +22,7 @@ public class CalculatePoints {
 		
 		for(int i=0;i<perks.size();i++){
 			totalPoints+=0;
-			ArrayList<String> lore = (ArrayList<String>) initHashMap.items.get(perks.get(i)).getItemMeta().getLore();
+			ArrayList<String> lore = (ArrayList<String>) MainDataBaseHashMap.items.get(perks.get(i)).getItemMeta().getLore();
 			int size = lore.size();
 			String loreParts = lore.get(size-1);
 			totalPoints+=Integer.parseInt(loreParts.split(" ")[1]);

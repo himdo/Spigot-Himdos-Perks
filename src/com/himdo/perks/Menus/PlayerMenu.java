@@ -15,10 +15,11 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 
+import com.himdo.perks.CalculatePoints;
 import com.himdo.perks.MainPlugin;
 import com.himdo.perks.MenuChecker;
 import com.himdo.perks.SaveAndLoading.FileLocation;
-import com.himdo.perks.init.initHashMap;
+import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
 public class PlayerMenu implements Listener{
 	//this menu pops up when they click on their head
@@ -53,7 +54,7 @@ public class PlayerMenu implements Listener{
 			playered.clear(9+i);
 		}
 		for(int i=0;i<perks.size();i++){
-			playered.setItem(9+i,initHashMap.items.get(perks.get(i)));
+			playered.setItem(9+i,MainDataBaseHashMap.items.get(perks.get(i)));
 		}
 		
 		//playered.setContents(playered.getContents());// = inv;
@@ -81,7 +82,7 @@ public class PlayerMenu implements Listener{
 			if(e.getCurrentItem().getItemMeta()==null){
 				return;
 			}
-			if(e.getCurrentItem().equals(initHashMap.items.get("Back"))){
+			if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
 				MainPlugin.mainMenu.show(player);
 				return;
 			}
@@ -97,11 +98,18 @@ public class PlayerMenu implements Listener{
 					return;
 				
 				if(perks.contains(e.getCurrentItem().getItemMeta().getDisplayName())){
-					perks.remove(e.getCurrentItem().getItemMeta().getDisplayName());
-					//inv.clear(e.getSlot());
-					Inventory temp = playerInventory.get(player.getName());
-					temp.clear(e.getSlot());
-					playerInventory.put(player.getName(), temp);
+					//makes sure the player cant just remove debuffs and got over the 150 points
+					if((CalculatePoints.getCurrentPoints(player)-CalculatePoints.getPointsForItem(e.getCurrentItem()))<150){
+
+						perks.remove(e.getCurrentItem().getItemMeta().getDisplayName());
+						//inv.clear(e.getSlot());
+						Inventory temp = playerInventory.get(player.getName());
+						temp.clear(e.getSlot());
+						playerInventory.put(player.getName(), temp);
+					}else{
+						//got to many points
+						player.sendMessage("Can't Remove, Would allow to many points");
+					}
 				}
 				
 				//pa.sendMessage(perks+"");
@@ -131,11 +139,11 @@ public class PlayerMenu implements Listener{
 
 	public void init() {
 		for(int i = 0; i<9; i++){
-			inv.setItem(i, initHashMap.items.get("Border Purple"));
-			inv.setItem(18+i, initHashMap.items.get("Border Purple"));
+			inv.setItem(i, MainDataBaseHashMap.items.get("Border Purple"));
+			inv.setItem(18+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear(18+1);
-		inv.setItem(18+1, initHashMap.items.get("Back"));
+		inv.setItem(18+1, MainDataBaseHashMap.items.get("Back"));
 		
 	}
 }

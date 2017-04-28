@@ -13,7 +13,7 @@ import com.himdo.perks.CalculatePoints;
 import com.himdo.perks.MainPlugin;
 import com.himdo.perks.MenuChecker;
 import com.himdo.perks.SaveAndLoading.FileLocation;
-import com.himdo.perks.init.initHashMap;
+import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
 public class MiscPerksMenu implements Listener{
 	private Inventory inv;
@@ -66,7 +66,7 @@ public class MiscPerksMenu implements Listener{
 		}*/
 		if(!MenuChecker.menuChecker(e,inv))
 			return;
-		if(e.getCurrentItem().equals(initHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
 			MainPlugin.perksSubMain.show(player);
 			return;
 		}
@@ -95,21 +95,21 @@ public class MiscPerksMenu implements Listener{
 	public void init() {
 		//sets up the border
 		for(int i = 0; i<9; i++){
-			inv.setItem(i, initHashMap.items.get("Border Purple"));
-			inv.setItem(18+i, initHashMap.items.get("Border Purple"));
+			inv.setItem(i, MainDataBaseHashMap.items.get("Border Purple"));
+			inv.setItem(18+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear(18+1);
-		inv.setItem(18+1, initHashMap.items.get("Back"));
+		inv.setItem(18+1, MainDataBaseHashMap.items.get("Back"));
 
-		inv.setItem(9,   initHashMap.items.get("Border Purple"));
+		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
 		//inv.setItem(9+1, initHashMap.items.get(""));
-		inv.setItem(9+2, initHashMap.items.get("Holy"));
+		inv.setItem(9+2, MainDataBaseHashMap.items.get("Holy"));
 		//inv.setItem(9+3, initHashMap.items.get(""));
-		inv.setItem(9+4, initHashMap.items.get("Fire Ball"));
+		inv.setItem(9+4, MainDataBaseHashMap.items.get("Fire Ball"));
 		//inv.setItem(9+5, initHashMap.items.get(""));
-		inv.setItem(9+6, initHashMap.items.get("Unholy"));
+		inv.setItem(9+6, MainDataBaseHashMap.items.get("Unholy"));
 		//inv.setItem(9+7, initHashMap.items.get(""));
-		inv.setItem(9+8, initHashMap.items.get("Border Purple"));
+		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 	}
 }

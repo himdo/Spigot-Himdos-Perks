@@ -1,7 +1,6 @@
 package com.himdo.perks.Menus;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,7 +12,7 @@ import com.himdo.perks.CalculatePoints;
 import com.himdo.perks.MainPlugin;
 import com.himdo.perks.MenuChecker;
 import com.himdo.perks.SaveAndLoading.FileLocation;
-import com.himdo.perks.init.initHashMap;
+import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
 public class BuffPerkMenu implements Listener{
 
@@ -35,31 +34,31 @@ public class BuffPerkMenu implements Listener{
 	
 	public void init(){
 		for(int i = 0; i<9; i++){
-			inv.setItem(i, initHashMap.items.get("Border Purple"));
-			inv.setItem((9*3)+i, initHashMap.items.get("Border Purple"));
+			inv.setItem(i, MainDataBaseHashMap.items.get("Border Purple"));
+			inv.setItem((9*3)+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear((9*3)+1);
-		inv.setItem((9*3)+1, initHashMap.items.get("Back"));
+		inv.setItem((9*3)+1, MainDataBaseHashMap.items.get("Back"));
 
-		inv.setItem(9+0, initHashMap.items.get("Haste"));
-		inv.setItem(9+1, initHashMap.items.get("Jump Boost"));
-		inv.setItem(9+2, initHashMap.items.get("Speed Boost"));
-		inv.setItem(9+3, initHashMap.items.get("Health Boost"));
-		inv.setItem(9+4, initHashMap.items.get("Night Vision"));
-		inv.setItem(9+5, initHashMap.items.get("Water Breathing"));
+		inv.setItem(9+0, MainDataBaseHashMap.items.get("Haste"));
+		inv.setItem(9+1, MainDataBaseHashMap.items.get("Jump Boost"));
+		inv.setItem(9+2, MainDataBaseHashMap.items.get("Speed Boost"));
+		inv.setItem(9+3, MainDataBaseHashMap.items.get("Health Boost"));
+		inv.setItem(9+4, MainDataBaseHashMap.items.get("Night Vision"));
+		inv.setItem(9+5, MainDataBaseHashMap.items.get("Water Breathing"));
 		//inv.setItem(9+6, initHashMap.items.get(""));
 		//inv.setItem(9+7, initHashMap.items.get(""));
 		//inv.setItem(9+8, initHashMap.items.get(""));
 		
-		inv.setItem(9*2+0, initHashMap.items.get("Haste 2"));
-		inv.setItem(9*2+1, initHashMap.items.get("Jump Boost 2"));
-		inv.setItem(9*2+2, initHashMap.items.get("Speed Boost 2"));
-		inv.setItem(9*2+3, initHashMap.items.get("Health Boost 2"));
+		inv.setItem(9*2+0, MainDataBaseHashMap.items.get("Haste 2"));
+		inv.setItem(9*2+1, MainDataBaseHashMap.items.get("Jump Boost 2"));
+		inv.setItem(9*2+2, MainDataBaseHashMap.items.get("Speed Boost 2"));
+		inv.setItem(9*2+3, MainDataBaseHashMap.items.get("Health Boost 2"));
 		//inv.setItem(9*2+4, initHashMap.items.get(""));
 		//inv.setItem(9*2+5, initHashMap.items.get(""));
-		inv.setItem(9+8, initHashMap.items.get("Mining Fatigue"));
-		inv.setItem(9*2+7, initHashMap.items.get("Slowness"));
-		inv.setItem(9*2+8, initHashMap.items.get("Blindness"));
+		inv.setItem(9+8, MainDataBaseHashMap.items.get("Mining Fatigue"));
+		inv.setItem(9*2+7, MainDataBaseHashMap.items.get("Slowness"));
+		inv.setItem(9*2+8, MainDataBaseHashMap.items.get("Blindness"));
 		
 	}
 	
@@ -99,7 +98,7 @@ public class BuffPerkMenu implements Listener{
 		}*/
 		if(!MenuChecker.menuChecker(e,inv))
 			return;
-		if(e.getCurrentItem().equals(initHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
 			MainPlugin.perksSubMain.show(player);
 			return;
 		}

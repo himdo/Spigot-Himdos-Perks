@@ -45,7 +45,8 @@ import com.himdo.perks.Menus.TrucePerksMenu;
 import com.himdo.perks.Menus.WeaponPerksMenu;
 import com.himdo.perks.Runnables.RunnableTasker;
 import com.himdo.perks.Runnables.Perks.Flying.RunnableFlying;
-import com.himdo.perks.init.initHashMap;
+import com.himdo.perks.hashMaps.FoodArrayList;
+import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
 public class MainPlugin extends JavaPlugin implements Listener{
 	
@@ -91,8 +92,9 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		flying = new RunnableFlying(this).runTaskTimer(this, 20, 20);
 		
 		//setup perkHashMap
-		initHashMap.setHashMap();
-		
+		MainDataBaseHashMap.setHashMap();
+		//set up foodArrayLists
+		FoodArrayList.init();
 		
 		
 		mainMenu = new TraitsMenuMain(this);
@@ -242,17 +244,31 @@ public class MainPlugin extends JavaPlugin implements Listener{
 			sender.sendMessage("Have to be a player");
 			return true;
 		}
-		
 		Player p = (Player) sender;
-		if(args.length!=1){
-			return false;
+		if(args.length==0){
+			p.sendMessage("Commands:");
+			p.sendMessage("/perks menu");
+			p.sendMessage("/perks inspect <Player Name>");
 		}
-		if(label.equalsIgnoreCase("perks")){
-			if(args[0].equals("menu")){
-				mainMenu.show(p);
+		if(args.length==2){
+			if(args[0].equals("inspect")){
+				if(Bukkit.getPlayer(args[1])!=null){
+					p.sendMessage(args[1]+" perks: "+playerPerks.get(Bukkit.getPlayer(args[1])));
+					
+				}else{
+					p.sendMessage("Usage: /perks inspect <Player name>");
+				}
 				return true;
 			}
-			
+		}
+		if(args.length==1){
+			if(label.equalsIgnoreCase("perks")){
+				if(args[0].equals("menu")){
+					mainMenu.show(p);
+					return true;
+				}
+				
+			}
 		}
 		return true;
 		
@@ -334,13 +350,23 @@ public class MainPlugin extends JavaPlugin implements Listener{
 			}
 		}
 		if(MainPlugin.playerPerks.get(e.getPlayer()).contains("Carnivore")){
-			
+			if(!FoodArrayList.Meat.contains(e.getItem().getType())&&!e.getItem().getType().equals(Material.POTION)){
+				e.getPlayer().sendMessage("[Perks]: You Are a Carnivore, you Can't Eat this");
+				e.setCancelled(true);
+			}
 		}
 		if(MainPlugin.playerPerks.get(e.getPlayer()).contains("Herbivore")){
-			
+			if(!FoodArrayList.Veggies.contains(e.getItem().getType())&&!e.getItem().getType().equals(Material.POTION)){
+				e.getPlayer().sendMessage("[Perks]: You Are a Herbivore, you Can't Eat this");
+				e.setCancelled(true);
+			}
 		}
 		if(MainPlugin.playerPerks.get(e.getPlayer()).contains("Nonivore")){
-			e.setCancelled(true);
+			if(!e.getItem().getType().equals(Material.POTION)){
+				e.getPlayer().sendMessage("[Perks]: You can't eat, you are a Nonivore");
+				e.setCancelled(true);
+			}
+			
 		}
 	}
 	

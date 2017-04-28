@@ -19,7 +19,7 @@ import org.bukkit.plugin.Plugin;
 import com.himdo.perks.CalculatePoints;
 import com.himdo.perks.MainPlugin;
 import com.himdo.perks.MenuChecker;
-import com.himdo.perks.init.initHashMap;
+import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
 public class TraitsMenuMain implements Listener{
 	private Inventory inv;
@@ -75,16 +75,16 @@ public class TraitsMenuMain implements Listener{
 	}
 	
 	public void init(){
-		inv.setItem(4+9, initHashMap.items.get("Help"));
-		inv.setItem(1+9,initHashMap.items.get("Perks"));
+		inv.setItem(4+9, MainDataBaseHashMap.items.get("Help"));
+		inv.setItem(1+9,MainDataBaseHashMap.items.get("Perks"));
 		
 		//Glass panes
 		for(int i = 0; i<9; i++){
-			inv.setItem(i, initHashMap.items.get("Border Purple"));
-			inv.setItem(18+i, initHashMap.items.get("Border Purple"));
+			inv.setItem(i, MainDataBaseHashMap.items.get("Border Purple"));
+			inv.setItem(18+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
-		inv.setItem(9, initHashMap.items.get("Border Purple"));
-		inv.setItem(17, initHashMap.items.get("Border Purple"));
+		inv.setItem(9, MainDataBaseHashMap.items.get("Border Purple"));
+		inv.setItem(17, MainDataBaseHashMap.items.get("Border Purple"));
 		
 		
 	}
@@ -125,7 +125,7 @@ public class TraitsMenuMain implements Listener{
 			if(selectedItem==null)
 				return;
 			//Perks Menu
-			if(selectedItem.equals(initHashMap.items.get("Perks"))){
+			if(selectedItem.equals(MainDataBaseHashMap.items.get("Perks"))){
 				MainPlugin.perksSubMain.show(pa);
 			}
 			//Player Menu

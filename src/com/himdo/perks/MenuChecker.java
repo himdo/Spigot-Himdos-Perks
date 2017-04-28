@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-import com.himdo.perks.init.initHashMap;
+import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
 public class MenuChecker {
 	public static boolean menuChecker(InventoryClickEvent event,Inventory inv){
@@ -25,10 +25,10 @@ public class MenuChecker {
 		if(event.getCurrentItem().getItemMeta()==null){
 			return false;
 		}
-		if(event.getCurrentItem().equals(initHashMap.items.get("Back"))){
+		if(event.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
 			return true;
 		}
-		if(event.getCurrentItem().equals(initHashMap.items.get("Border Purple")))
+		if(event.getCurrentItem().equals(MainDataBaseHashMap.items.get("Border Purple")))
 			return false;
 		
 		if(MainPlugin.playerPerks.get(event.getWhoClicked()).contains(event.getCurrentItem().getItemMeta().getDisplayName())){

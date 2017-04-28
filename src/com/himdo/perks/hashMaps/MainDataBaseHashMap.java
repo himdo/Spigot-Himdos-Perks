@@ -1,4 +1,4 @@
-package com.himdo.perks.init;
+package com.himdo.perks.hashMaps;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionEffectType;
 
-public class initHashMap {
+public class MainDataBaseHashMap {
 	public static HashMap<String, ItemStack> items;
 	public static HashMap<ItemStack, Integer> perkCosts;
 	

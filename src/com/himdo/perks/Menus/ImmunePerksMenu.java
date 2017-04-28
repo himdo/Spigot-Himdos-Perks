@@ -13,7 +13,7 @@ import com.himdo.perks.CalculatePoints;
 import com.himdo.perks.MainPlugin;
 import com.himdo.perks.MenuChecker;
 import com.himdo.perks.SaveAndLoading.FileLocation;
-import com.himdo.perks.init.initHashMap;
+import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
 public class ImmunePerksMenu implements Listener{
 	private Inventory inv;
@@ -67,7 +67,7 @@ public class ImmunePerksMenu implements Listener{
 		}*/
 		if(!MenuChecker.menuChecker(e,inv))
 			return;
-		if(e.getCurrentItem().equals(initHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
 			MainPlugin.perksSubMain.show(player);
 			return;
 		}
@@ -99,31 +99,31 @@ public class ImmunePerksMenu implements Listener{
 
 		//sets up the border
 		for(int i = 0; i<9; i++){
-			inv.setItem(i, initHashMap.items.get("Border Purple"));
-			inv.setItem(9*3+i, initHashMap.items.get("Border Purple"));
+			inv.setItem(i, MainDataBaseHashMap.items.get("Border Purple"));
+			inv.setItem(9*3+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear(9*3+1);
-		inv.setItem(9*3+1, initHashMap.items.get("Back"));
+		inv.setItem(9*3+1, MainDataBaseHashMap.items.get("Back"));
 
-		inv.setItem(9,   initHashMap.items.get("Border Purple"));
-		inv.setItem(9+1, initHashMap.items.get("Immune Armorpen"));
-		inv.setItem(9+2, initHashMap.items.get("Immune Harm"));
-		inv.setItem(9+3, initHashMap.items.get("Immune Hunger"));
-		inv.setItem(9+4, initHashMap.items.get("Immune Nausea"));
-		inv.setItem(9+5, initHashMap.items.get("Immune Starve"));
-		inv.setItem(9+6, initHashMap.items.get("Immune Fall"));
-		inv.setItem(9+7, initHashMap.items.get("Immune Steal"));
-		inv.setItem(9+8, initHashMap.items.get("Border Purple"));
+		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
+		inv.setItem(9+1, MainDataBaseHashMap.items.get("Immune Armorpen"));
+		inv.setItem(9+2, MainDataBaseHashMap.items.get("Immune Harm"));
+		inv.setItem(9+3, MainDataBaseHashMap.items.get("Immune Hunger"));
+		inv.setItem(9+4, MainDataBaseHashMap.items.get("Immune Nausea"));
+		inv.setItem(9+5, MainDataBaseHashMap.items.get("Immune Starve"));
+		inv.setItem(9+6, MainDataBaseHashMap.items.get("Immune Fall"));
+		inv.setItem(9+7, MainDataBaseHashMap.items.get("Immune Steal"));
+		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
-		inv.setItem(9*2,   initHashMap.items.get("Border Purple"));
-		inv.setItem(9*2+1, initHashMap.items.get("Immune Weakness"));
-		inv.setItem(9*2+2, initHashMap.items.get("Immune Wither"));
-		inv.setItem(9*2+3, initHashMap.items.get("Immune Fire"));
-		inv.setItem(9*2+4, initHashMap.items.get("Immune Poison"));
-		inv.setItem(9*2+5, initHashMap.items.get("Immune Blindness"));
-		inv.setItem(9*2+6, initHashMap.items.get("Immune Slow"));
+		inv.setItem(9*2,   MainDataBaseHashMap.items.get("Border Purple"));
+		inv.setItem(9*2+1, MainDataBaseHashMap.items.get("Immune Weakness"));
+		inv.setItem(9*2+2, MainDataBaseHashMap.items.get("Immune Wither"));
+		inv.setItem(9*2+3, MainDataBaseHashMap.items.get("Immune Fire"));
+		inv.setItem(9*2+4, MainDataBaseHashMap.items.get("Immune Poison"));
+		inv.setItem(9*2+5, MainDataBaseHashMap.items.get("Immune Blindness"));
+		inv.setItem(9*2+6, MainDataBaseHashMap.items.get("Immune Slow"));
 		//inv.setItem(9*2+7, initHashMap.items.get(""));
-		inv.setItem(9*2+8, initHashMap.items.get("Border Purple"));
+		inv.setItem(9*2+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 				
 	}
