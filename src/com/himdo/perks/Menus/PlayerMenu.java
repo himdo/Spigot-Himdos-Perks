@@ -15,9 +15,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 
-import com.himdo.perks.CalculatePoints;
 import com.himdo.perks.MainPlugin;
-import com.himdo.perks.MenuChecker;
+import com.himdo.perks.Misc.CalculatePoints;
+import com.himdo.perks.Misc.MenuChecker;
 import com.himdo.perks.SaveAndLoading.FileLocation;
 import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 

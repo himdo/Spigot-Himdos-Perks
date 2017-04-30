@@ -10,11 +10,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.himdo.perks.MainPlugin;
 
 public class RunnableFlying extends BukkitRunnable{
-	Plugin plugin;
 	
-	public RunnableFlying(MainPlugin mainPlugin) {
-		plugin = mainPlugin;
-	}
 
 	public void run(){
 		for(Player p : Bukkit.getOnlinePlayers()){
@@ -28,9 +24,7 @@ public class RunnableFlying extends BukkitRunnable{
 					p.setFlying(true);
 				}else{
 					p.getPlayer().setAllowFlight(false);
-					p.getPlayer().setFlying(false);
-					//this.cancel();
-					
+					p.getPlayer().setFlying(false);					
 				}
 			}
 			

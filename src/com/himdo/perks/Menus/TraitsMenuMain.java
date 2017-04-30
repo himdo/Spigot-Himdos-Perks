@@ -16,9 +16,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
 
-import com.himdo.perks.CalculatePoints;
 import com.himdo.perks.MainPlugin;
-import com.himdo.perks.MenuChecker;
+import com.himdo.perks.Misc.CalculatePoints;
+import com.himdo.perks.Misc.MenuChecker;
 import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
 public class TraitsMenuMain implements Listener{

@@ -8,29 +8,23 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityTargetEvent;
-import org.bukkit.event.player.PlayerItemConsumeEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitTask;
 
+import com.himdo.perks.Events.FoodPerksEvents;
+import com.himdo.perks.Events.TrucePerkEvents;
+import com.himdo.perks.Events.onEntityDamageEntityEvent;
+import com.himdo.perks.Events.onEntityDamageEvent;
+import com.himdo.perks.Events.onPlayerJoinEvents;
+import com.himdo.perks.Events.onPlayerLeaveEvents;
 import com.himdo.perks.Menus.BuffPerkMenu;
 import com.himdo.perks.Menus.FeedStarveHealHarmPerksMenu;
 import com.himdo.perks.Menus.FlyingPerksMenu;
@@ -43,10 +37,13 @@ import com.himdo.perks.Menus.StrikeRevengePerksMenu;
 import com.himdo.perks.Menus.TraitsMenuMain;
 import com.himdo.perks.Menus.TrucePerksMenu;
 import com.himdo.perks.Menus.WeaponPerksMenu;
-import com.himdo.perks.Runnables.RunnableTasker;
+import com.himdo.perks.Runnables.RunnableAbsoption;
+import com.himdo.perks.Runnables.RunnableBuffManager;
+import com.himdo.perks.Runnables.RunnableImmunity;
 import com.himdo.perks.Runnables.Perks.Flying.RunnableFlying;
 import com.himdo.perks.hashMaps.FoodArrayList;
 import com.himdo.perks.hashMaps.MainDataBaseHashMap;
+import com.himdo.perks.hashMaps.WeaponArrayLists;
 
 public class MainPlugin extends JavaPlugin implements Listener{
 	
@@ -63,14 +60,15 @@ public class MainPlugin extends JavaPlugin implements Listener{
 	public static WeaponPerksMenu weaponPerksMenu;
 	public static StrikeRevengePerksMenu strikePerksMenu;
 	
-	@SuppressWarnings("rawtypes")
+	
 	public static HashMap<Player, ArrayList> playerPerks = new HashMap<Player, ArrayList>();
 	
 	public static Plugin plugin;
 	
 	BukkitTask tracker;
 	BukkitTask flying;
-	
+	BukkitTask ABSORPTION;
+	BukkitTask ImmunityTracker;
 	
 	@Override
 	public void onEnable() {
@@ -87,15 +85,22 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		
 	
 		//tracks potion effects
-		tracker = new RunnableTasker(this).runTaskTimer(this, 20, 20);
+		tracker = new RunnableBuffManager().runTaskTimer(this, 20, 20);
+		//tracks ABSORPTION buff to make non op every 30 seconds
+		ABSORPTION = new RunnableAbsoption().runTaskTimer(this, 20, 20*30);
+		//tracks immunity from debuffs
+		ImmunityTracker = new RunnableImmunity().runTaskTimer(this, 20, 20);
 		//tracks flying perks
-		flying = new RunnableFlying(this).runTaskTimer(this, 20, 20);
+		flying = new RunnableFlying().runTaskTimer(this, 20, 20);
+		
+		
 		
 		//setup perkHashMap
 		MainDataBaseHashMap.setHashMap();
 		//set up foodArrayLists
 		FoodArrayList.init();
-		
+		//set up WeaponArrayList
+		WeaponArrayLists.init();
 		
 		mainMenu = new TraitsMenuMain(this);
 		perksSubMain = new PerksSubMain(this);
@@ -124,7 +129,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		strikePerksMenu.init();
 		
 		plugin = this;
-		Iterator playerIterator =Bukkit.getServer().getOnlinePlayers().iterator();
+		Iterator playerIterator = Bukkit.getServer().getOnlinePlayers().iterator();
 		while(playerIterator.hasNext()){
 			Player player = (Player) playerIterator.next();
 			File playerfile = new File(this.getDataFolder()+"/playerData/"+player.getUniqueId()+".yml");
@@ -165,12 +170,16 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		
 		
 		
-		
-		
-		getServer().getPluginManager().registerEvents(this, this);
+		getServer().getPluginManager().registerEvents(new onEntityDamageEvent(), this);
+		getServer().getPluginManager().registerEvents(new FoodPerksEvents(), this);
+		getServer().getPluginManager().registerEvents(new TrucePerkEvents(), this);
+		getServer().getPluginManager().registerEvents(new onPlayerJoinEvents(), this);
+		getServer().getPluginManager().registerEvents(new onPlayerLeaveEvents(), this);
+		getServer().getPluginManager().registerEvents(new onEntityDamageEntityEvent(), this);
+		//getServer().getPluginManager().registerEvents(this, this);
 	}
 	
-	@SuppressWarnings("rawtypes")
+	
 	@Override
 	public void onDisable() {
 		Iterator playerIterator =Bukkit.getServer().getOnlinePlayers().iterator();
@@ -181,60 +190,6 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		}
 		TraitsMenuMain.playerInventory.clear();
 		PlayerMenu.playerInventory.clear();
-	}
-	
-	
-	
-	@EventHandler
-	public void onPlayerLeave(PlayerQuitEvent e){
-		//removes players info when they leave the server
-		playerPerks.remove(e.getPlayer());
-		
-		if(TraitsMenuMain.playerInventory.containsKey(e.getPlayer().getName()))
-			TraitsMenuMain.playerInventory.remove(e.getPlayer().getName());
-		if(PlayerMenu.playerInventory.containsKey(e.getPlayer().getName()))
-			PlayerMenu.playerInventory.remove(e.getPlayer().getName());
-	}
-	
-	
-	@SuppressWarnings("rawtypes")
-	@EventHandler
-	public void onPlayerJoin(PlayerJoinEvent e){
-		for (PotionEffect effect : e.getPlayer().getActivePotionEffects()){
-			e.getPlayer().removePotionEffect(effect.getType());
-		}
-		File playerfile = new File(this.getDataFolder()+"/playerData/"+e.getPlayer().getUniqueId()+".yml");
-		FileConfiguration playerData;
-		if(!playerfile.exists()){
-			try {
-				playerfile.createNewFile();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-		}
-		
-		playerData = new YamlConfiguration();//.loadConfiguration(playerfile);
-		try {
-			playerData.load(playerfile);
-		} catch (FileNotFoundException e2) {
-			e2.printStackTrace();
-		} catch (IOException e2) {
-			e2.printStackTrace();
-		} catch (InvalidConfigurationException e2) {
-			e2.printStackTrace();
-		}
-		if(playerData.get("ChoosenPerks")==null)
-			playerData.set("ChoosenPerks", new ArrayList<>());
-		
-		try {
-			playerData.save(playerfile);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		
-		//stores players info when player joins server
-		playerPerks.put(e.getPlayer(), (ArrayList) playerData.get("ChoosenPerks"));
-		
 	}
 	
 	
@@ -274,114 +229,6 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		
 	}
 	
-	@EventHandler
-	public void onEntityDamage(EntityDamageEvent e){
-		
-	}
 	
-	@EventHandler
-	public void onEntityDamageByEntity(EntityDamageByEntityEvent e){
-		//the one who hits
-		Player attacker = null;
-		//the one who got hit
-		Player player = null;
-		
-		if(e.getDamager() instanceof Player)
-			attacker = (Player) e.getDamager();
-		if(e.getEntity() instanceof Player)
-			player = (Player) e.getEntity();
-		
-		if(attacker!=null&&player!=null){
-			attacker.sendMessage("You damaged "+player.getName()+" for: "+e.getDamage()+" damage");
-			player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 50, 1));
-		}
-		
-	}
-	
-	@EventHandler
-	public void onEntityTarget(EntityTargetEvent e){
-		/*if(e.getEntity().getType()== EntityType.SPIDER)
-			if(!e.isCancelled())
-				e.setCancelled(true);
-		*/
-		if(e.getTarget() instanceof Player){
-			Player player = (Player) e.getTarget();
-			if(MainPlugin.playerPerks.get(player).contains("Truce Slime")){
-				if(e.getEntity().getType()==EntityType.SLIME||e.getEntity().getType()==EntityType.MAGMA_CUBE)
-					e.setCancelled(true);
-			}
-			if(MainPlugin.playerPerks.get(player).contains("Truce Blaze")){
-				if(e.getEntity().getType()==EntityType.BLAZE)
-					e.setCancelled(true);
-			}
-			if(MainPlugin.playerPerks.get(player).contains("Truce SilverFish")){
-				if(e.getEntity().getType()==EntityType.SILVERFISH)
-					e.setCancelled(true);
-			}
-			if(MainPlugin.playerPerks.get(player).contains("Truce Spider")){
-				if(e.getEntity().getType()==EntityType.SPIDER||e.getEntity().getType()==EntityType.CAVE_SPIDER)
-					e.setCancelled(true);
-			}
-			if(MainPlugin.playerPerks.get(player).contains("Truce Undead")){
-				if(e.getEntity().getType()==EntityType.ZOMBIE||e.getEntity().getType()==EntityType.SKELETON||e.getEntity().getType()==EntityType.WITHER_SKELETON)
-					e.setCancelled(true);
-			}
-			if(MainPlugin.playerPerks.get(player).contains("Truce Creeper")){
-				if(e.getEntity().getType()==EntityType.CREEPER)
-					e.setCancelled(true);
-			}
-			if(MainPlugin.playerPerks.get(player).contains("Truce Ghast")){
-				if(e.getEntity().getType()==EntityType.GHAST)
-					e.setCancelled(true);
-			}
-			if(MainPlugin.playerPerks.get(player).contains("Truce Witch")){
-				if(e.getEntity().getType()==EntityType.WITCH)
-					e.setCancelled(true);
-			}
-			
-		}
-	}
-	
-	@EventHandler
-	public void onPlayerEat(PlayerItemConsumeEvent e){
-		if(MainPlugin.playerPerks.get(e.getPlayer()).contains("Water Drinker")){
-			if(e.getItem().getType().equals(Material.POTION)){
-				e.getPlayer().setFoodLevel(e.getPlayer().getFoodLevel()+3);
-			}
-		}
-		if(MainPlugin.playerPerks.get(e.getPlayer()).contains("Carnivore")){
-			if(!FoodArrayList.Meat.contains(e.getItem().getType())&&!e.getItem().getType().equals(Material.POTION)){
-				e.getPlayer().sendMessage("[Perks]: You Are a Carnivore, you Can't Eat this");
-				e.setCancelled(true);
-			}
-		}
-		if(MainPlugin.playerPerks.get(e.getPlayer()).contains("Herbivore")){
-			if(!FoodArrayList.Veggies.contains(e.getItem().getType())&&!e.getItem().getType().equals(Material.POTION)){
-				e.getPlayer().sendMessage("[Perks]: You Are a Herbivore, you Can't Eat this");
-				e.setCancelled(true);
-			}
-		}
-		if(MainPlugin.playerPerks.get(e.getPlayer()).contains("Nonivore")){
-			if(!e.getItem().getType().equals(Material.POTION)){
-				e.getPlayer().sendMessage("[Perks]: You can't eat, you are a Nonivore");
-				e.setCancelled(true);
-			}
-			
-		}
-	}
-	
-	
-	@EventHandler
-	public void onBreak(BlockBreakEvent e){
-		if(MainPlugin.playerPerks.get(e.getPlayer()).contains("Stone Eater")){
-			if(e.getBlock().getType().equals(Material.STONE)){
-				if(e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.AIR)){
-					//adds to full hunger bars
-					e.getPlayer().setFoodLevel(e.getPlayer().getFoodLevel()+4);
-				}
-			}
-		}		
-		
-	}
 	
 }

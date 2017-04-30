@@ -1,4 +1,4 @@
-package com.himdo.perks;
+package com.himdo.perks.Misc;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import com.himdo.perks.MainPlugin;
 import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
 public class CalculatePoints {

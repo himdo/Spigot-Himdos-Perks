@@ -9,9 +9,9 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 
-import com.himdo.perks.CalculatePoints;
 import com.himdo.perks.MainPlugin;
-import com.himdo.perks.MenuChecker;
+import com.himdo.perks.Misc.CalculatePoints;
+import com.himdo.perks.Misc.MenuChecker;
 import com.himdo.perks.SaveAndLoading.FileLocation;
 import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
@@ -117,7 +117,8 @@ public class StrikeRevengePerksMenu implements Listener{
 		inv.setItem(9+2, MainDataBaseHashMap.items.get("Strike Fire"));
 		inv.setItem(9+3, MainDataBaseHashMap.items.get("Strike Hunger"));
 		inv.setItem(9+4, MainDataBaseHashMap.items.get("Strike Nausea"));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get("Strike Steal"));
+		inv.setItem(9+5, MainDataBaseHashMap.items.get("Strike Weakness"));
+		//inv.setItem(9+5, MainDataBaseHashMap.items.get("Strike Steal"));
 		inv.setItem(9+6, MainDataBaseHashMap.items.get("Strike Armorpen"));
 		inv.setItem(9+7, MainDataBaseHashMap.items.get("Strike Harm"));
 		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));
@@ -130,14 +131,15 @@ public class StrikeRevengePerksMenu implements Listener{
 		inv.setItem(9*2+5, MainDataBaseHashMap.items.get("Strike Wither"));
 		inv.setItem(9*2+6, MainDataBaseHashMap.items.get("Strike Blindness"));
 		inv.setItem(9*2+7, MainDataBaseHashMap.items.get("Strike Stun"));
-		inv.setItem(9*2+8, MainDataBaseHashMap.items.get("Strike Weakness"));
+		inv.setItem(9*2+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 		inv.setItem(9*3,   MainDataBaseHashMap.items.get("Border Purple"));
 		inv.setItem(9*3+1, MainDataBaseHashMap.items.get("Revenge Feed"));
 		inv.setItem(9*3+2, MainDataBaseHashMap.items.get("Revenge Fire"));
 		inv.setItem(9*3+3, MainDataBaseHashMap.items.get("Revenge Hunger"));
 		inv.setItem(9*3+4, MainDataBaseHashMap.items.get("Revenge Nausea"));
-		inv.setItem(9*3+5, MainDataBaseHashMap.items.get("Revenge Steal"));
+		inv.setItem(9*3+5, MainDataBaseHashMap.items.get("Revenge Weakness"));
+		//inv.setItem(9*3+5, MainDataBaseHashMap.items.get("Revenge Steal"));
 		inv.setItem(9*3+6, MainDataBaseHashMap.items.get("Revenge Armorpen"));
 		inv.setItem(9*3+7, MainDataBaseHashMap.items.get("Revenge Harm"));
 		inv.setItem(9*3+8, MainDataBaseHashMap.items.get("Border Purple"));
@@ -150,6 +152,6 @@ public class StrikeRevengePerksMenu implements Listener{
 		inv.setItem(9*4+5, MainDataBaseHashMap.items.get("Revenge Wither"));
 		inv.setItem(9*4+6, MainDataBaseHashMap.items.get("Revenge Blindness"));
 		inv.setItem(9*4+7, MainDataBaseHashMap.items.get("Revenge Stun"));
-		inv.setItem(9*4+8, MainDataBaseHashMap.items.get("Revenge Weakness"));
+		inv.setItem(9*4+8, MainDataBaseHashMap.items.get("Border Purple"));
 	}
 }

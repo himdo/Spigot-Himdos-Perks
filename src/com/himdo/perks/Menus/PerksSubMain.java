@@ -10,7 +10,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 
 import com.himdo.perks.MainPlugin;
-import com.himdo.perks.MenuChecker;
+import com.himdo.perks.Misc.MenuChecker;
 import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
 public class PerksSubMain  implements Listener{

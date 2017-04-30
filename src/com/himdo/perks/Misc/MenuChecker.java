@@ -1,10 +1,11 @@
-package com.himdo.perks;
+package com.himdo.perks.Misc;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
+import com.himdo.perks.MainPlugin;
 import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
 public class MenuChecker {

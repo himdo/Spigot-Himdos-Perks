@@ -152,8 +152,7 @@ public class MainDataBaseHashMap {
 	static ItemStack VulnerableSword = new ItemStack(Material.IRON_SWORD);
 	static ItemStack VulnerableUnarmed = new ItemStack(Material.TRIPWIRE_HOOK);
 	
-	//Abilities
-	static ItemStack FireBall = new ItemStack(Material.BLAZE_POWDER);
+
 	
 	//Immunity
 	static ItemStack ImmuneArmorpen = new ItemStack(Material.LEATHER_CHESTPLATE);
@@ -377,8 +376,7 @@ public class MainDataBaseHashMap {
 		setMeta(Holy,"Holy",Arrays.asList("Deals extra damage to Unholy people","Takes less damage to Unholy people"),25);
 		setMeta(Unholy,"Unholy",Arrays.asList("Takes more damage from Holy people","Deals less damage to Holy people"),-25);
 		
-		//Abilities
-		setMeta(FireBall,"Fire Ball",Arrays.asList(""),100);
+		
 		
 		//Immunity
 		setMeta(ImmuneArmorpen,"Immune Armorpen",Arrays.asList("Immune to ArmorpenStrike", "and ArmorpenRevenge."),50);

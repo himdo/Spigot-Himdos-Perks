@@ -9,9 +9,9 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 
-import com.himdo.perks.CalculatePoints;
 import com.himdo.perks.MainPlugin;
-import com.himdo.perks.MenuChecker;
+import com.himdo.perks.Misc.CalculatePoints;
+import com.himdo.perks.Misc.MenuChecker;
 import com.himdo.perks.SaveAndLoading.FileLocation;
 import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
@@ -34,7 +34,6 @@ public class MiscPerksMenu implements Listener{
 	
 	
 
-	@SuppressWarnings("unchecked")
 	@EventHandler
 	public void onInventoryClicker(InventoryClickEvent e){
 		Player player = (Player) e.getWhoClicked();
@@ -105,7 +104,7 @@ public class MiscPerksMenu implements Listener{
 		//inv.setItem(9+1, initHashMap.items.get(""));
 		inv.setItem(9+2, MainDataBaseHashMap.items.get("Holy"));
 		//inv.setItem(9+3, initHashMap.items.get(""));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get("Fire Ball"));
+		//inv.setItem(9+4, MainDataBaseHashMap.items.get(""));
 		//inv.setItem(9+5, initHashMap.items.get(""));
 		inv.setItem(9+6, MainDataBaseHashMap.items.get("Unholy"));
 		//inv.setItem(9+7, initHashMap.items.get(""));
