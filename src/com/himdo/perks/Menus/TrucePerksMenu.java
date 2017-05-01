@@ -42,30 +42,7 @@ public class TrucePerksMenu implements Listener{
 		}
 		
 		Player player = (Player) e.getWhoClicked();
-		/*if(e.getCurrentItem()==null)
-			return;
-		if(e.getCurrentItem().equals(Material.AIR)){
-			return;
-		}
-		if(e.getCurrentItem().equals(null)){
-			return;
-		}
-		if(e.getCurrentItem().getItemMeta()==null){
-			return;
-		}
 		
-		if(e.getCurrentItem().equals(initHashMap.items.get("Back"))){
-			MainPlugin.perksSubMain.show(player);
-		}
-		if(e.getCurrentItem().equals(initHashMap.items.get("Border Purple")))
-			return;
-		if(e.getCurrentItem().equals(initHashMap.items.get("Back"))){
-			MainPlugin.perksSubMain.show(player);
-			return;
-		}
-		if(MainPlugin.playerPerks.get(player).contains(e.getCurrentItem().getItemMeta().getDisplayName())){
-			return;
-		}*/
 		if(!MenuChecker.menuChecker(e,inv))
 			return;
 		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){

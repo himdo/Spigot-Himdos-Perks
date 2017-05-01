@@ -59,12 +59,7 @@ public class RunnableBuffManager extends BukkitRunnable{
 			if(MainPlugin.playerPerks.get(p).contains("Blindness")){
 				p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 400, 0),true);
 			}
-			
-			
-		
 		}
 	}
-	
-	
 	
 }

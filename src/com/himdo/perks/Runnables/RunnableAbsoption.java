@@ -15,11 +15,11 @@ public class RunnableAbsoption extends BukkitRunnable{
 		for(Player p : Bukkit.getOnlinePlayers()){
 			
 			if(MainPlugin.playerPerks.get(p).contains("Health Boost")){
-				p.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 400, 0),true);
+				p.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 20*60, 0),true);
 			}
 			
 			if(MainPlugin.playerPerks.get(p).contains("Health Boost 2")){
-				p.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 400, 1),true);
+				p.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 20*60, 1),true);
 			}
 		}
 	}

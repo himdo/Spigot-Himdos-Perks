@@ -35,18 +35,6 @@ public class MenuChecker {
 		if(MainPlugin.playerPerks.get(event.getWhoClicked()).contains(event.getCurrentItem().getItemMeta().getDisplayName())){
 			return false;
 		}
-		//if(event.getCurrentItem().getItemMeta().getLore().size()!=1)
-		/*if(CalculatePoints.getPointsForItem(event.getCurrentItem())==0)
-			return true;
-		if((CalculatePoints.getCurrentPoints((Player) event.getWhoClicked())+CalculatePoints.getPointsForItem(event.getCurrentItem()) )>150){
-			event.getWhoClicked().sendMessage("Costs to many Points");
-			return false;
-		}
-		if(MainPlugin.playerPerks.get(event.getWhoClicked()).size()>8){
-			event.getWhoClicked().sendMessage("Too Many Perks Choosen");
-			return false;
-		}
-		*/
 		return true;
 	}
 }

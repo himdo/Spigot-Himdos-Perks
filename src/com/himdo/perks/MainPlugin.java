@@ -20,6 +20,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
 import com.himdo.perks.Events.FoodPerksEvents;
+import com.himdo.perks.Events.SignEvents;
 import com.himdo.perks.Events.TrucePerkEvents;
 import com.himdo.perks.Events.onEntityDamageEntityEvent;
 import com.himdo.perks.Events.onEntityDamageEvent;
@@ -39,10 +40,12 @@ import com.himdo.perks.Menus.TrucePerksMenu;
 import com.himdo.perks.Menus.WeaponPerksMenu;
 import com.himdo.perks.Runnables.RunnableAbsoption;
 import com.himdo.perks.Runnables.RunnableBuffManager;
+import com.himdo.perks.Runnables.RunnableFeedStarveHealHarm;
 import com.himdo.perks.Runnables.RunnableImmunity;
 import com.himdo.perks.Runnables.Perks.Flying.RunnableFlying;
 import com.himdo.perks.hashMaps.FoodArrayList;
 import com.himdo.perks.hashMaps.MainDataBaseHashMap;
+import com.himdo.perks.hashMaps.PerkArrayList;
 import com.himdo.perks.hashMaps.WeaponArrayLists;
 
 public class MainPlugin extends JavaPlugin implements Listener{
@@ -69,6 +72,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 	BukkitTask flying;
 	BukkitTask ABSORPTION;
 	BukkitTask ImmunityTracker;
+	BukkitTask FeedPerks;
 	
 	@Override
 	public void onEnable() {
@@ -92,7 +96,8 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		ImmunityTracker = new RunnableImmunity().runTaskTimer(this, 20, 20);
 		//tracks flying perks
 		flying = new RunnableFlying().runTaskTimer(this, 20, 20);
-		
+		//tracks feed perks every 10 seconds
+		FeedPerks = new RunnableFeedStarveHealHarm().runTaskTimer(this, 20, 20*10);
 		
 		
 		//setup perkHashMap
@@ -101,6 +106,9 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		FoodArrayList.init();
 		//set up WeaponArrayList
 		WeaponArrayLists.init();
+		//set up a array list that contains all the perks names
+		PerkArrayList.init();
+		
 		
 		mainMenu = new TraitsMenuMain(this);
 		perksSubMain = new PerksSubMain(this);
@@ -169,7 +177,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		
 		
 		
-		
+		getServer().getPluginManager().registerEvents(new SignEvents(), this);
 		getServer().getPluginManager().registerEvents(new onEntityDamageEvent(), this);
 		getServer().getPluginManager().registerEvents(new FoodPerksEvents(), this);
 		getServer().getPluginManager().registerEvents(new TrucePerkEvents(), this);
@@ -195,28 +203,32 @@ public class MainPlugin extends JavaPlugin implements Listener{
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		if(!(sender instanceof Player)){
-			sender.sendMessage("Have to be a player");
-			return true;
-		}
-		Player p = (Player) sender;
 		if(args.length==0){
-			p.sendMessage("Commands:");
-			p.sendMessage("/perks menu");
-			p.sendMessage("/perks inspect <Player Name>");
+			sender.sendMessage("Commands:");
+			sender.sendMessage("/perks menu");
+			sender.sendMessage("/perks inspect <Player Name>");
 		}
 		if(args.length==2){
 			if(args[0].equals("inspect")){
 				if(Bukkit.getPlayer(args[1])!=null){
-					p.sendMessage(args[1]+" perks: "+playerPerks.get(Bukkit.getPlayer(args[1])));
+					sender.sendMessage(args[1]+" perks: "+playerPerks.get(Bukkit.getPlayer(args[1])));
 					
 				}else{
-					p.sendMessage("Usage: /perks inspect <Player name>");
+					sender.sendMessage("Usage: /perks inspect <Player name>");
 				}
 				return true;
 			}
 		}
+		
+		
+		
 		if(args.length==1){
+			if(!(sender instanceof Player)){
+				sender.sendMessage("Have to be a player");
+				return true;
+			}
+			Player p = (Player) sender;
+			
 			if(label.equalsIgnoreCase("perks")){
 				if(args[0].equals("menu")){
 					mainMenu.show(p);

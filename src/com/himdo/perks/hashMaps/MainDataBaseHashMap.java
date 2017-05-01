@@ -48,7 +48,7 @@ public class MainDataBaseHashMap {
 	static ItemStack StrikeFire = new ItemStack(Material.FLINT_AND_STEEL);
 	static ItemStack StrikeHunger = new ItemStack(Material.ROTTEN_FLESH);
 	static ItemStack StrikeNausea = new ItemStack(Material.MILK_BUCKET);
-	static ItemStack StrikeSteal = new ItemStack(Material.GOLD_NUGGET);
+	//static ItemStack StrikeSteal = new ItemStack(Material.GOLD_NUGGET);
 	static ItemStack StrikeArmorpen = new ItemStack(Material.LEATHER_CHESTPLATE);
 	static ItemStack StrikeHarm = new ItemStack(Material.IRON_SWORD);
 	static ItemStack StrikeHeal = new ItemStack(Material.WHEAT);
@@ -66,7 +66,7 @@ public class MainDataBaseHashMap {
 	static ItemStack RevengeFire = new ItemStack(Material.FLINT_AND_STEEL);
 	static ItemStack RevengeHunger = new ItemStack(Material.ROTTEN_FLESH);
 	static ItemStack RevengeNausea = new ItemStack(Material.MILK_BUCKET);
-	static ItemStack RevengeSteal = new ItemStack(Material.GOLD_NUGGET);
+	//static ItemStack RevengeSteal = new ItemStack(Material.GOLD_NUGGET);
 	static ItemStack RevengeArmorpen = new ItemStack(Material.LEATHER_CHESTPLATE);
 	static ItemStack RevengeHarm = new ItemStack(Material.IRON_SWORD);
 	static ItemStack RevengeHeal = new ItemStack(Material.WHEAT);
@@ -93,7 +93,7 @@ public class MainDataBaseHashMap {
 	static ItemStack FeedWater = new ItemStack(Material.WATER_BUCKET);
 	static ItemStack FeedLight = new ItemStack(Material.TORCH);
 	static ItemStack FeedDarkness = new ItemStack(Material.REDSTONE_TORCH_ON);
-	static ItemStack FeedMeditation = new ItemStack(Material.GOLD_BOOTS);
+	//static ItemStack FeedMeditation = new ItemStack(Material.GOLD_BOOTS);
 	static ItemStack FeedAlways = new ItemStack(Material.CAKE);
 
 	//Starve
@@ -103,7 +103,7 @@ public class MainDataBaseHashMap {
 	static ItemStack StarveWater = new ItemStack(Material.WATER_BUCKET);
 	static ItemStack StarveLight = new ItemStack(Material.TORCH);
 	static ItemStack StarveDarkness = new ItemStack(Material.REDSTONE_TORCH_ON);
-	static ItemStack StarveMeditation = new ItemStack(Material.GOLD_BOOTS);
+	//static ItemStack StarveMeditation = new ItemStack(Material.GOLD_BOOTS);
 	static ItemStack StarveAlways = new ItemStack(Material.CAKE);
 
 	//Heal
@@ -113,7 +113,7 @@ public class MainDataBaseHashMap {
 	static ItemStack HealWater = new ItemStack(Material.WATER_BUCKET);
 	static ItemStack HealLight = new ItemStack(Material.TORCH);
 	static ItemStack HealDarkness = new ItemStack(Material.REDSTONE_TORCH_ON);
-	static ItemStack HealMeditation = new ItemStack(Material.GOLD_BOOTS);
+	//static ItemStack HealMeditation = new ItemStack(Material.GOLD_BOOTS);
 	static ItemStack HealAlways = new ItemStack(Material.CAKE);
 
 	//Harm
@@ -123,7 +123,7 @@ public class MainDataBaseHashMap {
 	static ItemStack HarmWater = new ItemStack(Material.WATER_BUCKET);
 	static ItemStack HarmLight = new ItemStack(Material.TORCH);
 	static ItemStack HarmDarkness = new ItemStack(Material.REDSTONE_TORCH_ON);
-	static ItemStack HarmMeditation = new ItemStack(Material.GOLD_BOOTS);
+	//static ItemStack HarmMeditation = new ItemStack(Material.GOLD_BOOTS);
 	static ItemStack HarmAlways = new ItemStack(Material.CAKE);
 	
 	//Weapon strength and Weakness
@@ -161,7 +161,7 @@ public class MainDataBaseHashMap {
 	static ItemStack ImmuneNausea = new ItemStack(Material.MILK_BUCKET);
 	static ItemStack ImmuneStarve = new ItemStack(Material.COAL);
 	static ItemStack ImmuneFall = new ItemStack(Material.LEATHER_BOOTS);
-	static ItemStack ImmuneSteal = new ItemStack(Material.GOLD_NUGGET);
+	//static ItemStack ImmuneSteal = new ItemStack(Material.GOLD_NUGGET);
 	static ItemStack ImmuneWeakness = new ItemStack(Material.CHAINMAIL_CHESTPLATE);
 	//static ItemStack ImmuneWither = new ItemStack(Material.SKULL_ITEM,1,(byte)1);
 	static ItemStack ImmuneWither = new ItemStack(Material.STONE_SWORD);
@@ -292,8 +292,8 @@ public class MainDataBaseHashMap {
 		setMeta(RevengeSlow,"Revenge Slow",Arrays.asList("Chance to give slowness to", "Enemys while taking damage from Enemys"),50);
 		setMeta(StrikeStarve,"Strike Starve",Arrays.asList("Chance to remove hunger", "from Enemys while damaging Enemys"),50);
 		setMeta(RevengeStarve,"Revenge Starve",Arrays.asList("Chance to remove hunger", "from Enemys while taking damage from Enemys"),50);
-		setMeta(StrikeSteal,"Strike Steal",Arrays.asList("Chance to steal money", "to Enemys while damaging Enemys"),50);
-		setMeta(RevengeSteal,"Revenge Steal",Arrays.asList("Chance to steal money", "to Enemys while taking damage from Enemys"),50);
+		//setMeta(StrikeSteal,"Strike Steal",Arrays.asList("Chance to steal money", "to Enemys while damaging Enemys"),50);
+		//setMeta(RevengeSteal,"Revenge Steal",Arrays.asList("Chance to steal money", "to Enemys while taking damage from Enemys"),50);
 		setMeta(StrikeStun,"Strike Stun",Arrays.asList("Chance to stun Enemys", "while damaging Enemys"),50);
 		setMeta(RevengeStun,"Revenge Stun",Arrays.asList("Chance to stun Enemys", "while taking damage from Enemys"),50);
 		setMeta(StrikeWeakness,"Strike Weakness",Arrays.asList("Chance to give weakness", "to Enemys while damaging Enemys"),50);
@@ -315,7 +315,7 @@ public class MainDataBaseHashMap {
 		setMeta(FeedWater,"Feed Water",Arrays.asList("Get feed while in Water"),25);
 		setMeta(FeedLight,"Feed Light",Arrays.asList("Get feed while in Light"),35);
 		setMeta(FeedDarkness,"Feed Darkness",Arrays.asList("Get feed while in Darkness"),50);
-		setMeta(FeedMeditation,"Feed Meditation",Arrays.asList("Get feed while not moving"),50);
+		//setMeta(FeedMeditation,"Feed Meditation",Arrays.asList("Get feed while not moving"),50);
 		setMeta(FeedAlways,"Feed Always",Arrays.asList("Get feed Always"),100);
 		
 		//Starve
@@ -325,7 +325,7 @@ public class MainDataBaseHashMap {
 		setMeta(StarveWater,"Starve Water",Arrays.asList("Loose Food Level in Water"),-25);
 		setMeta(StarveLight,"Starve Light",Arrays.asList("Loose Food Level in Light"),-35);
 		setMeta(StarveDarkness,"Starve Darkness",Arrays.asList("Loose Food Level in Darkness"),-50);
-		setMeta(StarveMeditation,"Starve Meditation",Arrays.asList("Loose Food Level while not Moving"),-50);
+		//setMeta(StarveMeditation,"Starve Meditation",Arrays.asList("Loose Food Level while not Moving"),-50);
 		setMeta(StarveAlways,"Starve Always",Arrays.asList("Loose Food Level Always"),-100);
 		
 		//Heal
@@ -335,7 +335,7 @@ public class MainDataBaseHashMap {
 		setMeta(HealWater,"Heal Water",Arrays.asList("Restore Health in Water"),25);
 		setMeta(HealLight,"Heal Light",Arrays.asList("Restore Health in Light"),35);
 		setMeta(HealDarkness,"Heal Darkness",Arrays.asList("Restore Health in Darkness"),50);
-		setMeta(HealMeditation,"Heal Meditation",Arrays.asList("Restore Health while not Moving"),50);
+		//setMeta(HealMeditation,"Heal Meditation",Arrays.asList("Restore Health while not Moving"),50);
 		setMeta(HealAlways,"Heal Always",Arrays.asList("Restore Health Always"),100);
 		
 		//Harm
@@ -345,7 +345,7 @@ public class MainDataBaseHashMap {
 		setMeta(HarmWater,"Harm Water",Arrays.asList("Loose Health in Water"),-25);
 		setMeta(HarmLight,"Harm Light",Arrays.asList("Loose Health in Light"),-35);
 		setMeta(HarmDarkness,"Harm Darkness",Arrays.asList("Loose Health in Darkness"),-50);
-		setMeta(HarmMeditation,"Harm Meditation",Arrays.asList("Loose Health while not Moving"),-50);
+		//setMeta(HarmMeditation,"Harm Meditation",Arrays.asList("Loose Health while not Moving"),-50);
 		setMeta(HarmAlways,"Harm Always",Arrays.asList("Loose Health Always"),-100);
 		
 		//Weapon Expert
@@ -385,7 +385,7 @@ public class MainDataBaseHashMap {
 		setMeta(ImmuneNausea,"Immune Nausea",Arrays.asList("Immune to NauseaStrike,", "NauseaRevenge, and all Nausea/Confusion effects."),20);
 		setMeta(ImmuneStarve,"Immune Starve",Arrays.asList("Immune to StarveStrike", "and StarveRevenge."),50);
 		setMeta(ImmuneFall,"Immune Fall",Arrays.asList("Immune to damage taken", "from fall damage."),30);
-		setMeta(ImmuneSteal,"Immune Steal",Arrays.asList("Immune to StealStrike", "and StealRevenge."),30);
+		//setMeta(ImmuneSteal,"Immune Steal",Arrays.asList("Immune to StealStrike", "and StealRevenge."),30);
 		
 		setMeta(ImmuneWeakness,"Immune Weakness",Arrays.asList("Immune to WeaknessStrike, WeaknessRevenge,", "and all Weakness effects."),30);
 		setMeta(ImmuneWither,"Immune Wither",Arrays.asList("Immune to WitherStrike, WitherRevenge,", "and all Wither effects."),30);
@@ -430,10 +430,6 @@ public class MainDataBaseHashMap {
 			completeList.add("Costs: "+cost+" to equip");
 			itemMeta.setLore(completeList);
 		}else{
-			//List<String> completeList = new ArrayList<String>();
-			//completeList.addAll(lore);
-			//completeList.add("Costs: "+cost);
-			//itemMeta.setLore(completeList);
 			itemMeta.setLore(lore);
 		}
 		itemStack.setItemMeta(itemMeta);
