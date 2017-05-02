@@ -99,7 +99,7 @@ public class PlayerMenu implements Listener{
 				
 				if(perks.contains(e.getCurrentItem().getItemMeta().getDisplayName())){
 					//makes sure the player cant just remove debuffs and got over the 150 points
-					if((CalculatePoints.getCurrentPoints(player)-CalculatePoints.getPointsForItem(e.getCurrentItem()))<150){
+					if((CalculatePoints.getCurrentPoints(player)-CalculatePoints.getPointsForItem(e.getCurrentItem()))<=150){
 
 						perks.remove(e.getCurrentItem().getItemMeta().getDisplayName());
 						//inv.clear(e.getSlot());

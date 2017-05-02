@@ -8,19 +8,26 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.metadata.MetadataValueAdapter;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
 import com.himdo.perks.Events.FoodPerksEvents;
 import com.himdo.perks.Events.SignEvents;
+import com.himdo.perks.Events.SummonedEntityDeath;
 import com.himdo.perks.Events.TrucePerkEvents;
 import com.himdo.perks.Events.onEntityDamageEntityEvent;
 import com.himdo.perks.Events.onEntityDamageEvent;
@@ -41,8 +48,8 @@ import com.himdo.perks.Menus.WeaponPerksMenu;
 import com.himdo.perks.Runnables.RunnableAbsoption;
 import com.himdo.perks.Runnables.RunnableBuffManager;
 import com.himdo.perks.Runnables.RunnableFeedStarveHealHarm;
+import com.himdo.perks.Runnables.RunnableFlying;
 import com.himdo.perks.Runnables.RunnableImmunity;
-import com.himdo.perks.Runnables.Perks.Flying.RunnableFlying;
 import com.himdo.perks.hashMaps.FoodArrayList;
 import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 import com.himdo.perks.hashMaps.PerkArrayList;
@@ -173,10 +180,12 @@ public class MainPlugin extends JavaPlugin implements Listener{
 			//stores players info when player joins server
 			playerPerks.put(player, (ArrayList) playerData.get("ChoosenPerks"));
 			
+			Constants.canFly.put(player.getName(), false);
+			
 		}
 		
 		
-		
+		getServer().getPluginManager().registerEvents(new SummonedEntityDeath(), this);
 		getServer().getPluginManager().registerEvents(new SignEvents(), this);
 		getServer().getPluginManager().registerEvents(new onEntityDamageEvent(), this);
 		getServer().getPluginManager().registerEvents(new FoodPerksEvents(), this);
@@ -223,14 +232,33 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		
 		
 		if(args.length==1){
-			if(!(sender instanceof Player)){
-				sender.sendMessage("Have to be a player");
-				return true;
-			}
-			Player p = (Player) sender;
 			
 			if(label.equalsIgnoreCase("perks")){
+				
+				
+				if(args[0].equals("summon")){
+					if(!(sender instanceof Player)){
+						sender.sendMessage("Have to be a player");
+						return true;
+					}
+					Player p = (Player) sender;
+					LivingEntity entity = (LivingEntity) Bukkit.getWorld("world").spawn(p.getLocation(), EntityType.BLAZE.getEntityClass());
+					entity.setCustomName(ChatColor.DARK_RED+p.getName()+"'s "+entity.getType());
+					entity.setMetadata(p.getName(), new FixedMetadataValue(this,p.getName()));
+					entity.setMetadata("owned", new FixedMetadataValue(this,p.getName()));
+					
+				}
+				
+				
 				if(args[0].equals("menu")){
+					
+					if(!(sender instanceof Player)){
+						sender.sendMessage("Have to be a player");
+						return true;
+					}
+
+					Player p = (Player) sender;
+					
 					mainMenu.show(p);
 					return true;
 				}

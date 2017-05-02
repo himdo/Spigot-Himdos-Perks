@@ -1,8 +1,8 @@
 name: Traits
-main: com.himdo.traits.MainPlugin
-version: 1.0
+main: com.himdo.perks.MainPlugin
+version: 1.2.4
 commands:
-  traits:
-    description: opens traits menu
-    usage: /traits menu
+  perks:
+    description: opens perks menu
+    usage: /perks menu
     

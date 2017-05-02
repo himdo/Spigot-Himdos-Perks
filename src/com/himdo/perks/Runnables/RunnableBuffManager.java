@@ -13,7 +13,6 @@ import org.bukkit.scheduler.BukkitTask;
 
 import com.himdo.perks.Constants;
 import com.himdo.perks.MainPlugin;
-import com.himdo.perks.Runnables.Perks.Flying.RunnableFlying;
 
 public class RunnableBuffManager extends BukkitRunnable{
 	

@@ -1,6 +1,8 @@
 package com.himdo.perks.Events;
 
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,8 +17,20 @@ public class TrucePerkEvents implements Listener{
 			if(!e.isCancelled())
 				e.setCancelled(true);
 		*/
+		
 		if(e.getTarget() instanceof Player){
 			Player player = (Player) e.getTarget();
+
+			if(e.getEntity() instanceof LivingEntity){
+				LivingEntity entity = (LivingEntity)e.getEntity();
+				if(e.getEntity().hasMetadata(player.getName())){
+					
+					e.setCancelled(true);
+					
+				}
+			}
+			
+			
 			if(MainPlugin.playerPerks.get(player).contains("Truce Slime")){
 				if(e.getEntity().getType()==EntityType.SLIME||e.getEntity().getType()==EntityType.MAGMA_CUBE)
 					e.setCancelled(true);

@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.potion.PotionEffect;
 
+import com.himdo.perks.Constants;
 import com.himdo.perks.MainPlugin;
 
 public class onPlayerJoinEvents implements Listener{
@@ -52,6 +53,7 @@ public class onPlayerJoinEvents implements Listener{
 		
 		//stores players info when player joins server
 		MainPlugin.playerPerks.put(e.getPlayer(), (ArrayList) playerData.get("ChoosenPerks"));
+		Constants.canFly.put(e.getPlayer().getName(), false);
 		
 	}
 }

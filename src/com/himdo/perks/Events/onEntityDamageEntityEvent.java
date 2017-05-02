@@ -5,6 +5,7 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.potion.PotionEffect;
@@ -15,7 +16,7 @@ import com.himdo.perks.Misc.DiceRoller;
 import com.himdo.perks.hashMaps.WeaponArrayLists;
 
 public class onEntityDamageEntityEvent implements Listener{
-	@EventHandler
+	@EventHandler (priority = EventPriority.HIGHEST)//this is highest inorder to work with McMMO if it was lower then mcmmo would go first and ruin the stats
 	public void onEntityDamageByEntity(EntityDamageByEntityEvent e){
 		//the one who hits
 		Player attackerPlayer = null;

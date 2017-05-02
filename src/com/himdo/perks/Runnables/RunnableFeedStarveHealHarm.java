@@ -12,6 +12,9 @@ public class RunnableFeedStarveHealHarm extends BukkitRunnable{
 	@Override
 	public void run() {
 		for(Player p : Bukkit.getOnlinePlayers()){
+			if(p.isDead()){
+				continue;
+			}
 			if(MainPlugin.playerPerks.get(p).contains("Feed Lava")){
 				if(p.getLocation().getBlock().getType()==Material.LAVA||p.getLocation().getBlock().getType()==Material.STATIONARY_LAVA)
 					p.setFoodLevel(p.getFoodLevel()+1);
