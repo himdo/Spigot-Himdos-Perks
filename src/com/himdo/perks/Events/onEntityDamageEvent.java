@@ -36,13 +36,13 @@ public class onEntityDamageEvent  implements Listener{
 				e.setCancelled(true);
 			}
 		}
-		if(MainPlugin.playerPerks.get(player).contains("Immune Fall")){
+		if(MainPlugin.playerPerks.get(player).contains("Immune Wither")){
 			if(e.getCause().equals(DamageCause.WITHER)){
 				player.removePotionEffect(PotionEffectType.WITHER);
 				e.setCancelled(true);
 			}
 		}
-		if(MainPlugin.playerPerks.get(player).contains("Immune Fall")){
+		if(MainPlugin.playerPerks.get(player).contains("Immune Poison")){
 			if(e.getCause().equals(DamageCause.POISON)){
 				player.removePotionEffect(PotionEffectType.POISON);
 				e.setCancelled(true);
