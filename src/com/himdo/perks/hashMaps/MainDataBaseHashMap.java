@@ -213,6 +213,12 @@ public class MainDataBaseHashMap {
 	//Borders
 	static ItemStack BorderPurple = new ItemStack(Material.STAINED_GLASS_PANE,1, (short) 10);
 	
+	//Help
+	static ItemStack Help1=new ItemStack(Material.APPLE);
+	static ItemStack Help2=new ItemStack(Material.APPLE);
+	static ItemStack Help3=new ItemStack(Material.APPLE);
+	static ItemStack Help4=new ItemStack(Material.APPLE);
+	
 	static private ItemMeta itemMeta;
 	
 	public static void setHashMap(){
@@ -222,6 +228,19 @@ public class MainDataBaseHashMap {
 		//borders 
 		setMeta(BorderPurple, " ", null,false);
 		addToMap(BorderPurple,"Border Purple");
+		
+		//Help
+		setMeta(Help1, "What are Perks?", Arrays.asList("Perks are abilitys","that make you unique."),false);
+		addToMap(Help1,"Help 1");
+		
+		setMeta(Help2, "Limits of Perks", Arrays.asList("You are limited to","a total of 150 points","and 9 unique perks"),false);
+		addToMap(Help2,"Help 2");
+		
+		setMeta(Help3, "Perk Costs", Arrays.asList("All perks have a cost.","The cost is labeled on the last","line of any perk.","perks with a \"-\" cost","give you more points to spend"),false);
+		addToMap(Help3,"Help 3");
+		
+		setMeta(Help4, "How to Remove a Perk", Arrays.asList("Go to your player menu","and right click on the perk to remove it"),false);
+		addToMap(Help4,"Help 4");
 		
 		
 		//Icons
@@ -305,7 +324,7 @@ public class MainDataBaseHashMap {
 		setMeta(WaterDrinker, "Water Drinker", Arrays.asList("Gain 3 food when drinking water bottle"),15);
 		setMeta(StoneEater, "Stone Eater", Arrays.asList("Gain food when breaking stone by hand"),30);
 		setMeta(Carnivore, "Carnivore", Arrays.asList("Can only eat Meats and Cake"),-20);
-		setMeta(Herbivore, "Herbivore", Arrays.asList("Can only eat Herb food and Cake"),20);
+		setMeta(Herbivore, "Herbivore", Arrays.asList("Can only eat Herb food and Cake"),-20);
 		setMeta(Nonivore, "Nonivore", Arrays.asList("Can't Eat"),-50);
 		
 		//Feed

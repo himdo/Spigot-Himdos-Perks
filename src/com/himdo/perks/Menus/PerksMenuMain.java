@@ -21,7 +21,7 @@ import com.himdo.perks.Misc.CalculatePoints;
 import com.himdo.perks.Misc.MenuChecker;
 import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 
-public class TraitsMenuMain implements Listener{
+public class PerksMenuMain implements Listener{
 	private Inventory inv;
 	private ItemStack playerSkull;
 	//Player player;
@@ -29,7 +29,7 @@ public class TraitsMenuMain implements Listener{
 	static public HashMap<String,Inventory> playerInventory = new HashMap<String,Inventory>();
 	//static ArrayList<Inventory> inventorys;
 	
-	public TraitsMenuMain(Plugin plugin) {
+	public PerksMenuMain(Plugin plugin) {
 		inv = Bukkit.getServer().createInventory(null, 9*3,"[Perks] Menu");
 		playerSkull = new ItemStack(Material.SKULL_ITEM,1,(byte)3);
 		
@@ -127,6 +127,10 @@ public class TraitsMenuMain implements Listener{
 			//Perks Menu
 			if(selectedItem.equals(MainDataBaseHashMap.items.get("Perks"))){
 				MainPlugin.perksSubMain.show(pa);
+			}
+			//Help Menu
+			if(selectedItem.equals(MainDataBaseHashMap.items.get("Help"))){
+				MainPlugin.HelpMenu.show(pa);
 			}
 			//Player Menu
 			if(selectedItem.equals(playerInventory.get(e.getWhoClicked().getName()).getItem(9+7))){

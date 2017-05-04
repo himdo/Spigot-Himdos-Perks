@@ -19,19 +19,19 @@ public class FoodPerksEvents implements Listener{
 		}
 		if(MainPlugin.playerPerks.get(e.getPlayer()).contains("Carnivore")){
 			if(!FoodArrayList.Meat.contains(e.getItem().getType())&&!e.getItem().getType().equals(Material.POTION)){
-				e.getPlayer().sendMessage("[Perks]: You Are a Carnivore, you Can't Eat this");
+				e.getPlayer().sendMessage("[Perks]: You Are an Carnivore, you Can't Eat this");
 				e.setCancelled(true);
 			}
 		}
 		if(MainPlugin.playerPerks.get(e.getPlayer()).contains("Herbivore")){
 			if(!FoodArrayList.Veggies.contains(e.getItem().getType())&&!e.getItem().getType().equals(Material.POTION)){
-				e.getPlayer().sendMessage("[Perks]: You Are a Herbivore, you Can't Eat this");
+				e.getPlayer().sendMessage("[Perks]: You Are an Herbivore, you Can't Eat this");
 				e.setCancelled(true);
 			}
 		}
 		if(MainPlugin.playerPerks.get(e.getPlayer()).contains("Nonivore")){
 			if(!e.getItem().getType().equals(Material.POTION)){
-				e.getPlayer().sendMessage("[Perks]: You can't eat, you are a Nonivore");
+				e.getPlayer().sendMessage("[Perks]: You can't eat, you are an Nonivore");
 				e.setCancelled(true);
 			}
 			

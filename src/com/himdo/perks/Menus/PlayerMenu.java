@@ -24,7 +24,7 @@ import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 public class PlayerMenu implements Listener{
 	//this menu pops up when they click on their head
 	private Inventory inv;
-	//Player player;
+	
 	static public HashMap<String,Inventory> playerInventory = new HashMap<String,Inventory>();
 	
 	
@@ -38,7 +38,7 @@ public class PlayerMenu implements Listener{
 	
 	public void show(Player player){
 		
-		//this.player=player;
+		
 		if(!playerInventory.containsKey(player.getName())){
 			Inventory playered = Bukkit.getServer().createInventory(null, 9*3,"[Perks]Player Menu");
 			playered.setContents(inv.getContents());
@@ -57,18 +57,17 @@ public class PlayerMenu implements Listener{
 			playered.setItem(9+i,MainDataBaseHashMap.items.get(perks.get(i)));
 		}
 		
-		//playered.setContents(playered.getContents());// = inv;
 		playerInventory.put(player.getName(), playered);
 		
 		player.openInventory(playerInventory.get(player.getName()));
 		
 	}
+	
 	@EventHandler
 	public void onInventoryClicker(InventoryClickEvent e){
-		//Player pa = (Player) e.getWhoClicked();
 		Player player = (Player) e.getWhoClicked();
 		
-		if(player.getOpenInventory().getTitle().equals(inv.getName())){//playerInventory.get(player.getName()).getName())){
+		if(player.getOpenInventory().getTitle().equals(inv.getName())){
 			
 			
 			if(e.getCurrentItem()==null)
@@ -89,10 +88,8 @@ public class PlayerMenu implements Listener{
 			
 			if(e.getClick().isRightClick()){
 				
-				//pa.sendMessage("in right click");
 				@SuppressWarnings("rawtypes")
 				ArrayList perks = (ArrayList) MainPlugin.playerPerks.get(player);
-				//pa.sendMessage(perks+"");
 				
 				if(perks==null||perks.isEmpty())
 					return;
@@ -102,7 +99,6 @@ public class PlayerMenu implements Listener{
 					if((CalculatePoints.getCurrentPoints(player)-CalculatePoints.getPointsForItem(e.getCurrentItem()))<=150){
 
 						perks.remove(e.getCurrentItem().getItemMeta().getDisplayName());
-						//inv.clear(e.getSlot());
 						Inventory temp = playerInventory.get(player.getName());
 						temp.clear(e.getSlot());
 						playerInventory.put(player.getName(), temp);
@@ -112,7 +108,6 @@ public class PlayerMenu implements Listener{
 					}
 				}
 				
-				//pa.sendMessage(perks+"");
 				FileLocation.save(player);
 				for (PotionEffect effect : player.getActivePotionEffects()){
 					player.removePotionEffect(effect.getType());

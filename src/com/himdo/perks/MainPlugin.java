@@ -42,9 +42,10 @@ import com.himdo.perks.Menus.MiscPerksMenu;
 import com.himdo.perks.Menus.PerksSubMain;
 import com.himdo.perks.Menus.PlayerMenu;
 import com.himdo.perks.Menus.StrikeRevengePerksMenu;
-import com.himdo.perks.Menus.TraitsMenuMain;
+import com.himdo.perks.Menus.PerksMenuMain;
 import com.himdo.perks.Menus.TrucePerksMenu;
 import com.himdo.perks.Menus.WeaponPerksMenu;
+import com.himdo.perks.Menus.Help.PerksSubHelpMain;
 import com.himdo.perks.Runnables.RunnableAbsoption;
 import com.himdo.perks.Runnables.RunnableBuffManager;
 import com.himdo.perks.Runnables.RunnableFeedStarveHealHarm;
@@ -57,7 +58,7 @@ import com.himdo.perks.hashMaps.WeaponArrayLists;
 
 public class MainPlugin extends JavaPlugin implements Listener{
 	
-	public static TraitsMenuMain mainMenu;
+	public static PerksMenuMain mainMenu;
 	public static PerksSubMain perksSubMain;
 	public static BuffPerkMenu buffPerkMenu;
 	public static FeedStarveHealHarmPerksMenu healHarmMenu;
@@ -70,6 +71,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 	public static WeaponPerksMenu weaponPerksMenu;
 	public static StrikeRevengePerksMenu strikePerksMenu;
 	
+	public static PerksSubHelpMain HelpMenu;
 	
 	public static HashMap<Player, ArrayList> playerPerks = new HashMap<Player, ArrayList>();
 	
@@ -117,7 +119,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		PerkArrayList.init();
 		
 		
-		mainMenu = new TraitsMenuMain(this);
+		mainMenu = new PerksMenuMain(this);
 		perksSubMain = new PerksSubMain(this);
 		buffPerkMenu = new BuffPerkMenu(this);
 		healHarmMenu = new FeedStarveHealHarmPerksMenu(this);
@@ -142,6 +144,9 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		trucePerksMenu.init();
 		weaponPerksMenu.init();
 		strikePerksMenu.init();
+		
+		HelpMenu = new PerksSubHelpMain(this);
+		HelpMenu.init();
 		
 		plugin = this;
 		Iterator playerIterator = Bukkit.getServer().getOnlinePlayers().iterator();
@@ -205,7 +210,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 			player.closeInventory();
 			
 		}
-		TraitsMenuMain.playerInventory.clear();
+		PerksMenuMain.playerInventory.clear();
 		PlayerMenu.playerInventory.clear();
 	}
 	

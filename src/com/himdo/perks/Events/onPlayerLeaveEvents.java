@@ -7,7 +7,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import com.himdo.perks.Constants;
 import com.himdo.perks.MainPlugin;
 import com.himdo.perks.Menus.PlayerMenu;
-import com.himdo.perks.Menus.TraitsMenuMain;
+import com.himdo.perks.Menus.PerksMenuMain;
 
 public class onPlayerLeaveEvents implements Listener{
 	@EventHandler
@@ -15,8 +15,8 @@ public class onPlayerLeaveEvents implements Listener{
 		//removes players info when they leave the server
 		MainPlugin.playerPerks.remove(e.getPlayer());
 		Constants.canFly.remove(e.getPlayer().getName());
-		if(TraitsMenuMain.playerInventory.containsKey(e.getPlayer().getName()))
-			TraitsMenuMain.playerInventory.remove(e.getPlayer().getName());
+		if(PerksMenuMain.playerInventory.containsKey(e.getPlayer().getName()))
+			PerksMenuMain.playerInventory.remove(e.getPlayer().getName());
 		if(PlayerMenu.playerInventory.containsKey(e.getPlayer().getName()))
 			PlayerMenu.playerInventory.remove(e.getPlayer().getName());
 	}
