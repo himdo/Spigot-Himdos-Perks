@@ -76,13 +76,13 @@ public class MiscPerksMenu implements Listener{
 		inv.setItem(18+1, MainDataBaseHashMap.items.get("Back"));
 
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
-		//inv.setItem(9+1, initHashMap.items.get(""));
+		inv.setItem(9+1, MainDataBaseHashMap.items.get("Snow Baller"));
 		inv.setItem(9+2, MainDataBaseHashMap.items.get("Holy"));
-		//inv.setItem(9+3, initHashMap.items.get(""));
+		//inv.setItem(9+3, MainDataBaseHashMap.items.get(""));
 		//inv.setItem(9+4, MainDataBaseHashMap.items.get(""));
-		//inv.setItem(9+5, initHashMap.items.get(""));
+		//inv.setItem(9+5, MainDataBaseHashMap.items.get(""));
 		inv.setItem(9+6, MainDataBaseHashMap.items.get("Unholy"));
-		//inv.setItem(9+7, initHashMap.items.get(""));
+		inv.setItem(9+7, MainDataBaseHashMap.items.get("Informed"));
 		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 	}

@@ -15,7 +15,6 @@ import org.bukkit.potion.PotionEffectType;
 public class MainDataBaseHashMap {
 	public static HashMap<String, ItemStack> items;
 	public static HashMap<ItemStack, Integer> perkCosts;
-	
 	//Buffs
 	static ItemStack NightVision = new ItemStack(Material.GOLDEN_CARROT);
 	static ItemStack WaterBreathing = new ItemStack(Material.WATER_BUCKET);
@@ -218,6 +217,19 @@ public class MainDataBaseHashMap {
 	static ItemStack Help2=new ItemStack(Material.APPLE);
 	static ItemStack Help3=new ItemStack(Material.APPLE);
 	static ItemStack Help4=new ItemStack(Material.APPLE);
+	static ItemStack Help5=new ItemStack(Material.APPLE);
+	static ItemStack Help6=new ItemStack(Material.APPLE);
+	static ItemStack Help7=new ItemStack(Material.APPLE);
+	
+	
+	
+	//More Misc Perks
+	//Snowball Damager
+	static ItemStack SnowBallThrower=new ItemStack(Material.SNOW_BALL);
+	
+	//Informed
+	static ItemStack Informed=new ItemStack(Material.BOOK);
+	
 	
 	static private ItemMeta itemMeta;
 	
@@ -238,9 +250,28 @@ public class MainDataBaseHashMap {
 		
 		setMeta(Help3, "Perk Costs", Arrays.asList("All perks have a cost.","The cost is labeled on the last","line of any perk.","perks with a \"-\" cost","give you more points to spend"),false);
 		addToMap(Help3,"Help 3");
-		
+
 		setMeta(Help4, "How to Remove a Perk", Arrays.asList("Go to your player menu","and right click on the perk to remove it"),false);
 		addToMap(Help4,"Help 4");
+		
+		//TODO
+		setMeta(Help5, "What are Revenge/Strike Perks?", Arrays.asList("Strike perks are perks that","activate when you attack something","Revenge Perks are perks that","activate when you get hit"),false);
+		addToMap(Help5,"Help 5");
+		
+		setMeta(Help6, "What are Truce Perks?", Arrays.asList("Truce Perks are Perks that make certain","mobs not attack you"),false);
+		addToMap(Help6,"Help 6");
+		
+		setMeta(Help7, "How to Remove a Perk", Arrays.asList("Go to your player menu","and right click on the perk to remove it"),false);
+		addToMap(Help7,"Help 7");
+		//TODO
+		
+		setMeta(SnowBallThrower, "Snow Baller", Arrays.asList("A thrown Snowball does","One heart of damage to target"),15);
+		setMeta(Informed, "Informed", Arrays.asList("Shows information. This information","includes Target Health, and Damage Done"),10);
+		
+		
+		
+		
+		
 		
 		
 		//Icons

@@ -4,6 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -28,6 +29,7 @@ public class onEntityDamageEntityEvent implements Listener{
 		
 		
 		Arrow arrow = null;
+		Snowball snowball = null;
 		
 		if(e.getDamager() instanceof Player)
 			attackerPlayer = (Player) e.getDamager();
@@ -42,20 +44,28 @@ public class onEntityDamageEntityEvent implements Listener{
 		
 		
 		if(e.getDamager() instanceof Arrow){
-			
 			arrow = ((Arrow)e.getDamager());
 			if(arrow.getShooter()instanceof Player)
 				attackerPlayer = (Player)arrow.getShooter();
 			if(arrow.getShooter() instanceof LivingEntity)
 				attackerEntity = (LivingEntity)arrow.getShooter();
-			
-			
-			
 		}
 		
-		
-		
-		
+		if(e.getDamager() instanceof Snowball){
+			snowball = ((Snowball)e.getDamager());
+			if(snowball.getShooter()instanceof Player)
+				attackerPlayer = (Player)snowball.getShooter();
+			if(snowball.getShooter() instanceof LivingEntity)
+				attackerEntity = (LivingEntity)snowball.getShooter();
+		}
+	
+		if(snowball!=null){
+			if(attackerPlayer!=null){
+				if(MainPlugin.playerPerks.get(attackerPlayer).contains("Snow Baller")){
+					e.setDamage(2);
+				}
+			}
+		}
 		//Weapon Perks
 		if(arrow!=null){
 			if(attackerPlayer!=null){
@@ -499,6 +509,11 @@ public class onEntityDamageEntityEvent implements Listener{
 				if(MainPlugin.playerPerks.get(attackerPlayer).contains("Holy")){
 					e.setDamage(e.getDamage()-e.getDamage()/4);
 				}
+			}
+			//TODO make it send messages even when its not against a player
+			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Informed")){
+				attackerPlayer.sendMessage("[Perks]: you did "+e.getDamage()+" to "+defenderPlayer.getName());
+				attackerPlayer.sendMessage("[Perks]: "+defenderPlayer.getName()+" has "+defenderPlayer.getHealth()+ "left");
 			}
 		}
 	}

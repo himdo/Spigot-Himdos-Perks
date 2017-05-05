@@ -42,8 +42,8 @@ public class PerksSubHelpMain  implements Listener{
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
 		inv.setItem(9+1, MainDataBaseHashMap.items.get("Help 1"));
 		inv.setItem(9+2, MainDataBaseHashMap.items.get("Help 2"));
-		//inv.setItem(9+3, MainDataBaseHashMap.items.get("Feed/Starve/Heal/Harm Perks"));
-		//inv.setItem(9+4, MainDataBaseHashMap.items.get("Food Perks"));
+		inv.setItem(9+3, MainDataBaseHashMap.items.get("Help 5"));
+		inv.setItem(9+4, MainDataBaseHashMap.items.get("Help 6"));
 		//inv.setItem(9+5, MainDataBaseHashMap.items.get("Immune Perks"));
 		inv.setItem(9+6, MainDataBaseHashMap.items.get("Help 3"));
 		inv.setItem(9+7, MainDataBaseHashMap.items.get("Help 4"));

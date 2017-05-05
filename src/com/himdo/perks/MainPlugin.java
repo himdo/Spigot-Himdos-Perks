@@ -240,7 +240,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 			
 			if(label.equalsIgnoreCase("perks")){
 				
-				
+				/*
 				if(args[0].equals("summon")){
 					if(!(sender instanceof Player)){
 						sender.sendMessage("Have to be a player");
@@ -252,7 +252,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 					entity.setMetadata(p.getName(), new FixedMetadataValue(this,p.getName()));
 					entity.setMetadata("owned", new FixedMetadataValue(this,p.getName()));
 					
-				}
+				}*/
 				
 				
 				if(args[0].equals("menu")){
