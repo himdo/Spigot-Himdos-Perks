@@ -1,7 +1,6 @@
 package com.himdo.perks.Menus;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -41,11 +40,11 @@ public class FoodPerksMenu implements Listener{
 		
 		if(!MenuChecker.menuChecker(e,inv))
 			return;
-		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")))){
 			MainPlugin.perksSubMain.show(player);
 			return;
 		}
-		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>150){
+		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>MainPlugin.config.getInt("MaximumPerkPoints")){
 			player.sendMessage("Costs to many Points");
 			return;
 		}
@@ -74,15 +73,15 @@ public class FoodPerksMenu implements Listener{
 			inv.setItem(18+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear(18+1);
-		inv.setItem(18+1, MainDataBaseHashMap.items.get("Back"));
+		inv.setItem(18+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
 
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
 		//inv.setItem(9+1, initHashMap.items.get("Weapon Perks"));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get("Water Drinker"));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get("Stone Eater"));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get("Carnivore"));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get("Herbivore"));
-		inv.setItem(9+6, MainDataBaseHashMap.items.get("Nonivore"));
+		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.WaterDrinker.name")));
+		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StoneEater.name")));
+		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Carnivore.name")));
+		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Herbivore.name")));
+		inv.setItem(9+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Nonivore.name")));
 		//inv.setItem(9+7, initHashMap.items.get("Truce Perks"));
 		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));	
 	}

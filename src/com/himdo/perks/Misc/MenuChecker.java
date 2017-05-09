@@ -12,6 +12,10 @@ public class MenuChecker {
 	public static boolean menuChecker(InventoryClickEvent event,Inventory inv){
 		if(event.getWhoClicked().getOpenInventory().getTitle()==null)
 			return false;
+		//The one bellow is untested but should allow for inventory's with the same name to work
+		/*if(!event.getClickedInventory().getContents().equals(inv.getContents())){
+			return false;
+		}*/
 		if(!event.getInventory().getName().equals(inv.getName())) {
 			return false;
 		}
@@ -26,7 +30,7 @@ public class MenuChecker {
 		if(event.getCurrentItem().getItemMeta()==null){
 			return false;
 		}
-		if(event.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
+		if(event.getCurrentItem().equals(MainPlugin.config.getString("Perks.LeftArrow.name"))){
 			return true;
 		}
 		if(event.getCurrentItem().equals(MainDataBaseHashMap.items.get("Border Purple")))

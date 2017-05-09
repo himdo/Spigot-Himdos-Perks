@@ -46,6 +46,7 @@ import com.himdo.perks.Menus.PerksMenuMain;
 import com.himdo.perks.Menus.TrucePerksMenu;
 import com.himdo.perks.Menus.WeaponPerksMenu;
 import com.himdo.perks.Menus.Help.PerksSubHelpMain;
+import com.himdo.perks.Misc.PlayerDeleteInvaildPerks;
 import com.himdo.perks.Runnables.RunnableAbsoption;
 import com.himdo.perks.Runnables.RunnableBuffManager;
 import com.himdo.perks.Runnables.RunnableFeedStarveHealHarm;
@@ -77,6 +78,9 @@ public class MainPlugin extends JavaPlugin implements Listener{
 	
 	public static Plugin plugin;
 	
+	public static FileConfiguration config;
+	
+	
 	BukkitTask tracker;
 	BukkitTask flying;
 	BukkitTask ABSORPTION;
@@ -90,13 +94,17 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		if(!configFile.exists()){
 			this.saveDefaultConfig();
 		}
+		
 		//player data folder
 		File playerSaveFolder = new File(this.getDataFolder()+"/playerData");
 		if(!playerSaveFolder.exists()){
 			playerSaveFolder.mkdir();
 		}
 		
-	
+		config = getConfig();
+		
+		plugin = this;
+		
 		//tracks potion effects
 		tracker = new RunnableBuffManager().runTaskTimer(this, 20, 20);
 		//tracks ABSORPTION buff to make non op every 30 seconds
@@ -148,7 +156,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		HelpMenu = new PerksSubHelpMain(this);
 		HelpMenu.init();
 		
-		plugin = this;
+		
 		Iterator playerIterator = Bukkit.getServer().getOnlinePlayers().iterator();
 		while(playerIterator.hasNext()){
 			Player player = (Player) playerIterator.next();
@@ -175,6 +183,8 @@ public class MainPlugin extends JavaPlugin implements Listener{
 			}
 			if(playerData.get("ChoosenPerks")==null)
 				playerData.set("ChoosenPerks", new ArrayList<>());
+			
+			playerData.set("ChoosenPerks", PlayerDeleteInvaildPerks.Trim((ArrayList)playerData.get("ChoosenPerks")));
 			
 			try {
 				playerData.save(playerfile);
@@ -223,7 +233,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 			sender.sendMessage("/perks inspect <Player Name>");
 		}
 		if(args.length==2){
-			if(args[0].equals("inspect")){
+			if(args[0].equalsIgnoreCase("inspect")){
 				if(Bukkit.getPlayer(args[1])!=null){
 					sender.sendMessage(args[1]+" perks: "+playerPerks.get(Bukkit.getPlayer(args[1])));
 					
@@ -238,7 +248,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		
 		if(args.length==1){
 			
-			if(label.equalsIgnoreCase("perks")){
+			//if(label.equalsIgnoreCase("perks")){
 				
 				/*
 				if(args[0].equals("summon")){
@@ -255,7 +265,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 				}*/
 				
 				
-				if(args[0].equals("menu")){
+				if(args[0].equalsIgnoreCase("menu")){
 					
 					if(!(sender instanceof Player)){
 						sender.sendMessage("Have to be a player");
@@ -269,7 +279,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 				}
 				
 			}
-		}
+		//}
 		return true;
 		
 	}

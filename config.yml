@@ -1,4 +1,871 @@
-#this is a test
-Blocks:
-  #this is also a test
-  - wow
+#the maximum number of points any one player can have equiped
+#if you change this number i recommend changing the number in Help2
+MaximumPerkPoints: 150
+
+
+#the chance it will get a 0 from
+#for example with a 3, you have a 1/3 chance of activating, 33%
+#for a 4 you have a 1/4 chance, 25%
+#for a 1 you have a 100% chance of activating
+StrikeChance: 3
+RevengeChance: 4
+
+#no normal perk can get a menu cost because if they do then it becomes a menu item and not a chooseable perk
+MenuItemCost: 255
+
+Perks: 
+  #if you set the cost to 0 it makes it unequipable, it is used for menu items
+  #enabled makes it so you can see the item, options for it is "true" or "false"
+  #if you disable perk submenu items then you can not access the perks within
+  # if a player logs in with a perk that has been disabled it will automatically be removed from that player
+  
+  #name: it is the display name for that item
+  #lore: it is the info under the name
+  #inventorySlot: it is the slot that it is found in in its menu (you can not change what menu it is located in at this time)
+  #cost: it changes the cost of the perk, the number can be "-" or "+"
+  #Help Menu
+  Help1: 
+    enabled: true
+    name: "What are Perks?"
+    lore: ["Perks are abilitys","that make you unique."]
+    inventorySlot: 9+4
+  Help2: 
+    enabled: true
+    name: "Limits of Perks"
+    lore: ["You are limited to","a total of 150 points","and 9 unique perks"]
+    inventorySlot: 9+4
+  Help3: 
+    enabled: true
+    name: "Perk Costs"
+    lore: ["All perks have a cost.","The cost is labeled on the last","line of any perk.","perks with a \"-\" cost","give you more points to spend"]
+    inventorySlot: 9+4
+  Help4: 
+    enabled: true
+    name:  "How to Remove a Perk"
+    lore: ["Go to your player menu","and right click on the perk to remove it"]
+    inventorySlot: 9+4
+  Help5: 
+    enabled: true
+    name: "What are Revenge/Strike Perks?"
+    lore: ["Strike perks are perks that","activate when you attack something","Revenge Perks are perks that","activate when you get hit","there is a 1/3 chance for strike", "and a 1/4 chance for revenge to activate"]
+    inventorySlot: 9+4
+  Help6: 
+    enabled: true
+    name: "What are Truce Perks?"
+    lore: ["Truce Perks are Perks that make certain","mobs not attack you"]
+    inventorySlot: 9+4
+  
+  #icons that is located on each page (pretty much)
+  Perks: 
+    enabled: true
+    name: "Perks"
+    lore: ["Click to open all the different perks"]
+    inventorySlot: 9+4
+  Help: 
+    enabled: true
+    name: "Help"
+    lore: ["Click to get Help"]
+    inventorySlot: 9+4  
+  LeftArrow: 
+    enabled: true
+    name: "Back"
+    lore: ["Click to go Back"]
+    inventorySlot: 9+4
+  #Right arrow is currently not being used for anything
+  RightArrow: 
+    enabled: false
+    name: "Next"
+    lore: ["Click to go to Next page"]
+    inventorySlot: 9+4  
+    
+    
+    
+  #Sub Sections for perks
+  Buffs: 
+    enabled: true
+    name: "Buffs"
+    lore: ["Click to show buff/","debuff based perks"]
+    inventorySlot: 9+4
+  Food: 
+    enabled: true
+    name: "Food Perks"
+    lore: ["Click to show food based perks"]
+    inventorySlot: 9+4
+  Truce: 
+    enabled: true
+    name: "Truce Perks"
+    lore: ["Click to show mob truce based perks"]
+    inventorySlot: 9+4
+  Misc: 
+    enabled: true
+    name: "Misc Perks"
+    lore: ["Click to show misc perks"]
+    inventorySlot: 9+4
+  Fly: 
+    enabled: true
+    name: "Flying Perks"
+    cost: 0
+    lore: ["Click to show flying based perks"]
+    inventorySlot: 9+4
+  Immune: 
+    enabled: true
+    name: "Immune Perks"
+    lore: ["Click to show immunity based perks"]
+    inventorySlot: 9+4
+  WeaponStats: 
+    enabled: true
+    name: "Weapon Perks"
+    lore: ["Click to show weapon","stats based perks"]
+    inventorySlot: 9+4
+  StrikeRevenge: 
+    enabled: true
+    name: "Strike/Revenge Perks"
+    lore: ["Click to show strike","and revenge based perks"]
+    inventorySlot: 9+4
+  FeedStarveHealHarm: 
+    enabled: true
+    name: "Feed/Starve/Heal/Harm Perks"
+    lore: ["Click to show Feed/Starve","And Heal/Harm based perks"]
+    inventorySlot: 9+4
+  
+  #Buff Perk Menu Items
+  NightVision: 
+    enabled: true
+    name: "Night Vision"
+    cost: 20
+    lore: ["Adds Permanent Night Vison"]
+    inventorySlot: 9+4
+  WaterBreathing: 
+    enabled: true
+    name: "Water Breathing"
+    cost: 40
+    lore: ["Adds Permanent Water Breathing"]
+    inventorySlot: 9+4
+  Haste: 
+    enabled: true
+    name: "Haste"
+    cost: 50
+    lore: ["Adds Permanent Haste"]
+    inventorySlot: 9+4
+  Jump: 
+    enabled: true
+    name: "Jump Boost"
+    cost: 50
+    lore: ["Adds Permanent Jump Boost"]
+    inventorySlot: 9+4
+  Speed: 
+    enabled: true
+    name: "Speed Boost"
+    cost: 50
+    lore: ["Adds Permanent Speed Boost"]
+    inventorySlot: 9+4
+  HealthBoost: 
+    enabled: true
+    name: "Health Boost"
+    cost: 50
+    lore: ["Adds a Permanent Health Boost"]
+    inventorySlot: 9+4
+  Haste2: 
+    enabled: true
+    name: "Haste 2"
+    cost: 100
+    lore: ["Adds Permanent Haste 2"]
+    inventorySlot: 9+4
+  Jump2: 
+    enabled: true
+    name: "Jump Boost 2"
+    cost: 100
+    lore: ["Adds Permanent Jump Boost 2"]
+    inventorySlot: 9+4
+  Speed2: 
+    enabled: true
+    name: "Speed Boost 2"
+    cost: 100
+    lore: ["Adds Permanent Speed Boost 2"]
+    inventorySlot: 9+4
+  HealthBoost2: 
+    enabled: true
+    name: "Health Boost 2"
+    cost: 100
+    lore: ["Adds Permanent Health Boost 2"]
+    inventorySlot: 9+4
+  MiningFatigue: 
+    enabled: true
+    name: "Mining Fatigue"
+    cost: -50
+    lore: ["Adds Permanent Mining Fatigue"]
+    inventorySlot: 9+4
+  Slow: 
+    enabled: true
+    name: "Slowness"
+    cost: -50
+    lore: ["Adds Permanent Slowness"]
+    inventorySlot: 9+4
+  Blind: 
+    enabled: true
+    name: "Blindness"
+    cost: -60
+    lore: ["Adds Permanent Blindness"]
+    inventorySlot: 9+4
+  
+  #Strike Revenge Perk Items
+  StrikeArmorpen: 
+    enabled: true
+    name: "Strike Armorpen"
+    cost: 50
+    lore: ["Chance to give negative", "resistance while damaging Enemys"]
+    inventorySlot: 9+4
+  RevengeArmorpen: 
+    enabled: true
+    name: "Revenge Armorpen"
+    cost: 50
+    lore: ["Chance to give negative", "resistance while taking damage from Enemys"]
+    inventorySlot: 9+4
+  StrikeBlindness: 
+    enabled: true
+    name: "Strike Blindness"
+    cost: 50
+    lore: ["Chance to give Blindness", "while damaging Enemys"]
+    inventorySlot: 9+4
+  RevengeBlindness: 
+    enabled: true
+    name: "Revenge Blindness"
+    cost: 50
+    lore: ["Chance to give Blindness", "while taking damage from Enemys"]
+    inventorySlot: 9+4
+  StrikeFeed: 
+    enabled: true
+    name: "Strike Feed"
+    cost: 50
+    lore: ["Chance to get Feed", "while damaging Enemys"]
+    inventorySlot: 9+4
+  RevengeFeed: 
+    enabled: true
+    name: "Revenge Feed"
+    cost: 50
+    lore: ["Chance to get Feed", "while taking damage from Enemys"]
+    inventorySlot: 9+4
+  StrikeFire: 
+    enabled: true
+    name: "Strike Fire"
+    cost: 50
+    lore: ["Chance to catch enemys on", "fire while damaging Enemys"]
+    inventorySlot: 9+4
+  RevengeFire: 
+    enabled: true
+    name: "Revenge Fire"
+    cost: 50
+    lore: ["Chance to catch enemys on", "fire while taking damage from Enemys"]
+    inventorySlot: 9+4
+  StrikeHarm: 
+    enabled: true
+    name: "Strike Harm"
+    cost: 50
+    lore: ["Chance to give enemys extra", "damage while damaging Enemys"]
+    inventorySlot: 9+4
+  RevengeHarm: 
+    enabled: true
+    name: "Revenge Harm"
+    cost: 50
+    lore: ["Chance to give enemys extra", "damage while taking damage from Enemys"]
+    inventorySlot: 9+4
+  StrikeHeal: 
+    enabled: true
+    name: "Strike Heal"
+    cost: 50
+    lore: ["Chance to heal while", "damaging Enemys"]
+    inventorySlot: 9+4
+  RevengeHeal: 
+    enabled: true
+    name: "Revenge Heal"
+    cost: 50
+    lore: ["Chance to heal while", "taking damage from Enemys"]
+    inventorySlot: 9+4
+  StrikeHunger: 
+    enabled: true
+    name: "Strike Hunger"
+    cost: 50
+    lore: ["Chance to give hunger to", "Enemys while damaging Enemys"]
+    inventorySlot: 9+4
+  RevengeHunger: 
+    enabled: true
+    name: "Revenge Hunger"
+    cost: 50
+    lore: ["Chance to give hunger", "to Enemys while taking damage from Enemys"]
+    inventorySlot: 9+4
+  StrikeNausea: 
+    enabled: true
+    name: "Strike Nausea"
+    cost: 50
+    lore: ["Chance to give Nausea to", "Enemys while damaging Enemys"]
+    inventorySlot: 9+4
+  RevengeNausea: 
+    enabled: true
+    name: "Revenge Nausea"
+    cost: 50
+    lore: ["Chance to give Nausea", "to Enemys while taking damage from Enemys"]
+    inventorySlot: 9+4
+  StrikePoison: 
+    enabled: true
+    name: "Strike Poison"
+    cost: 50
+    lore: ["Chance to give poison to", "Enemys while damaging Enemys"]
+    inventorySlot: 9+4
+  RevengePoison: 
+    enabled: true
+    name: "Revenge Poison"
+    cost: 50
+    lore: ["Chance to give poison to", "Enemys while taking damage from Enemys"]
+    inventorySlot: 9+4
+  StrikeSlow: 
+    enabled: true
+    name: "Strike Slow"
+    cost: 50
+    lore: ["Chance to give slowness to", "Enemys while damaging Enemys"]
+    inventorySlot: 9+4
+  RevengeSlow: 
+    enabled: true
+    name: "Revenge Slow"
+    cost: 50
+    lore: ["Chance to give slowness to", "Enemys while taking damage from Enemys"]
+    inventorySlot: 9+4
+  StrikeStarve: 
+    enabled: true
+    name: "Strike Starve"
+    cost: 50
+    lore: ["Chance to remove hunger", "from Enemys while damaging Enemys"]
+    inventorySlot: 9+4
+  RevengeStarve: 
+    enabled: true
+    name: "Revenge Starve"
+    cost: 50
+    lore: ["Chance to remove hunger", "from Enemys while taking damage from Enemys"]
+    inventorySlot: 9+4
+  StrikeStun: 
+    enabled: true
+    name: "Strike Stun"
+    cost: 50
+    lore: ["Chance to stun Enemys", "while damaging Enemys"]
+    inventorySlot: 9+4
+  RevengeStun: 
+    enabled: true
+    name: "Revenge Stun"
+    cost: 50
+    lore: ["Chance to stun Enemys", "while taking damage from Enemys"]
+    inventorySlot: 9+4
+  StrikeWeakness: 
+    enabled: true
+    name: "Strike Weakness"
+    cost: 50
+    lore: ["Chance to give weakness", "to Enemys while damaging Enemys"]
+    inventorySlot: 9+4
+  RevengeWeakness: 
+    enabled: true
+    name: "Revenge Weakness"
+    cost: 50
+    lore: ["Chance to give weakness", "to Enemys while taking damage from Enemys"]
+    inventorySlot: 9+4
+  StrikeWither: 
+    enabled: true
+    name: "Strike Wither"
+    cost: 50
+    lore: ["Chance to give wither to Enemys", "while damaging Enemys"]
+    inventorySlot: 9+4
+  RevengeWither: 
+    enabled: true
+    name: "Revenge Wither"
+    cost: 50
+    lore: ["Chance to give wither to Enemys", "while taking damage from Enemys"]
+    inventorySlot: 9+4
+  
+  #Food Perk items
+  WaterDrinker: 
+    enabled: true
+    name: "Water Drinker"
+    cost: 15
+    lore: ["Gain 3 food when drinking water bottle"]
+    inventorySlot: 9+4
+  StoneEater: 
+    enabled: true
+    name: "Stone Eater"
+    cost: 30
+    lore: ["Gain food when breaking stone by hand"]
+    inventorySlot: 9+4
+  Carnivore: 
+    enabled: true
+    name: "Carnivore"
+    cost: -20
+    lore: ["Can only eat Meats and Cake"]
+    inventorySlot: 9+4
+  Herbivore: 
+    enabled: true
+    name: "Herbivore"
+    cost: -20
+    lore: ["Can only eat Herb food and Cake"]
+    inventorySlot: 9+4
+  Nonivore: 
+    enabled: true
+    name: "Nonivore"
+    cost: -50
+    lore: ["Can't Eat"]
+    inventorySlot: 9+4
+  
+  
+  
+  
+  #Feed/Starve/Heal/Hunger Menu Items
+  FeedLava: 
+    enabled: true
+    name: "Feed Lava"
+    cost: 25
+    lore: ["Get feed while in Lava"]
+    inventorySlot: 9+4
+  FeedSunlight: 
+    enabled: true
+    name: "Feed Sunlight"
+    cost: 25
+    lore: ["Get feed while in Sunlight"]
+    inventorySlot: 9+4
+  FeedVegetation: 
+    enabled: true
+    name: "Feed Vegetation"
+    cost: 25
+    lore: ["Get feed while near Vegetation"]
+    inventorySlot: 9+4
+  FeedWater: 
+    enabled: true
+    name: "Feed Water"
+    cost: 25
+    lore: ["Get feed while in Water"]
+    inventorySlot: 9+4
+  FeedLight: 
+    enabled: true
+    name: "Feed Light"
+    cost: -25
+    lore: ["Get feed while in Light"]
+    inventorySlot: 9+4
+  FeedDarkness: 
+    enabled: true
+    name: "Feed Darkness"
+    cost: 50
+    lore: ["Get feed while in Darkness"]
+    inventorySlot: 9+4
+  FeedAlways: 
+    enabled: true
+    name: "Feed Always"
+    cost: 10
+    lore: ["Get feed Always"]
+    inventorySlot: 9+4
+  
+  StarveLava: 
+    enabled: true
+    name: "Starve Lava"
+    cost: -25
+    lore: ["Loose Food Level in Lava"]
+    inventorySlot: 9+4
+  StarveSunlight: 
+    enabled: true
+    name: "Starve Sunlight"
+    cost: -25
+    lore: ["Loose Food Level in Sunlight"]
+    inventorySlot: 9+4
+  StarveVegetation: 
+    enabled: true
+    name: "Starve Vegetation"
+    cost: -25
+    lore: ["Loose Food Level near Vegetation"]
+    inventorySlot: 9+4
+  StarveWater: 
+    enabled: true
+    name: "Starve Water"
+    cost: -25
+    lore: ["Loose Food Level in Water"]
+    inventorySlot: 9+4
+  StarveLight: 
+    enabled: true
+    name: "Starve Light"
+    cost: -35
+    lore: ["Loose Food Level in Light"]
+    inventorySlot: 9+4
+  StarveDarkness: 
+    enabled: true
+    name: "Starve Darkness"
+    cost: -50
+    lore: ["Loose Food Level in Darkness"]
+    inventorySlot: 9+4
+  StarveAlways: 
+    enabled: true
+    name: "Starve Always"
+    cost: -100
+    lore: ["Loose Food Level Always"]
+    inventorySlot: 9+4
+  
+  HealLava: 
+    enabled: true
+    name: "Heal Lava"
+    cost: 25
+    lore: ["Restore Health in lava"]
+    inventorySlot: 9+4
+  HealSunlight: 
+    enabled: true
+    name: "Heal Sunlight"
+    cost: 25
+    lore: ["Restore Health in Sunlight"]
+    inventorySlot: 9+4
+  HealVegetation: 
+    enabled: true
+    name: "Heal Vegetation"
+    cost: 25
+    lore: ["Restore Health near Vegetation"]
+    inventorySlot: 9+4
+  HealWater: 
+    enabled: true
+    name: "Heal Water"
+    cost: 25
+    lore: ["Restore Health in Water"]
+    inventorySlot: 9+4
+  HealLight: 
+    enabled: true
+    name: "Heal Light"
+    cost: 35
+    lore: ["Restore Health in Light"]
+    inventorySlot: 9+4
+  HealDarkness: 
+    enabled: true
+    name: "Heal Darkness"
+    cost: 50
+    lore: ["Restore Health in Darkness"]
+    inventorySlot: 9+4
+  HealAlways: 
+    enabled: true
+    name: "Heal Always"
+    cost: 100
+    lore: ["Restore Health Always"]
+    inventorySlot: 9+4
+  
+  HarmLava: 
+    enabled: true
+    name: "Harm Lava"
+    cost: -25
+    lore: ["Loose Health in Lava"]
+    inventorySlot: 9+4
+  HarmSunlight: 
+    enabled: true
+    name: "Harm Sunlight"
+    cost: -25
+    lore: ["Loose Health in Sunlight"]
+    inventorySlot: 9+4
+  HarmVegetation: 
+    enabled: true
+    name: "Harm Vegetation"
+    cost: -25
+    lore: ["Loose Health near Vegetation"]
+    inventorySlot: 9+4
+  HarmWater: 
+    enabled: true
+    name: "Harm Water"
+    cost: -25
+    lore: ["Loose Health in Water"]
+    inventorySlot: 9+4
+  HarmLight: 
+    enabled: true
+    name: "Harm Light"
+    cost: -35
+    lore: ["Loose Health in Light"]
+    inventorySlot: 9+4
+  HarmDarkness: 
+    enabled: true
+    name: "Harm Darkness"
+    cost: -50
+    lore: ["Loose Health in Darkness"]
+    inventorySlot: 9+4
+  HarmAlways: 
+    enabled: true
+    name: "Harm Always"
+    cost: -100
+    lore: ["Loose Health Always"]
+    inventorySlot: 9+4
+  
+  #Weapon Perks items
+  ExpertArchery: 
+    enabled: true
+    name: "Expert Archery"
+    cost: 50
+    lore: ["Deal +25% damage while shooting Bows"]
+    inventorySlot: 9+4
+  ExpertAxe: 
+    enabled: true
+    name: "Expert Axe"
+    cost: 50
+    lore: ["Deal +25% damage when using Axes"]
+    inventorySlot: 9+4
+  ExpertSword: 
+    enabled: true
+    name: "Expert Sword"
+    cost: 50
+    lore: ["Deal +25% damage when using Swords"]
+    inventorySlot: 9+4
+  ExpertUnarmed: 
+    enabled: true
+    name: "Expert Unarmed"
+    cost: 50
+    lore: ["Deal +25% damage when Unarmed"]
+    inventorySlot: 9+4
+  
+  ResistantArchery: 
+    enabled: true
+    name: "Resistant Archery"
+    cost: 50
+    lore: ["Take -25% damage from Bows"]
+    inventorySlot: 9+4
+  ResistantAxe: 
+    enabled: true
+    name: "Resistant Axe"
+    cost: 50
+    lore: ["Take -25% damage from Axes"]
+    inventorySlot: 9+4
+  ResistantSword: 
+    enabled: true
+    name: "Resistant Sword"
+    cost: 50
+    lore: ["Take -25% damage from Swords"]
+    inventorySlot: 9+4
+  ResistantUnarmed: 
+    enabled: true
+    name: "Resistant Unarmed"
+    cost: 50
+    lore: ["Take -25% damage from Unarmed People"]
+    inventorySlot: 9+4
+  
+  IneptArchery: 
+    enabled: true
+    name: "Inept Archery"
+    cost: -50
+    lore: ["Deal -25% damage while shooting Bows"]
+    inventorySlot: 9+4
+  IneptAxe: 
+    enabled: true
+    name: "Inept Axe"
+    cost: -50
+    lore: ["Deal -25% damage when using Axes"]
+    inventorySlot: 9+4
+  IneptSword: 
+    enabled: true
+    name: "Inept Sword"
+    cost: -50
+    lore: ["Deal -25% damage when using Swords"]
+    inventorySlot: 9+4
+  IneptUnarmed: 
+    enabled: true
+    name: "Inept Unarmed"
+    cost: -50
+    lore: ["Deal -25% damage when Unarmed"]
+    inventorySlot: 9+4
+  
+  VulnerableArchery: 
+    enabled: true
+    name: "Vulnerable Archery"
+    cost: -50
+    lore: ["Take +25% damage from Bows"]
+    inventorySlot: 9+4
+  VulnerableAxe: 
+    enabled: true
+    name: "Vulnerable Axe"
+    cost: -50
+    lore: ["Take -+5% damage from Axes"]
+    inventorySlot: 9+4
+  VulnerableSword: 
+    enabled: true
+    name: "Vulnerable Sword"
+    cost: -50
+    lore: ["Take -+5% damage from Swords"]
+    inventorySlot: 9+4
+  VulnerableUnarmed: 
+    enabled: true
+    name: "Vulnerable Unarmed"
+    cost: -50
+    lore: ["Take +25% damage from Unarmed People"]
+    inventorySlot: 9+4
+  
+  
+  
+  #Misc Perk Items
+  Holy: 
+    enabled: true
+    name: "Holy"
+    cost: 25
+    lore: ["Deals extra damage to Unholy people","Takes less damage to Unholy people"]
+    inventorySlot: 9+4
+  Unholy: 
+    enabled: true
+    name: "Unholy"
+    cost: -25
+    lore: ["Takes more damage from Holy people","Deals less damage to Holy people"]
+    inventorySlot: 9+4
+  SnowBallThrower: 
+    enabled: true
+    name: "Snow Baller"
+    cost: 15
+    lore: ["A thrown Snowball does","One heart of damage to target"]
+    inventorySlot: 9+4
+  Informed: 
+    enabled: true
+    name: "Informed"
+    cost: 10
+    lore: ["Shows information. This information","includes Target Health, Name, and Damage Done"]
+    inventorySlot: 9+4
+  
+  
+  
+  #Immunity Perks
+  ImmuneArmorpen: 
+    enabled: true
+    name: "Immune Armorpen"
+    cost: 50
+    lore: ["Immune to ArmorpenStrike", "and ArmorpenRevenge."]
+    inventorySlot: 9+4
+  ImmuneHarm: 
+    enabled: true
+    name: "Immune Harm"
+    cost: 50
+    lore: ["Immune to Thorns Enchantment,", "HarmStrike and HarmRevenge."]
+    inventorySlot: 9+4
+  ImmuneHunger: 
+    enabled: true
+    name: "Immune Hunger"
+    cost: 20
+    lore: ["Immune to HungerStrike,", "HungerRevenge, and all Hunger effects."]
+    inventorySlot: 9+4
+  ImmuneNausea: 
+    enabled: true
+    name: "Immune Nausea"
+    cost: 20
+    lore: ["Immune to NauseaStrike,", "NauseaRevenge, and all Nausea/Confusion effects."]
+    inventorySlot: 9+4
+  ImmuneStarve: 
+    enabled: true
+    name: "Immune Starve"
+    cost: 50
+    lore: ["Immune to StarveStrike", "and StarveRevenge."]
+    inventorySlot: 9+4
+  ImmuneFall: 
+    enabled: true
+    name: "Immune Fall"
+    cost: 30
+    lore: ["Immune to damage taken", "from fall damage."]
+    inventorySlot: 9+4
+  ImmuneWeakness: 
+    enabled: true
+    name: "Immune Weakness"
+    cost: 30
+    lore: ["Immune to WeaknessStrike, WeaknessRevenge,", "and all Weakness effects."]
+    inventorySlot: 9+4
+  ImmuneWither: 
+    enabled: true
+    name: "Immune Wither"
+    cost: 30
+    lore: ["Immune to WitherStrike, WitherRevenge,", "and all Wither effects."]
+    inventorySlot: 9+4
+  ImmuneFire: 
+    enabled: true
+    name: "Immune Fire"
+    cost: 50
+    lore: ["Immune to Fire and Lava."]
+    inventorySlot: 9+4
+  ImmunePoison: 
+    enabled: true
+    name: "Immune Poison"
+    cost: 40
+    lore: ["Immune to PoisonStrike, PoisonRevenge,", "and all Poison effects."]
+    inventorySlot: 9+4
+  ImmuneBlindness: 
+    enabled: true
+    name: "Immune Blindness"
+    cost: 50
+    lore: ["Immune to BlindStrike,", "BlindRevenge, and all Blind effects."]
+    inventorySlot: 9+4
+  ImmuneSlow: 
+    enabled: true
+    name: "Immune Slow"
+    cost: 50
+    lore: ["Immune to SlowStrike, SlowRevenge,", "StunStrike, StunRevenge and all Slow effects."]
+    inventorySlot: 9+4
+  
+  #Flying Perks
+  FlyWater: 
+    enabled: true
+    name: "Fly Water"
+    cost: 50
+    lore: ["Fly when in Water"]
+    inventorySlot: 9+4
+  FlyLava: 
+    enabled: true
+    name: "Fly Lava"
+    cost: 50
+    lore: ["Fly when in Lava"]
+    inventorySlot: 9+4
+  FlyWeb: 
+    enabled: true
+    name: "Fly Web"
+    cost: 35
+    lore: ["Fly when in Webs"]
+    inventorySlot: 9+4
+  
+  
+  #Truce Perks
+  TruceSlime: 
+    enabled: true
+    name: "Truce Slime"
+    cost: 15
+    lore: ["Truce with Slimes and Magma Cubes"]
+    inventorySlot: 9+4
+    playerSkull: "MHF_Slime"
+  TruceBlaze: 
+    enabled: true
+    name: "Truce Blaze"
+    cost: 30
+    lore: ["Truce with Blazes"]
+    inventorySlot: 9+4
+    playerSkull: "MHF_Blaze"
+  TruceSilverFish: 
+    enabled: true
+    name: "Truce SilverFish"
+    cost: 30
+    lore: ["Truce with Silverfishes"]
+    inventorySlot: 9+4
+    playerSkull: "AlexVMiner"
+  TruceSpider: 
+    enabled: true
+    name: "Truce Spider"
+    cost: 30
+    lore: ["Truce with Spiders and Cave Spiders"]
+    inventorySlot: 9+4
+    playerSkull: "MHF_Spider" 
+  TruceUndead: 
+    enabled: true
+    name: "Truce Undead"
+    cost: 40
+    lore: ["Truce with Zombies,", "Skeletons and Wither Skeletons"]
+    inventorySlot: 9+4
+    playerSkull: "MHF_Skeleton" 
+  TruceCreeper: 
+    enabled: true
+    name: "Truce Creeper"
+    cost: 40
+    lore: ["Truce with Creepers"]
+    inventorySlot: 9+4
+    playerSkull:  "MHF_Creeper"
+  TruceGhast: 
+    enabled: true
+    name: "Truce Ghast"
+    cost: 50
+    lore: ["Truce with Ghasts"]
+    inventorySlot: 9+4
+    playerSkull:  "MHF_Ghast"
+  TruceWitch: 
+    enabled: true
+    name: "Truce Witch"
+    cost: 60
+    lore: ["Truce with Witches"]
+    inventorySlot: 9+4
+    playerSkull:  "MHF_Villager"

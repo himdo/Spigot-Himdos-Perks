@@ -40,11 +40,11 @@ public class MiscPerksMenu implements Listener{
 		
 		if(!MenuChecker.menuChecker(e,inv))
 			return;
-		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")))){
 			MainPlugin.perksSubMain.show(player);
 			return;
 		}
-		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>150){
+		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>MainPlugin.config.getInt("MaximumPerkPoints")){
 			player.sendMessage("Costs to many Points");
 			return;
 		}
@@ -73,16 +73,16 @@ public class MiscPerksMenu implements Listener{
 			inv.setItem(18+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear(18+1);
-		inv.setItem(18+1, MainDataBaseHashMap.items.get("Back"));
+		inv.setItem(18+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
 
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9+1, MainDataBaseHashMap.items.get("Snow Baller"));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get("Holy"));
-		//inv.setItem(9+3, MainDataBaseHashMap.items.get(""));
-		//inv.setItem(9+4, MainDataBaseHashMap.items.get(""));
-		//inv.setItem(9+5, MainDataBaseHashMap.items.get(""));
-		inv.setItem(9+6, MainDataBaseHashMap.items.get("Unholy"));
-		inv.setItem(9+7, MainDataBaseHashMap.items.get("Informed"));
+		inv.setItem(9+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.SnowBallThrower.name")));
+		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Holy.name")));
+		//inv.setItem(9+3, MainDataBaseHashMap.items.get());
+		//inv.setItem(9+4, MainDataBaseHashMap.items.get());
+		//inv.setItem(9+5, MainDataBaseHashMap.items.get());
+		inv.setItem(9+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Unholy.name")));
+		inv.setItem(9+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Informed.name")));
 		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 	}

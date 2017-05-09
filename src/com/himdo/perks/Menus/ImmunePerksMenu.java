@@ -41,11 +41,11 @@ public class ImmunePerksMenu implements Listener{
 		
 		if(!MenuChecker.menuChecker(e,inv))
 			return;
-		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")))){
 			MainPlugin.perksSubMain.show(player);
 			return;
 		}
-		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>150){
+		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>MainPlugin.config.getInt("MaximumPerkPoints")){
 			player.sendMessage("Costs to many Points");
 			return;
 		}
@@ -77,26 +77,26 @@ public class ImmunePerksMenu implements Listener{
 			inv.setItem(9*3+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear(9*3+1);
-		inv.setItem(9*3+1, MainDataBaseHashMap.items.get("Back"));
+		inv.setItem(9*3+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
 
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9+1, MainDataBaseHashMap.items.get("Immune Armorpen"));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get("Immune Harm"));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get("Immune Hunger"));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get("Immune Nausea"));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get("Immune Starve"));
-		inv.setItem(9+6, MainDataBaseHashMap.items.get("Immune Fall"));
+		inv.setItem(9+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneArmorpen.name")));
+		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneHarm.name")));
+		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneHunger.name")));
+		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneNausea.name")));
+		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneStarve.name")));
+		inv.setItem(9+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneFall.name")));
 		//inv.setItem(9+7, MainDataBaseHashMap.items.get("Immune Steal"));
 		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 		inv.setItem(9*2,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9*2+1, MainDataBaseHashMap.items.get("Immune Weakness"));
-		inv.setItem(9*2+2, MainDataBaseHashMap.items.get("Immune Wither"));
-		inv.setItem(9*2+3, MainDataBaseHashMap.items.get("Immune Fire"));
-		inv.setItem(9*2+4, MainDataBaseHashMap.items.get("Immune Poison"));
-		inv.setItem(9*2+5, MainDataBaseHashMap.items.get("Immune Blindness"));
-		inv.setItem(9*2+6, MainDataBaseHashMap.items.get("Immune Slow"));
-		//inv.setItem(9*2+7, initHashMap.items.get(""));
+		inv.setItem(9*2+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneWeakness.name")));
+		inv.setItem(9*2+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneWither.name")));
+		inv.setItem(9*2+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneFire.name")));
+		inv.setItem(9*2+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmunePoison.name")));
+		inv.setItem(9*2+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneBlindness.name")));
+		inv.setItem(9*2+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneSlow.name")));
+		//inv.setItem(9*2+7, initHashMap.items.get());
 		inv.setItem(9*2+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 				

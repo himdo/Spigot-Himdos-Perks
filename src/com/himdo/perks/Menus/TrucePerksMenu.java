@@ -45,11 +45,11 @@ public class TrucePerksMenu implements Listener{
 		
 		if(!MenuChecker.menuChecker(e,inv))
 			return;
-		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")))){
 			MainPlugin.perksSubMain.show(player);
 			return;
 		}
-		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>150){
+		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>MainPlugin.config.getInt("MaximumPerkPoints")){
 			player.sendMessage("Costs to many Points");
 			return;
 		}
@@ -74,23 +74,23 @@ public class TrucePerksMenu implements Listener{
 	}
 
 	public void init() {
-		// TODO Auto-generated method stub
+		
 		//sets up the border
 		for(int i = 0; i<9; i++){
 			inv.setItem(i, MainDataBaseHashMap.items.get("Border Purple"));
 			inv.setItem(18+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear(18+1);
-		inv.setItem(18+1, MainDataBaseHashMap.items.get("Back"));
+		inv.setItem(18+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
 
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9+1, MainDataBaseHashMap.items.get("Truce Slime"));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get("Truce Blaze"));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get("Truce SilverFish"));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get("Truce Spider"));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get("Truce Undead"));
-		inv.setItem(9+6, MainDataBaseHashMap.items.get("Truce Creeper"));
-		inv.setItem(9+7, MainDataBaseHashMap.items.get("Truce Ghast"));
-		inv.setItem(9+8, MainDataBaseHashMap.items.get("Truce Witch"));
+		inv.setItem(9+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceSlime.name")));
+		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceBlaze.name")));
+		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceSilverFish.name")));
+		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceSpider.name")));
+		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceUndead.name")));
+		inv.setItem(9+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceCreeper.name")));
+		inv.setItem(9+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceGhast.name")));
+		inv.setItem(9+8, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceWitch.name")));
 	}
 }

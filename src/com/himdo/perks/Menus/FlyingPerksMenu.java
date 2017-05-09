@@ -32,14 +32,14 @@ public class FlyingPerksMenu implements Listener{
 			inv.setItem(18+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear(18+1);
-		inv.setItem(18+1, MainDataBaseHashMap.items.get("Back"));
+		inv.setItem(18+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
 
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
 		//inv.setItem(9+1, initHashMap.items.get("Weapon Perks"));
 		//inv.setItem(9+2, initHashMap.items.get("Strike/Revenge Perks"));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get("Fly Water"));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get("Fly Lava"));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get("Fly Web"));
+		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FlyWater.name")));
+		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FlyLava.name")));
+		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FlyWeb.name")));
 		//inv.setItem(9+6, initHashMap.items.get("Flying Perks"));
 		//inv.setItem(9+7, initHashMap.items.get("Truce Perks"));
 		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));
@@ -63,11 +63,11 @@ public class FlyingPerksMenu implements Listener{
 
 		if(!MenuChecker.menuChecker(e,inv))
 			return;
-		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")))){
 			MainPlugin.perksSubMain.show(player);
 			return;
 		}
-		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>150){
+		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>MainPlugin.config.getInt("MaximumPerkPoints")){
 			player.sendMessage("Costs to many Points");
 			return;
 		}

@@ -1,5 +1,6 @@
 package com.himdo.perks.Events;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
@@ -173,14 +174,14 @@ public class onEntityDamageEntityEvent implements Listener{
 		//Strike
 		if(attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Feed")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					attackerPlayer.setFoodLevel(attackerPlayer.getFoodLevel()+2);
 				}
 			}
 		
 		if(attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Fire")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					if(defenderPlayer!=null){
 						if(!MainPlugin.playerPerks.get(defenderPlayer).contains("Immune Fire")){
 							defenderEntity.setFireTicks(20*3);
@@ -194,7 +195,7 @@ public class onEntityDamageEntityEvent implements Listener{
 
 		if(attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Hunger")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					if(defenderPlayer!=null){
 						if(!MainPlugin.playerPerks.get(defenderPlayer).contains("Immune Hunger")){
 							defenderPlayer.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER, 20*5, 0), true);
@@ -206,7 +207,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Nausea")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					if(defenderPlayer!=null){
 						if(!MainPlugin.playerPerks.get(defenderPlayer).contains("Immune Nausea")){
 							defenderPlayer.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 20*5, 0), true);
@@ -218,7 +219,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Weakness")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					if(defenderPlayer!=null){
 						if(!MainPlugin.playerPerks.get(defenderPlayer).contains("Immune Weakness")){
 							defenderPlayer.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20*5, 0), true);
@@ -230,7 +231,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Armorpen")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					if(defenderPlayer!=null){
 						if(!MainPlugin.playerPerks.get(defenderPlayer).contains("Immune Armorphen")){
 							defenderPlayer.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20*5, -1), true);
@@ -242,7 +243,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Harm")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					if(defenderPlayer!=null){
 						if(!MainPlugin.playerPerks.get(defenderPlayer).contains("Immune Harm")){
 							defenderPlayer.setHealth(defenderEntity.getHealth()-2);
@@ -254,13 +255,13 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Heal")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					attackerPlayer.setHealth(attackerPlayer.getHealth()+2);
 				}
 			}
 		if(attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Slow")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					if(defenderPlayer!=null){
 						if(!MainPlugin.playerPerks.get(defenderPlayer).contains("Immune Slow")){
 							defenderPlayer.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20*5, 0), true);
@@ -272,7 +273,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Poison")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					if(defenderPlayer!=null){
 						if(!MainPlugin.playerPerks.get(defenderPlayer).contains("Immune Poison")){
 							defenderPlayer.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 20*5, 0), true);
@@ -284,7 +285,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(attackerPlayer!=null&&defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Starve")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					if(defenderPlayer!=null){
 						if(!MainPlugin.playerPerks.get(defenderPlayer).contains("Immune Starve")){
 							defenderPlayer.setFoodLevel(defenderPlayer.getFoodLevel()-2);
@@ -294,7 +295,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Wither")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					if(defenderPlayer!=null){
 						if(!MainPlugin.playerPerks.get(defenderPlayer).contains("Immune Wither")){
 							defenderPlayer.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 20*5, 0), true);
@@ -306,7 +307,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Blindness")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					if(defenderPlayer!=null){
 						if(!MainPlugin.playerPerks.get(defenderPlayer).contains("Immune Blindness")){
 							defenderPlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*5, 0), true);
@@ -318,7 +319,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Strike Stun")){
-				if(DiceRoller.Roll(100)>75){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("StrikeChance"))==0){
 					if(defenderPlayer!=null){
 						if(!MainPlugin.playerPerks.get(defenderPlayer).contains("Immune Slow")){
 							defenderPlayer.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20*1, 9), true);
@@ -336,13 +337,13 @@ public class onEntityDamageEntityEvent implements Listener{
 		//Revenge
 		if(defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Feed")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					defenderPlayer.setFoodLevel(defenderPlayer.getFoodLevel()+2);
 				}
 			}
 		if(defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Fire")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					if(attackerPlayer!=null){
 						if(!MainPlugin.playerPerks.get(attackerPlayer).contains("Immune Fire")){
 							attackerPlayer.setFireTicks(20*3);
@@ -355,7 +356,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Hunger")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					if(attackerPlayer!=null){
 						if(!MainPlugin.playerPerks.get(attackerPlayer).contains("Immune Hunger")){
 							attackerPlayer.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER, 20*5, 0), true);
@@ -367,7 +368,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Nausea")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					if(attackerPlayer!=null){
 						if(!MainPlugin.playerPerks.get(attackerPlayer).contains("Immune Nausea")){
 							attackerPlayer.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 20*5, 0), true);
@@ -379,7 +380,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Weakness")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					
 					if(attackerPlayer!=null){
 						if(!MainPlugin.playerPerks.get(attackerPlayer).contains("Immune Weakness")){
@@ -393,7 +394,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Armorpen")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					if(attackerPlayer!=null){
 						if(!MainPlugin.playerPerks.get(attackerPlayer).contains("Immune Armorphen")){
 							attackerPlayer.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20*5, -1), true);
@@ -405,7 +406,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Harm")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					if(attackerPlayer!=null){
 						if(!MainPlugin.playerPerks.get(attackerPlayer).contains("Immune Harm")){
 							attackerPlayer.setHealth(defenderEntity.getHealth()-2);
@@ -417,13 +418,13 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Heal")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					defenderPlayer.setHealth(defenderPlayer.getHealth()+2);
 				}
 			}
 		if(defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Slow")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					if(attackerPlayer!=null){
 						if(!MainPlugin.playerPerks.get(attackerPlayer).contains("Immune Slow")){
 							attackerPlayer.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20*5, 0), true);
@@ -435,7 +436,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Poison")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					if(attackerPlayer!=null){
 						if(!MainPlugin.playerPerks.get(attackerPlayer).contains("Immune Poison")){
 							attackerPlayer.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 20*5, 0), true);
@@ -447,7 +448,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(defenderPlayer!=null&&attackerPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Starve")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					if(attackerPlayer!=null){
 						if(!MainPlugin.playerPerks.get(attackerPlayer).contains("Immune Starve")){
 							attackerPlayer.setFoodLevel(attackerPlayer.getFoodLevel()-2);
@@ -457,7 +458,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Wither")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					if(attackerPlayer!=null){
 						if(!MainPlugin.playerPerks.get(attackerPlayer).contains("Immune Wither")){
 							attackerPlayer.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 20*5, 0), true);
@@ -469,7 +470,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Blindness")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					if(attackerPlayer!=null){
 						if(!MainPlugin.playerPerks.get(attackerPlayer).contains("Immune Blindness")){
 							attackerPlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20*5, 0), true);
@@ -481,7 +482,7 @@ public class onEntityDamageEntityEvent implements Listener{
 			}
 		if(defenderPlayer!=null)
 			if(MainPlugin.playerPerks.get(defenderPlayer).contains("Revenge Stun")){
-				if(DiceRoller.Roll(100)<33){
+				if(DiceRoller.Roll(MainPlugin.config.getInt("RevengeChance"))==0){
 					if(attackerPlayer!=null){
 						if(!MainPlugin.playerPerks.get(attackerPlayer).contains("Immune Slow")){
 							attackerPlayer.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20*1, 9), true);
@@ -510,11 +511,24 @@ public class onEntityDamageEntityEvent implements Listener{
 					e.setDamage(e.getDamage()-e.getDamage()/4);
 				}
 			}
-			//TODO make it send messages even when its not against a player
+			
+			
+		}
+		
+		
+		if(attackerPlayer!=null){
 			if(MainPlugin.playerPerks.get(attackerPlayer).contains("Informed")){
-				attackerPlayer.sendMessage("[Perks]: you did "+e.getDamage()+" to "+defenderPlayer.getName());
-				attackerPlayer.sendMessage("[Perks]: "+defenderPlayer.getName()+" has "+defenderPlayer.getHealth()+ "left");
+				if(defenderPlayer!= null){
+					attackerPlayer.sendMessage(ChatColor.GREEN+"[Perks]: you did "+e.getDamage()+" to "+defenderPlayer.getName());
+					attackerPlayer.sendMessage(ChatColor.GREEN+"[Perks]: "+defenderPlayer.getName()+" has "+(int)(defenderPlayer.getHealth()-e.getDamage())+ " health left");
+				}else if(defenderEntity!=null){
+					
+					attackerPlayer.sendMessage(ChatColor.GREEN+"[Perks]: you did "+e.getDamage()+" to "+defenderEntity.getName());
+					attackerPlayer.sendMessage(ChatColor.GREEN+"[Perks]: "+defenderEntity.getName()+" has "+(int)(defenderEntity.getHealth()-e.getDamage())+ " health left");
+				}
+				
 			}
 		}
+		
 	}
 }

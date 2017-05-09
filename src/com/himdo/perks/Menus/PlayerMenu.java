@@ -81,7 +81,7 @@ public class PlayerMenu implements Listener{
 			if(e.getCurrentItem().getItemMeta()==null){
 				return;
 			}
-			if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
+			if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")))){
 				MainPlugin.mainMenu.show(player);
 				return;
 			}
@@ -95,8 +95,8 @@ public class PlayerMenu implements Listener{
 					return;
 				
 				if(perks.contains(e.getCurrentItem().getItemMeta().getDisplayName())){
-					//makes sure the player cant just remove debuffs and got over the 150 points
-					if((CalculatePoints.getCurrentPoints(player)-CalculatePoints.getPointsForItem(e.getCurrentItem()))<=150){
+					//makes sure the player cant just remove debuffs and got over the MainPlugin.config.getInt("MaximumPerkPoints") points
+					if((CalculatePoints.getCurrentPoints(player)-CalculatePoints.getPointsForItem(e.getCurrentItem()))<=MainPlugin.config.getInt("MaximumPerkPoints")){
 
 						perks.remove(e.getCurrentItem().getItemMeta().getDisplayName());
 						Inventory temp = playerInventory.get(player.getName());
@@ -138,7 +138,7 @@ public class PlayerMenu implements Listener{
 			inv.setItem(18+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear(18+1);
-		inv.setItem(18+1, MainDataBaseHashMap.items.get("Back"));
+		inv.setItem(18+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
 		
 	}
 }

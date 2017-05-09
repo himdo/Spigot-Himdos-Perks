@@ -15,6 +15,7 @@ import org.bukkit.potion.PotionEffect;
 
 import com.himdo.perks.Constants;
 import com.himdo.perks.MainPlugin;
+import com.himdo.perks.Misc.PlayerDeleteInvaildPerks;
 
 public class onPlayerJoinEvents implements Listener{
 	@EventHandler
@@ -44,6 +45,8 @@ public class onPlayerJoinEvents implements Listener{
 		}
 		if(playerData.get("ChoosenPerks")==null)
 			playerData.set("ChoosenPerks", new ArrayList<>());
+		
+		playerData.set("ChoosenPerks", PlayerDeleteInvaildPerks.Trim((ArrayList)playerData.get("ChoosenPerks")));
 		
 		try {
 			playerData.save(playerfile);

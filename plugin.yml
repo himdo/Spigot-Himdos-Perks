@@ -5,4 +5,5 @@ commands:
   perks:
     description: opens perks menu
     usage: /perks menu
+    aliases: [p,perk]
     

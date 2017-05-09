@@ -38,27 +38,27 @@ public class BuffPerkMenu implements Listener{
 			inv.setItem((9*3)+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear((9*3)+1);
-		inv.setItem((9*3)+1, MainDataBaseHashMap.items.get("Back"));
-
-		inv.setItem(9+0, MainDataBaseHashMap.items.get("Haste"));
-		inv.setItem(9+1, MainDataBaseHashMap.items.get("Jump Boost"));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get("Speed Boost"));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get("Health Boost"));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get("Night Vision"));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get("Water Breathing"));
+		inv.setItem((9*3)+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
+		
+		inv.setItem(9+0, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Haste.name")));
+		inv.setItem(9+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Jump.name")));
+		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Speed.name")));
+		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HealthBoost.name")));
+		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.NightVision.name")));
+		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.WaterBreathing.name")));
 		//inv.setItem(9+6, initHashMap.items.get(""));
 		//inv.setItem(9+7, initHashMap.items.get(""));
 		//inv.setItem(9+8, initHashMap.items.get(""));
 		
-		inv.setItem(9*2+0, MainDataBaseHashMap.items.get("Haste 2"));
-		inv.setItem(9*2+1, MainDataBaseHashMap.items.get("Jump Boost 2"));
-		inv.setItem(9*2+2, MainDataBaseHashMap.items.get("Speed Boost 2"));
-		inv.setItem(9*2+3, MainDataBaseHashMap.items.get("Health Boost 2"));
+		inv.setItem(9*2+0, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Haste2.name")));
+		inv.setItem(9*2+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Jump2.name")));
+		inv.setItem(9*2+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Speed2.name")));
+		inv.setItem(9*2+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HealthBoost2.name")));
 		//inv.setItem(9*2+4, initHashMap.items.get(""));
 		//inv.setItem(9*2+5, initHashMap.items.get(""));
-		inv.setItem(9+8, MainDataBaseHashMap.items.get("Mining Fatigue"));
-		inv.setItem(9*2+7, MainDataBaseHashMap.items.get("Slowness"));
-		inv.setItem(9*2+8, MainDataBaseHashMap.items.get("Blindness"));
+		inv.setItem(9+8, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.MiningFatigue.name")));
+		inv.setItem(9*2+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Slow.name")));
+		inv.setItem(9*2+8, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Blind.name")));
 		
 	}
 	
@@ -82,7 +82,7 @@ public class BuffPerkMenu implements Listener{
 			return;
 		}
 		
-		if(e.getCurrentItem().equals(initHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(initHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")))){
 			MainPlugin.perksSubMain.show(player);
 			return;
 		}	
@@ -98,12 +98,12 @@ public class BuffPerkMenu implements Listener{
 		}*/
 		if(!MenuChecker.menuChecker(e,inv))
 			return;
-		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")))){
 			MainPlugin.perksSubMain.show(player);
 			return;
 		}
 		//player.sendMessage(CalculatePoints.getPointsForItem(e.getCurrentItem())+"");
-		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>150){
+		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>MainPlugin.config.getInt("MaximumPerkPoints")){
 			player.sendMessage("Costs to many Points");
 			return;
 		}

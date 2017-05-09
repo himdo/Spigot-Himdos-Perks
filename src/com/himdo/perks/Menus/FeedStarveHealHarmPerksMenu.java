@@ -32,50 +32,50 @@ public class FeedStarveHealHarmPerksMenu implements Listener{
 			inv.setItem(9*5+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear(9*5+1);
-		inv.setItem(9*5+1, MainDataBaseHashMap.items.get("Back"));
+		inv.setItem(9*5+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
 
 		inv.setItem(9, MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9+1,   MainDataBaseHashMap.items.get("Feed Lava"));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get("Feed Sunlight"));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get("Feed Vegetation"));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get("Feed Water"));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get("Feed Light"));
-		inv.setItem(9+6, MainDataBaseHashMap.items.get("Feed Darkness"));
+		inv.setItem(9+1,   MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FeedLava.name")));
+		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FeedSunlight.name")));
+		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FeedVegetation.name")));
+		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FeedWater.name")));
+		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FeedLight.name")));
+		inv.setItem(9+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FeedDarkness.name")));
 		//inv.setItem(9+6, MainDataBaseHashMap.items.get("Feed Meditation"));
-		inv.setItem(9+7, MainDataBaseHashMap.items.get("Feed Always"));
+		inv.setItem(9+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FeedAlways.name")));
 		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));
 
 		inv.setItem(9*2, MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9*2+1,   MainDataBaseHashMap.items.get("Starve Lava"));
-		inv.setItem(9*2+2, MainDataBaseHashMap.items.get("Starve Sunlight"));
-		inv.setItem(9*2+3, MainDataBaseHashMap.items.get("Starve Vegetation"));
-		inv.setItem(9*2+4, MainDataBaseHashMap.items.get("Starve Water"));
-		inv.setItem(9*2+5, MainDataBaseHashMap.items.get("Starve Light"));
-		inv.setItem(9*2+6, MainDataBaseHashMap.items.get("Starve Darkness"));
+		inv.setItem(9*2+1,   MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StarveLava.name")));
+		inv.setItem(9*2+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StarveSunlight.name")));
+		inv.setItem(9*2+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StarveVegetation.name")));
+		inv.setItem(9*2+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StarveWater.name")));
+		inv.setItem(9*2+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StarveLight.name")));
+		inv.setItem(9*2+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StarveDarkness.name")));
 		//inv.setItem(9*2+6, MainDataBaseHashMap.items.get("Starve Meditation"));
-		inv.setItem(9*2+7, MainDataBaseHashMap.items.get("Starve Always"));
+		inv.setItem(9*2+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StarveAlways.name")));
 		inv.setItem(9*2+8, MainDataBaseHashMap.items.get("Border Purple"));
 
 		inv.setItem(9*3, MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9*3+1,   MainDataBaseHashMap.items.get("Heal Lava"));
-		inv.setItem(9*3+2, MainDataBaseHashMap.items.get("Heal Sunlight"));
-		inv.setItem(9*3+3, MainDataBaseHashMap.items.get("Heal Vegetation"));
-		inv.setItem(9*3+4, MainDataBaseHashMap.items.get("Heal Water"));
-		inv.setItem(9*3+5, MainDataBaseHashMap.items.get("Heal Light"));
-		inv.setItem(9*3+6, MainDataBaseHashMap.items.get("Heal Darkness"));
+		inv.setItem(9*3+1,   MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HealLava.name")));
+		inv.setItem(9*3+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HealSunlight.name")));
+		inv.setItem(9*3+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HealVegetation.name")));
+		inv.setItem(9*3+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HealWater.name")));
+		inv.setItem(9*3+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HealLight.name")));
+		inv.setItem(9*3+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HealDarkness.name")));
 		//inv.setItem(9*3+6, MainDataBaseHashMap.items.get("Heal Meditation"));
-		inv.setItem(9*3+7, MainDataBaseHashMap.items.get("Heal Always"));
+		inv.setItem(9*3+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HealAlways.name")));
 		inv.setItem(9*3+8, MainDataBaseHashMap.items.get("Border Purple"));
 
 		inv.setItem(9*4, MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9*4+1,   MainDataBaseHashMap.items.get("Harm Lava"));
-		inv.setItem(9*4+2, MainDataBaseHashMap.items.get("Harm Sunlight"));
-		inv.setItem(9*4+3, MainDataBaseHashMap.items.get("Harm Vegetation"));
-		inv.setItem(9*4+4, MainDataBaseHashMap.items.get("Harm Water"));
-		inv.setItem(9*4+5, MainDataBaseHashMap.items.get("Harm Light"));
-		inv.setItem(9*4+6, MainDataBaseHashMap.items.get("Harm Darkness"));
+		inv.setItem(9*4+1,   MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HarmLava.name")));
+		inv.setItem(9*4+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HarmSunlight.name")));
+		inv.setItem(9*4+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HarmVegetation.name")));
+		inv.setItem(9*4+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HarmWater.name")));
+		inv.setItem(9*4+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HarmLight.name")));
+		inv.setItem(9*4+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HarmDarkness.name")));
 		//inv.setItem(9*4+6, MainDataBaseHashMap.items.get("Harm Meditation"));
-		inv.setItem(9*4+7, MainDataBaseHashMap.items.get("Harm Always"));
+		inv.setItem(9*4+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HarmAlways.name")));
 		inv.setItem(9*4+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 		
@@ -95,11 +95,11 @@ public class FeedStarveHealHarmPerksMenu implements Listener{
 		
 		if(!MenuChecker.menuChecker(e,inv))
 			return;
-		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")))){
 			MainPlugin.perksSubMain.show(player);
 			return;
 		}
-		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>150){
+		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>MainPlugin.config.getInt("MaximumPerkPoints")){
 			player.sendMessage("Costs to many Points");
 			return;
 		}

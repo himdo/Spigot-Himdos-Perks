@@ -39,11 +39,11 @@ public class WeaponPerksMenu implements Listener{
 		Player player = (Player) e.getWhoClicked();
 		if(!MenuChecker.menuChecker(e,inv))
 			return;
-		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")))){
 			MainPlugin.perksSubMain.show(player);
 			return;
 		}
-		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>150){
+		if((CalculatePoints.getCurrentPoints(player)+CalculatePoints.getPointsForItem(e.getCurrentItem()) )>MainPlugin.config.getInt("MaximumPerkPoints")){
 			player.sendMessage("Costs to many Points");
 			return;
 		}
@@ -74,46 +74,46 @@ public class WeaponPerksMenu implements Listener{
 			inv.setItem(9*5+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear(9*5+1);
-		inv.setItem(9*5+1, MainDataBaseHashMap.items.get("Back"));
+		inv.setItem(9*5+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
 		
 		inv.setItem(9*1,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9*1+1, MainDataBaseHashMap.items.get("Expert Archery"));
-		inv.setItem(9*1+2, MainDataBaseHashMap.items.get("Expert Axe"));
-		inv.setItem(9*1+3, MainDataBaseHashMap.items.get("Expert Sword"));
-		inv.setItem(9*1+4, MainDataBaseHashMap.items.get("Expert Unarmed"));
-		//inv.setItem(9*1+5, initHashMap.items.get(""));
-		//inv.setItem(9*1+6, initHashMap.items.get(""));
-		//inv.setItem(9*1+7, initHashMap.items.get(""));
+		inv.setItem(9*1+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ExpertArchery.name")));
+		inv.setItem(9*1+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ExpertAxe.name")));
+		inv.setItem(9*1+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ExpertSword.name")));
+		inv.setItem(9*1+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ExpertUnarmed.name")));
+		//inv.setItem(9*1+5, initHashMap.items.get());
+		//inv.setItem(9*1+6, initHashMap.items.get());
+		//inv.setItem(9*1+7, initHashMap.items.get());
 		inv.setItem(9*1+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 		inv.setItem(9*2,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9*2+1, MainDataBaseHashMap.items.get("Resistant Archery"));
-		inv.setItem(9*2+2, MainDataBaseHashMap.items.get("Resistant Axe"));
-		inv.setItem(9*2+3, MainDataBaseHashMap.items.get("Resistant Sword"));
-		inv.setItem(9*2+4, MainDataBaseHashMap.items.get("Resistant Unarmed"));
-		//inv.setItem(9*2+5, initHashMap.items.get(""));
-		//inv.setItem(9*2+6, initHashMap.items.get(""));
-		//inv.setItem(9*2+7, initHashMap.items.get(""));
+		inv.setItem(9*2+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ResistantArchery.name")));
+		inv.setItem(9*2+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ResistantAxe.name")));
+		inv.setItem(9*2+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ResistantSword.name")));
+		inv.setItem(9*2+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ResistantUnarmed.name")));
+		//inv.setItem(9*2+5, initHashMap.items.get());
+		//inv.setItem(9*2+6, initHashMap.items.get());
+		//inv.setItem(9*2+7, initHashMap.items.get());
 		inv.setItem(9*2+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 		inv.setItem(9*3,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9*3+1, MainDataBaseHashMap.items.get("Inept Archery"));
-		inv.setItem(9*3+2, MainDataBaseHashMap.items.get("Inept Axe"));
-		inv.setItem(9*3+3, MainDataBaseHashMap.items.get("Inept Sword"));
-		inv.setItem(9*3+4, MainDataBaseHashMap.items.get("Inept Unarmed"));
-		//inv.setItem(9*3+5, initHashMap.items.get(""));
-		//inv.setItem(9*3+6, initHashMap.items.get(""));
-		//inv.setItem(9*3+7, initHashMap.items.get(""));
+		inv.setItem(9*3+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.IneptArchery.name")));
+		inv.setItem(9*3+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.IneptAxe.name")));
+		inv.setItem(9*3+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.IneptSword.name")));
+		inv.setItem(9*3+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.IneptUnarmed.name")));
+		//inv.setItem(9*3+5, initHashMap.items.get());
+		//inv.setItem(9*3+6, initHashMap.items.get());
+		//inv.setItem(9*3+7, initHashMap.items.get());
 		inv.setItem(9*3+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 		inv.setItem(9*4,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9*4+1, MainDataBaseHashMap.items.get("Vulnerable Archery"));
-		inv.setItem(9*4+2, MainDataBaseHashMap.items.get("Vulnerable Axe"));
-		inv.setItem(9*4+3, MainDataBaseHashMap.items.get("Vulnerable Sword"));
-		inv.setItem(9*4+4, MainDataBaseHashMap.items.get("Vulnerable Unarmed"));
-		//inv.setItem(9*4+5, initHashMap.items.get(""));
-		//inv.setItem(9*4+6, initHashMap.items.get(""));
-		//inv.setItem(9*4+7, initHashMap.items.get(""));
+		inv.setItem(9*4+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.VulnerableArchery.name")));
+		inv.setItem(9*4+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.VulnerableAxe.name")));
+		inv.setItem(9*4+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.VulnerableSword.name")));
+		inv.setItem(9*4+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.VulnerableUnarmed.name")));
+		//inv.setItem(9*4+5, initHashMap.items.get());
+		//inv.setItem(9*4+6, initHashMap.items.get());
+		//inv.setItem(9*4+7, initHashMap.items.get());
 		inv.setItem(9*4+8, MainDataBaseHashMap.items.get("Border Purple"));
 	}
 }

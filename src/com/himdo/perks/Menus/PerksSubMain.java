@@ -37,17 +37,17 @@ public class PerksSubMain  implements Listener{
 			inv.setItem(18+i, MainDataBaseHashMap.items.get("Border Purple"));
 		}
 		inv.clear(18+1);
-		inv.setItem(18+1, MainDataBaseHashMap.items.get("Back"));
+		inv.setItem(18+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
 
-		inv.setItem(9,   MainDataBaseHashMap.items.get("Buffs"));
-		inv.setItem(9+1, MainDataBaseHashMap.items.get("Weapon Perks"));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get("Strike/Revenge Perks"));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get("Feed/Starve/Heal/Harm Perks"));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get("Food Perks"));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get("Immune Perks"));
-		inv.setItem(9+6, MainDataBaseHashMap.items.get("Flying Perks"));
-		inv.setItem(9+7, MainDataBaseHashMap.items.get("Truce Perks"));
-		inv.setItem(9+8, MainDataBaseHashMap.items.get("Misc Perks"));
+		inv.setItem(9,   MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Buffs.name")));
+		inv.setItem(9+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.WeaponStats.name")));
+		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeRevenge.name")));
+		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FeedStarveHealHarm.name")));
+		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Food.name")));
+		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Immune.name")));
+		inv.setItem(9+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Fly.name")));
+		inv.setItem(9+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Truce.name")));
+		inv.setItem(9+8, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Misc.name")));
 		
 		
 	}
@@ -73,27 +73,27 @@ public class PerksSubMain  implements Listener{
 		Player player = (Player) e.getWhoClicked();
 		
 		
-		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")))){
 			MainPlugin.mainMenu.show(player);
 			return;
 		}
-		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Buffs"))){
+		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Buffs.name")))){
 			MainPlugin.buffPerkMenu.show(player);
-		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Weapon Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.WeaponStats.name")))){
 			MainPlugin.weaponPerksMenu.show(player);
-		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Strike/Revenge Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeRevenge.name")))){
 			MainPlugin.strikePerksMenu.show(player);
-		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Feed/Starve/Heal/Harm Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FeedStarveHealHarm.name")))){
 			MainPlugin.healHarmMenu.show(player);
-		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Food Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Food.name")))){
 			MainPlugin.foodPerkMenu.show(player);
-		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Immune Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Immune.name")))){
 			MainPlugin.immunePerkMenu.show(player);
-		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Flying Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Fly.name")))){
 			MainPlugin.flyingPerkMenu.show(player);
-		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Truce Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Truce.name")))){
 			MainPlugin.trucePerksMenu.show(player);
-		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Misc Perks"))){
+		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Misc.name")))){
 			MainPlugin.miscPerksMenu.show(player);
 		}
 		

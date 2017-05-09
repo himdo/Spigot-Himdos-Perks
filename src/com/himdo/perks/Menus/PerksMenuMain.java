@@ -48,7 +48,7 @@ public class PerksMenuMain implements Listener{
 			playerSkull.setItemMeta(skullmeta);
 			ItemMeta itemMeta = playerSkull.getItemMeta();
 			itemMeta.setDisplayName(p.getName()+"'s Choosen Perks");
-			itemMeta.setLore(Arrays.asList(MainPlugin.playerPerks.get(p).size()+"/9 Perks Choosen",CalculatePoints.getCurrentPoints(p)+"/150 Points"));
+			itemMeta.setLore(Arrays.asList(MainPlugin.playerPerks.get(p).size()+"/9 Perks Choosen",CalculatePoints.getCurrentPoints(p)+"/"+MainPlugin.config.getInt("MaximumPerkPoints")+ " Points"));
 			playerSkull.setItemMeta(itemMeta);
 			inv.setItem(16, playerSkull);
 			Inventory playered = Bukkit.getServer().createInventory(null, 9*3,"[Perks] "+p.getName()+" Menu");
@@ -62,7 +62,7 @@ public class PerksMenuMain implements Listener{
 		playerSkull.setItemMeta(skullmeta);
 		ItemMeta itemMeta = playerSkull.getItemMeta();
 		itemMeta.setDisplayName(p.getName()+"'s Choosen Perks");
-		itemMeta.setLore(Arrays.asList(MainPlugin.playerPerks.get(p).size()+"/9 Perks Choosen",CalculatePoints.getCurrentPoints(p)+"/150 Points"));
+		itemMeta.setLore(Arrays.asList(MainPlugin.playerPerks.get(p).size()+"/9 Perks Choosen",CalculatePoints.getCurrentPoints(p)+"/"+MainPlugin.config.getInt("MaximumPerkPoints")+" Points"));
 		playerSkull.setItemMeta(itemMeta);
 		playerInv.setItem(16, playerSkull);
 		//playered.setContents(inv.getContents());// = inv;
@@ -75,8 +75,8 @@ public class PerksMenuMain implements Listener{
 	}
 	
 	public void init(){
-		inv.setItem(4+9, MainDataBaseHashMap.items.get("Help"));
-		inv.setItem(1+9,MainDataBaseHashMap.items.get("Perks"));
+		inv.setItem(4+9, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Help.name")));
+		inv.setItem(1+9,MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Perks.name")));
 		
 		//Glass panes
 		for(int i = 0; i<9; i++){
@@ -91,7 +91,7 @@ public class PerksMenuMain implements Listener{
 	
 	@EventHandler
 	public void onInventoryClicker(InventoryClickEvent e){
-		//e.getWhoClicked().sendMessage(e.getCurrentItem()+"");
+		//e.getWhoClicked().sendMessage(e.getCurrentItem()+);
 		//if the menu is not the correct menu like if a normal chest is opened
 		if(e.getWhoClicked().getOpenInventory().getTitle()==null)
 			return;
@@ -125,11 +125,11 @@ public class PerksMenuMain implements Listener{
 			if(selectedItem==null)
 				return;
 			//Perks Menu
-			if(selectedItem.equals(MainDataBaseHashMap.items.get("Perks"))){
+			if(selectedItem.equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Perks.name")))){
 				MainPlugin.perksSubMain.show(pa);
 			}
 			//Help Menu
-			if(selectedItem.equals(MainDataBaseHashMap.items.get("Help"))){
+			if(selectedItem.equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Help.name")))){
 				MainPlugin.HelpMenu.show(pa);
 			}
 			//Player Menu
