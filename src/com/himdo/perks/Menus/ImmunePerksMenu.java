@@ -22,7 +22,7 @@ public class ImmunePerksMenu implements Listener{
 	
 	public ImmunePerksMenu(Plugin plugin) {
 		this.plugin=plugin;
-		inv = Bukkit.getServer().createInventory(null, 9*4,"[Perks]Immunity Perk Selection Menu");
+		inv = Bukkit.getServer().createInventory(null, 9*4,MainPlugin.config.getString("Menu.ImmunePerkMenu.Name"));
 		Bukkit.getServer().getPluginManager().registerEvents( this, plugin);
 	}
 	
@@ -80,22 +80,22 @@ public class ImmunePerksMenu implements Listener{
 		inv.setItem(9*3+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
 
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneArmorpen.name")));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneHarm.name")));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneHunger.name")));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneNausea.name")));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneStarve.name")));
-		inv.setItem(9+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneFall.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.ImmuneArmorpen.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneArmorpen.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.ImmuneHarm.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneHarm.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.ImmuneHunger.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneHunger.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.ImmuneNausea.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneNausea.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.ImmuneStarve.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneStarve.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.ImmuneFall.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneFall.name")));
 		//inv.setItem(9+7, MainDataBaseHashMap.items.get("Immune Steal"));
 		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 		inv.setItem(9*2,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9*2+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneWeakness.name")));
-		inv.setItem(9*2+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneWither.name")));
-		inv.setItem(9*2+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneFire.name")));
-		inv.setItem(9*2+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmunePoison.name")));
-		inv.setItem(9*2+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneBlindness.name")));
-		inv.setItem(9*2+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneSlow.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.ImmuneWeakness.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneWeakness.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.ImmuneWither.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneWither.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.ImmuneFire.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneFire.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.ImmunePoison.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmunePoison.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.ImmuneBlindness.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneBlindness.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.ImmuneSlow.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.ImmuneSlow.name")));
 		//inv.setItem(9*2+7, initHashMap.items.get());
 		inv.setItem(9*2+8, MainDataBaseHashMap.items.get("Border Purple"));
 		

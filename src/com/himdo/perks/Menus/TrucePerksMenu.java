@@ -22,7 +22,7 @@ public class TrucePerksMenu implements Listener{
 	
 	public TrucePerksMenu(Plugin plugin) {
 		this.plugin=plugin;
-		inv = Bukkit.getServer().createInventory(null, 9*3,"[Perks] Truce Perk Selection Menu");
+		inv = Bukkit.getServer().createInventory(null, 9*3,MainPlugin.config.getString("Menu.TrucePerkMenu.Name"));
 		Bukkit.getServer().getPluginManager().registerEvents( this, plugin);
 	}
 	
@@ -84,13 +84,13 @@ public class TrucePerksMenu implements Listener{
 		inv.setItem(18+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
 
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceSlime.name")));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceBlaze.name")));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceSilverFish.name")));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceSpider.name")));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceUndead.name")));
-		inv.setItem(9+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceCreeper.name")));
-		inv.setItem(9+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceGhast.name")));
-		inv.setItem(9+8, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceWitch.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.TruceSlime.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceSlime.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.TruceBlaze.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceBlaze.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.TruceSilverFish.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceSilverFish.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.TruceSpider.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceSpider.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.TruceUndead.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceUndead.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.TruceCreeper.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceCreeper.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.TruceGhast.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceGhast.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.TruceWitch.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.TruceWitch.name")));
 	}
 }

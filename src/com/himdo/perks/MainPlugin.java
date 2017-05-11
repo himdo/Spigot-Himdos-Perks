@@ -46,6 +46,7 @@ import com.himdo.perks.Menus.PerksMenuMain;
 import com.himdo.perks.Menus.TrucePerksMenu;
 import com.himdo.perks.Menus.WeaponPerksMenu;
 import com.himdo.perks.Menus.Help.PerksSubHelpMain;
+import com.himdo.perks.Misc.CalculatePoints;
 import com.himdo.perks.Misc.PlayerDeleteInvaildPerks;
 import com.himdo.perks.Runnables.RunnableAbsoption;
 import com.himdo.perks.Runnables.RunnableBuffManager;
@@ -235,7 +236,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		if(args.length==2){
 			if(args[0].equalsIgnoreCase("inspect")){
 				if(Bukkit.getPlayer(args[1])!=null){
-					sender.sendMessage(args[1]+" perks: "+playerPerks.get(Bukkit.getPlayer(args[1])));
+					sender.sendMessage(args[1]+" perks: "+playerPerks.get(Bukkit.getPlayer(args[1])));//+" points: "+CalculatePoints.getCurrentPoints(Bukkit.getPlayer(args[1]))+"/"+config.getInt("MaximumPerkPoints")));
 					
 				}else{
 					sender.sendMessage("Usage: /perks inspect <Player name>");

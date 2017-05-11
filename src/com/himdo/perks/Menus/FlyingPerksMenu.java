@@ -22,7 +22,7 @@ public class FlyingPerksMenu implements Listener{
 	
 	public FlyingPerksMenu(Plugin plugin) {
 		this.plugin=plugin;
-		inv = Bukkit.getServer().createInventory(null, 9*3,"[Perks]Flying Perk Selection Menu");
+		inv = Bukkit.getServer().createInventory(null, 9*3,MainPlugin.config.getString("Menu.FlyingPerkMenu.Name"));
 		Bukkit.getServer().getPluginManager().registerEvents( this, plugin);
 	}
 	public void init(){
@@ -37,9 +37,9 @@ public class FlyingPerksMenu implements Listener{
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
 		//inv.setItem(9+1, initHashMap.items.get("Weapon Perks"));
 		//inv.setItem(9+2, initHashMap.items.get("Strike/Revenge Perks"));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FlyWater.name")));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FlyLava.name")));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FlyWeb.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.FlyWater.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FlyWater.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.FlyLava.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FlyLava.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.FlyWeb.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FlyWeb.name")));
 		//inv.setItem(9+6, initHashMap.items.get("Flying Perks"));
 		//inv.setItem(9+7, initHashMap.items.get("Truce Perks"));
 		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));

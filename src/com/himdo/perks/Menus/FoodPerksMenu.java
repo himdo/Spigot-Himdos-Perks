@@ -21,7 +21,7 @@ public class FoodPerksMenu implements Listener{
 	
 	public FoodPerksMenu(Plugin plugin) {
 		this.plugin=plugin;
-		inv = Bukkit.getServer().createInventory(null, 9*3,"[Perks]Food Perk Selection Menu");
+		inv = Bukkit.getServer().createInventory(null, 9*3,MainPlugin.config.getString("Menu.FoodPerkMenu.Name"));
 		Bukkit.getServer().getPluginManager().registerEvents( this, plugin);
 	}
 	
@@ -77,11 +77,11 @@ public class FoodPerksMenu implements Listener{
 
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
 		//inv.setItem(9+1, initHashMap.items.get("Weapon Perks"));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.WaterDrinker.name")));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StoneEater.name")));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Carnivore.name")));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Herbivore.name")));
-		inv.setItem(9+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Nonivore.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.WaterDrinker.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.WaterDrinker.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StoneEater.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StoneEater.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Carnivore.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Carnivore.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Herbivore.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Herbivore.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Nonivore.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Nonivore.name")));
 		//inv.setItem(9+7, initHashMap.items.get("Truce Perks"));
 		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));	
 	}

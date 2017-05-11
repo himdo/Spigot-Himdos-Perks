@@ -20,7 +20,7 @@ public class PerksSubHelpMain  implements Listener{
 	
 	public PerksSubHelpMain(Plugin plugin) {
 		this.plugin=plugin;
-		inv = Bukkit.getServer().createInventory(null, 9*3,"[Perks]Help Selection SubMenu");
+		inv = Bukkit.getServer().createInventory(null, 9*3,MainPlugin.config.getString("Menu.HelpMenu.Name"));
 		Bukkit.getServer().getPluginManager().registerEvents( this, plugin);
 	}
 	
@@ -40,13 +40,13 @@ public class PerksSubHelpMain  implements Listener{
 		inv.setItem(18+1, MainDataBaseHashMap.items.get("Back"));
 
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9+1, MainDataBaseHashMap.items.get("Help 1"));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get("Help 2"));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get("Help 5"));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get("Help 6"));
+		inv.setItem(MainPlugin.config.getInt("Perks.Help1.inventorySlot"), MainDataBaseHashMap.items.get("Help 1"));
+		inv.setItem(MainPlugin.config.getInt("Perks.Help2.inventorySlot"), MainDataBaseHashMap.items.get("Help 2"));
+		inv.setItem(MainPlugin.config.getInt("Perks.Help3.inventorySlot"), MainDataBaseHashMap.items.get("Help 5"));
+		inv.setItem(MainPlugin.config.getInt("Perks.Help4.inventorySlot"), MainDataBaseHashMap.items.get("Help 6"));
 		//inv.setItem(9+5, MainDataBaseHashMap.items.get("Immune Perks"));
-		inv.setItem(9+6, MainDataBaseHashMap.items.get("Help 3"));
-		inv.setItem(9+7, MainDataBaseHashMap.items.get("Help 4"));
+		inv.setItem(MainPlugin.config.getInt("Perks.Help5.inventorySlot"), MainDataBaseHashMap.items.get("Help 3"));
+		inv.setItem(MainPlugin.config.getInt("Perks.Help6.inventorySlot"), MainDataBaseHashMap.items.get("Help 4"));
 		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 		

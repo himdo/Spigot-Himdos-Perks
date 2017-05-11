@@ -20,7 +20,7 @@ public class PerksSubMain  implements Listener{
 	
 	public PerksSubMain(Plugin plugin) {
 		this.plugin=plugin;
-		inv = Bukkit.getServer().createInventory(null, 9*3,"[Perks]Perk Selection Menu");
+		inv = Bukkit.getServer().createInventory(null, 9*3,MainPlugin.config.getString("Menu.PerksSubMenu.Name"));
 		Bukkit.getServer().getPluginManager().registerEvents( this, plugin);
 	}
 	
@@ -39,15 +39,15 @@ public class PerksSubMain  implements Listener{
 		inv.clear(18+1);
 		inv.setItem(18+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
 
-		inv.setItem(9,   MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Buffs.name")));
-		inv.setItem(9+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.WeaponStats.name")));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeRevenge.name")));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FeedStarveHealHarm.name")));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Food.name")));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Immune.name")));
-		inv.setItem(9+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Fly.name")));
-		inv.setItem(9+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Truce.name")));
-		inv.setItem(9+8, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Misc.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Buffs.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Buffs.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.WeaponStats.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.WeaponStats.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeRevenge.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeRevenge.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.FeedStarveHealHarm.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.FeedStarveHealHarm.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Food.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Food.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Immune.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Immune.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Fly.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Fly.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Truce.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Truce.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Misc.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Misc.name")));
 		
 		
 	}

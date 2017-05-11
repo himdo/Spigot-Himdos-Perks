@@ -30,6 +30,7 @@ public class PerksMenuMain implements Listener{
 	//static ArrayList<Inventory> inventorys;
 	
 	public PerksMenuMain(Plugin plugin) {
+		
 		inv = Bukkit.getServer().createInventory(null, 9*3,"[Perks] Menu");
 		playerSkull = new ItemStack(Material.SKULL_ITEM,1,(byte)3);
 		
@@ -51,7 +52,20 @@ public class PerksMenuMain implements Listener{
 			itemMeta.setLore(Arrays.asList(MainPlugin.playerPerks.get(p).size()+"/9 Perks Choosen",CalculatePoints.getCurrentPoints(p)+"/"+MainPlugin.config.getInt("MaximumPerkPoints")+ " Points"));
 			playerSkull.setItemMeta(itemMeta);
 			inv.setItem(16, playerSkull);
-			Inventory playered = Bukkit.getServer().createInventory(null, 9*3,"[Perks] "+p.getName()+" Menu");
+			
+			
+			
+			//Set Name using config
+			StringBuilder sb = new StringBuilder();
+			sb.append(MainPlugin.config.getString("Menu.MainMenu.NamePrefix"));
+			if(MainPlugin.config.getBoolean("Menu.MainMenu.IncludePlayerName"))
+				sb.append(p.getName());
+			sb.append(MainPlugin.config.getString("Menu.MainMenu.NameSuffix"));
+			
+			
+			
+			
+			Inventory playered = Bukkit.getServer().createInventory(null, 9*3,sb.toString());
 			playered.setContents(inv.getContents());// = inv;
 			playerInventory.put(p.getName(), playered);
 		}
@@ -75,8 +89,8 @@ public class PerksMenuMain implements Listener{
 	}
 	
 	public void init(){
-		inv.setItem(4+9, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Help.name")));
-		inv.setItem(1+9,MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Perks.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Help.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Help.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Perks.inventorySlot"),MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Perks.name")));
 		
 		//Glass panes
 		for(int i = 0; i<9; i++){

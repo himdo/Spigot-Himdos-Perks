@@ -22,7 +22,7 @@ public class BuffPerkMenu implements Listener{
 	
 	public BuffPerkMenu(Plugin plugin) {
 		this.plugin=plugin;
-		inv = Bukkit.getServer().createInventory(null, 9*4,"[Perks] Buff Selection Menu");
+		inv = Bukkit.getServer().createInventory(null, 9*4,MainPlugin.config.getString("Menu.BuffPerkMenu.Name"));
 		Bukkit.getServer().getPluginManager().registerEvents( this, plugin);
 	}
 	
@@ -39,26 +39,26 @@ public class BuffPerkMenu implements Listener{
 		}
 		inv.clear((9*3)+1);
 		inv.setItem((9*3)+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
-		
-		inv.setItem(9+0, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Haste.name")));
-		inv.setItem(9+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Jump.name")));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Speed.name")));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HealthBoost.name")));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.NightVision.name")));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.WaterBreathing.name")));
+		//MainPlugin.config.getInt("Perks.Buffs.inventorySlot")
+		inv.setItem(MainPlugin.config.getInt("Perks.Haste.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Haste.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Jump.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Jump.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Speed.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Speed.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.HealthBoost.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HealthBoost.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.NightVision.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.NightVision.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.WaterBreathing.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.WaterBreathing.name")));
 		//inv.setItem(9+6, initHashMap.items.get(""));
 		//inv.setItem(9+7, initHashMap.items.get(""));
 		//inv.setItem(9+8, initHashMap.items.get(""));
 		
-		inv.setItem(9*2+0, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Haste2.name")));
-		inv.setItem(9*2+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Jump2.name")));
-		inv.setItem(9*2+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Speed2.name")));
-		inv.setItem(9*2+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HealthBoost2.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Haste2.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Haste2.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Jump2.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Jump2.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Speed2.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Speed2.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.HealthBoost2.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.HealthBoost2.name")));
 		//inv.setItem(9*2+4, initHashMap.items.get(""));
 		//inv.setItem(9*2+5, initHashMap.items.get(""));
-		inv.setItem(9+8, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.MiningFatigue.name")));
-		inv.setItem(9*2+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Slow.name")));
-		inv.setItem(9*2+8, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Blind.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.MiningFatigue.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.MiningFatigue.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Slow.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Slow.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Blind.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Blind.name")));
 		
 	}
 	

@@ -1,7 +1,6 @@
 package com.himdo.perks.Misc;
 
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
@@ -16,6 +15,7 @@ public class MenuChecker {
 		/*if(!event.getClickedInventory().getContents().equals(inv.getContents())){
 			return false;
 		}*/
+		
 		if(!event.getInventory().getName().equals(inv.getName())) {
 			return false;
 		}

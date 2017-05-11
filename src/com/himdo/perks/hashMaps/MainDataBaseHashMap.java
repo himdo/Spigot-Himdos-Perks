@@ -200,9 +200,9 @@ public class MainDataBaseHashMap {
 	//static ItemStack LeftArrow = new ItemStack(Material.SKULL_ITEM,1,(byte)3);
 	//static ItemStack RightArrow = new ItemStack(Material.SKULL_ITEM,1,(byte)3);
 	
-	static ItemStack Help = new ItemStack(Material.STAINED_GLASS_PANE,1, (short) 15);
-	static ItemStack LeftArrow = new ItemStack(Material.STAINED_GLASS_PANE,1, (short) 13);
-	static ItemStack RightArrow = new ItemStack(Material.STAINED_GLASS_PANE,1, (short) 14);
+	static ItemStack Help = new ItemStack(Material.STAINED_GLASS_PANE,1, (short) MainPlugin.config.getInt("HelpPaneColor"));
+	static ItemStack LeftArrow = new ItemStack(Material.STAINED_GLASS_PANE,1, (short) MainPlugin.config.getInt("BackPaneColor"));
+	static ItemStack RightArrow = new ItemStack(Material.STAINED_GLASS_PANE,1, (short) MainPlugin.config.getInt("ForwardPaneColor"));
 	
 	//subSettings
 	static ItemStack Buffs = new ItemStack(Material.POTION);
@@ -217,7 +217,7 @@ public class MainDataBaseHashMap {
 	
 	
 	//Borders
-	static ItemStack BorderPurple = new ItemStack(Material.STAINED_GLASS_PANE,1, (short) 10);
+	static ItemStack BorderPurple = new ItemStack(Material.STAINED_GLASS_PANE,1, (short) MainPlugin.config.getInt("BorderPaneColor"));
 	
 	//Help
 	static ItemStack Help1=new ItemStack(Material.APPLE);

@@ -22,7 +22,7 @@ public class StrikeRevengePerksMenu implements Listener{
 	
 	public StrikeRevengePerksMenu(Plugin plugin) {
 		this.plugin=plugin;
-		inv = Bukkit.getServer().createInventory(null, 9*6,"[Perks]Strike/Revenge Selection Menu");
+		inv = Bukkit.getServer().createInventory(null, 9*6,MainPlugin.config.getString("Menu.StrikeRevengePerkMenu.Name"));
 		Bukkit.getServer().getPluginManager().registerEvents( this, plugin);
 	}
 	
@@ -89,45 +89,45 @@ public class StrikeRevengePerksMenu implements Listener{
 		inv.setItem(9+8, initHashMap.items.get());*/
 		
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeFeed.name")));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeFire.name")));
-		inv.setItem(9+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeHunger.name")));
-		inv.setItem(9+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeNausea.name")));
-		inv.setItem(9+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeWeakness.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeFeed.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeFeed.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeFire.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeFire.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeHunger.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeHunger.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeNausea.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeNausea.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeWeakness.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeWeakness.name")));
 		//inv.setItem(9+5, MainDataBaseHashMap.items.get("Strike Steal"));
-		inv.setItem(9+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeArmorpen.name")));
-		inv.setItem(9+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeHarm.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeArmorpen.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeArmorpen.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeHarm.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeHarm.name")));
 		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 		inv.setItem(9*2,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9*2+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeHeal.name")));
-		inv.setItem(9*2+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeSlow.name")));
-		inv.setItem(9*2+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikePoison.name")));
-		inv.setItem(9*2+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeStarve.name")));
-		inv.setItem(9*2+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeWither.name")));
-		inv.setItem(9*2+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeBlindness.name")));
-		inv.setItem(9*2+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeStun.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeHeal.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeHeal.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeSlow.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeSlow.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikePoison.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikePoison.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeStarve.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeStarve.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeWither.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeWither.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeBlindness.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeBlindness.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.StrikeStun.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.StrikeStun.name")));
 		inv.setItem(9*2+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 		inv.setItem(9*3,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9*3+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeFeed.name")));
-		inv.setItem(9*3+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeFire.name")));
-		inv.setItem(9*3+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeHunger.name")));
-		inv.setItem(9*3+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeNausea.name")));
-		inv.setItem(9*3+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeWeakness.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengeFeed.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeFeed.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengeFire.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeFire.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengeHunger.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeHunger.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengeNausea.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeNausea.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengeWeakness.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeWeakness.name")));
 		//inv.setItem(9*3+5, MainDataBaseHashMap.items.get("Revenge Steal"));
-		inv.setItem(9*3+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeArmorpen.name")));
-		inv.setItem(9*3+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeHarm.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengeArmorpen.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeArmorpen.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengeHarm.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeHarm.name")));
 		inv.setItem(9*3+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 		inv.setItem(9*4,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9*4+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeHeal.name")));
-		inv.setItem(9*4+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeSlow.name")));
-		inv.setItem(9*4+3, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengePoison.name")));
-		inv.setItem(9*4+4, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeStarve.name")));
-		inv.setItem(9*4+5, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeWither.name")));
-		inv.setItem(9*4+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeBlindness.name")));
-		inv.setItem(9*4+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeStun.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengeHeal.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeHeal.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengeSlow.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeSlow.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengePoison.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengePoison.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengeStarve.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeStarve.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengeWither.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeWither.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengeBlindness.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeBlindness.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.RevengeStun.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.RevengeStun.name")));
 		inv.setItem(9*4+8, MainDataBaseHashMap.items.get("Border Purple"));
 	}
 }

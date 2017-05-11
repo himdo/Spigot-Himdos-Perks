@@ -15,6 +15,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 
+import com.himdo.perks.Constants;
 import com.himdo.perks.MainPlugin;
 import com.himdo.perks.Misc.CalculatePoints;
 import com.himdo.perks.Misc.MenuChecker;
@@ -40,7 +41,7 @@ public class PlayerMenu implements Listener{
 		
 		
 		if(!playerInventory.containsKey(player.getName())){
-			Inventory playered = Bukkit.getServer().createInventory(null, 9*3,"[Perks]Player Menu");
+			Inventory playered = Bukkit.getServer().createInventory(null, 9*3,MainPlugin.config.getString("Menu.PlayerMenu.Name"));
 			playered.setContents(inv.getContents());
 			playerInventory.put(player.getName(), playered);
 		}
@@ -97,11 +98,20 @@ public class PlayerMenu implements Listener{
 				if(perks.contains(e.getCurrentItem().getItemMeta().getDisplayName())){
 					//makes sure the player cant just remove debuffs and got over the MainPlugin.config.getInt("MaximumPerkPoints") points
 					if((CalculatePoints.getCurrentPoints(player)-CalculatePoints.getPointsForItem(e.getCurrentItem()))<=MainPlugin.config.getInt("MaximumPerkPoints")){
-
+						//this prevents a player that is flying in my plugin from being able to still fly when removing that perk
+						if(e.getCurrentItem().getItemMeta().getDisplayName().equals(MainPlugin.config.getString("Perks.FlyWater.name"))
+								||e.getCurrentItem().getItemMeta().getDisplayName().equals(MainPlugin.config.getString("Perks.FlyLava.name"))
+								||e.getCurrentItem().getItemMeta().getDisplayName().equals(MainPlugin.config.getString("Perks.FlyWeb.name"))){
+							((Player)e.getWhoClicked()).setAllowFlight(false);
+							((Player)e.getWhoClicked()).setFlying(false);
+							Constants.canFly.put(((Player)e.getWhoClicked()).getName(), false);
+						}
+						
 						perks.remove(e.getCurrentItem().getItemMeta().getDisplayName());
 						Inventory temp = playerInventory.get(player.getName());
 						temp.clear(e.getSlot());
 						playerInventory.put(player.getName(), temp);
+						
 					}else{
 						//got to many points
 						player.sendMessage("Can't Remove, Would allow to many points");

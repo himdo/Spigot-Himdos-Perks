@@ -22,7 +22,7 @@ public class MiscPerksMenu implements Listener{
 	
 	public MiscPerksMenu(Plugin plugin) {
 		this.plugin=plugin;
-		inv = Bukkit.getServer().createInventory(null, 9*3,"[Perks]Misc Perk Selection Menu");
+		inv = Bukkit.getServer().createInventory(null, 9*3,MainPlugin.config.getString("Menu.MiscPerkMenu.Name"));
 		Bukkit.getServer().getPluginManager().registerEvents( this, plugin);
 	}
 	
@@ -76,13 +76,13 @@ public class MiscPerksMenu implements Listener{
 		inv.setItem(18+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")));
 
 		inv.setItem(9,   MainDataBaseHashMap.items.get("Border Purple"));
-		inv.setItem(9+1, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.SnowBallThrower.name")));
-		inv.setItem(9+2, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Holy.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.SnowBallThrower.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.SnowBallThrower.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Holy.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Holy.name")));
 		//inv.setItem(9+3, MainDataBaseHashMap.items.get());
 		//inv.setItem(9+4, MainDataBaseHashMap.items.get());
 		//inv.setItem(9+5, MainDataBaseHashMap.items.get());
-		inv.setItem(9+6, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Unholy.name")));
-		inv.setItem(9+7, MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Informed.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Unholy.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Unholy.name")));
+		inv.setItem(MainPlugin.config.getInt("Perks.Informed.inventorySlot"), MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Informed.name")));
 		inv.setItem(9+8, MainDataBaseHashMap.items.get("Border Purple"));
 		
 	}
