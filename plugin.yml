@@ -1,6 +1,5 @@
 name: Traits
 main: com.himdo.perks.MainPlugin
-version: 1.0.0
 commands:
   perks:
     description: opens perks menu

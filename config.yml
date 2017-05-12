@@ -2,12 +2,23 @@
 #if you change this number i recommend changing the number in Help2
 MaximumPerkPoints: 150
 
+#Launch Firework on equiping Perks, if false no fireworks will launch
+FireworkOnEquip: true
+
+
+#with this true it will play sounds when in the menu, if false there will be no sounds
+PlaySounds: true
+
+
 #this changes the color of the border
 BorderPaneColor: 10
+
 #help Pane Color
 HelpPaneColor: 15
+
 #Back Pane Color
 BackPaneColor: 13
+
 #ForwardPane Color
 ForwardPaneColor: 14
 
@@ -493,7 +504,7 @@ Perks:
   FeedAlways: 
     enabled: true
     name: "Feed Always"
-    cost: 10
+    cost: 100
     lore: ["Get feed Always"]
     inventorySlot: 16
   

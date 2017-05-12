@@ -1,7 +1,8 @@
-package com.himdo.perks.Menus.Help;
+package com.himdo.perks.Menus;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -75,6 +76,9 @@ public class PerksSubHelpMain  implements Listener{
 		
 		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Back"))){
 			MainPlugin.mainMenu.show(player);
+			if(MainPlugin.config.getBoolean("PlaySounds")){
+				player.playSound(player.getLocation(), Sound.ITEM_HOE_TILL, 1, 1);
+			}
 			return;
 		}
 		

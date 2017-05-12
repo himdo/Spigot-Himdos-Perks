@@ -2,6 +2,7 @@ package com.himdo.perks.Menus;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -75,8 +76,16 @@ public class PerksSubMain  implements Listener{
 		
 		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.LeftArrow.name")))){
 			MainPlugin.mainMenu.show(player);
+			if(MainPlugin.config.getBoolean("PlaySounds")){
+				player.playSound(player.getLocation(), Sound.ITEM_HOE_TILL, 1, 1);
+			}
 			return;
 		}
+		if(!e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Border Purple")))
+			if(MainPlugin.config.getBoolean("PlaySounds")){
+				player.playSound(player.getLocation(), Sound.ENTITY_BAT_TAKEOFF, 1, 1);
+			}
+		
 		if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Buffs.name")))){
 			MainPlugin.buffPerkMenu.show(player);
 		}else if(e.getCurrentItem().equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.WeaponStats.name")))){

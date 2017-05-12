@@ -6,12 +6,15 @@ import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
@@ -139,6 +142,11 @@ public class PerksMenuMain implements Listener{
 			if(selectedItem==null)
 				return;
 			//Perks Menu
+			if(!e.getCurrentItem().equals(MainDataBaseHashMap.items.get("Border Purple")))
+				if(MainPlugin.config.getBoolean("PlaySounds")){
+					pa.playSound(pa.getLocation(), Sound.ENTITY_BAT_TAKEOFF, 1, 1);
+				}
+			
 			if(selectedItem.equals(MainDataBaseHashMap.items.get(MainPlugin.config.getString("Perks.Perks.name")))){
 				MainPlugin.perksSubMain.show(pa);
 			}
