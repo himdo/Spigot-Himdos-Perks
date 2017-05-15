@@ -13,50 +13,50 @@ public class RunnableImmunity extends BukkitRunnable{
 	@Override
 	public void run() {
 		for(Player p : Bukkit.getOnlinePlayers()){
-			if(!MainPlugin.playerPerks.get(p).contains("Immune Hunger")&&
-					!MainPlugin.playerPerks.get(p).contains("Immune Nausea")&&
-					!MainPlugin.playerPerks.get(p).contains("Immune Weakness")&&
-					!MainPlugin.playerPerks.get(p).contains("Immune Blindness")&&
-					!MainPlugin.playerPerks.get(p).contains("Immune Slow")&&
-					!MainPlugin.playerPerks.get(p).contains("Immune Poison")&&
-					!MainPlugin.playerPerks.get(p).contains("Immune Wither"))
+			if(!MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmuneHunger.name"))&&
+					!MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmuneNausea.name"))&&
+					!MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmuneWeakness.name"))&&
+					!MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmuneBlindness.name"))&&
+					!MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmuneSlow.name"))&&
+					!MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmunePoison.name"))&&
+					!MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmuneWither.name")))
 						return;
 			
 			for (PotionEffect effect : p.getActivePotionEffects()){
-				if(MainPlugin.playerPerks.get(p).contains("Immune Hunger")){
+				if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmuneHunger.name"))){
 					if(effect.getType().equals((PotionEffectType.HUNGER))){
 						p.removePotionEffect(PotionEffectType.HUNGER);
 					}
 				}
 				
-				if(MainPlugin.playerPerks.get(p).contains("Immune Nausea")){
+				if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmuneNausea.name"))){
 					if(effect.getType().equals(PotionEffectType.CONFUSION)){
 						p.removePotionEffect(PotionEffectType.CONFUSION);
 					}	
 				}
-				if(MainPlugin.playerPerks.get(p).contains("Immune Poison")){
+				if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmunePoison.name"))){
 					if(effect.getType().equals(PotionEffectType.POISON)){
 						p.removePotionEffect(PotionEffectType.POISON);
 					}	
 				}
-				if(MainPlugin.playerPerks.get(p).contains("Immune Wither")){
+				if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmuneWither.name"))){
 					if(effect.getType().equals(PotionEffectType.WITHER)){
 						p.removePotionEffect(PotionEffectType.WITHER);
 					}	
 				}
-				if(MainPlugin.playerPerks.get(p).contains("Immune Weakness")){
+				if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmuneWeakness.name"))){
 					if(effect.getType().equals(PotionEffectType.WEAKNESS)){
 						p.removePotionEffect(PotionEffectType.WEAKNESS);
 					}
 				}
 				
-				if(MainPlugin.playerPerks.get(p).contains("Immune Blindness")){
+				if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmuneBlindness.name"))){
 					if(effect.getType().equals(PotionEffectType.BLINDNESS)){
 						p.removePotionEffect(PotionEffectType.BLINDNESS);
 					}
 				}
 				
-				if(MainPlugin.playerPerks.get(p).contains("Immune Slow")){
+				if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.ImmuneSlow.name"))){
 					if(effect.getType().equals(PotionEffectType.SLOW)){
 						p.removePotionEffect(PotionEffectType.SLOW);
 					}

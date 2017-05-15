@@ -43,10 +43,10 @@ public class onPlayerJoinEvents implements Listener{
 		} catch (InvalidConfigurationException e2) {
 			e2.printStackTrace();
 		}
-		if(playerData.get("ChoosenPerks")==null)
-			playerData.set("ChoosenPerks", new ArrayList<>());
+		if(playerData.get("ChosenPerks")==null)
+			playerData.set("ChosenPerks", new ArrayList<>());
 		
-		playerData.set("ChoosenPerks", PlayerDeleteInvaildPerks.Trim((ArrayList)playerData.get("ChoosenPerks")));
+		playerData.set("ChosenPerks", PlayerDeleteInvaildPerks.Trim((ArrayList)playerData.get("ChosenPerks")));
 		
 		try {
 			playerData.save(playerfile);
@@ -55,7 +55,7 @@ public class onPlayerJoinEvents implements Listener{
 		}
 		
 		//stores players info when player joins server
-		MainPlugin.playerPerks.put(e.getPlayer(), (ArrayList) playerData.get("ChoosenPerks"));
+		MainPlugin.playerPerks.put(e.getPlayer(), (ArrayList) playerData.get("ChosenPerks"));
 		Constants.canFly.put(e.getPlayer().getName(), false);
 		
 	}

@@ -5,3 +5,7 @@ Fixed a typo in the config
 1.1.0
 Added fireworks when equiping and removing perks
 added sounds for selecting perks and items
+1.2.0
+fixed issues with renaming perks breaking events
+added particles to holy/unholy people
+fixed "chosen" word typo

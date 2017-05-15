@@ -58,7 +58,7 @@ public class PlayerMenu implements Listener{
 		Inventory playered = playerInventory.get(player.getName());
 		
 		@SuppressWarnings("rawtypes")
-		ArrayList perks = (ArrayList) playerConfig.get("ChoosenPerks");
+		ArrayList perks = (ArrayList) playerConfig.get("ChosenPerks");
 		for(int i = 0; i<9;i++){
 			playered.clear(9+i);
 		}

@@ -15,8 +15,10 @@ public class onPlayerLeaveEvents implements Listener{
 		//removes players info when they leave the server
 		MainPlugin.playerPerks.remove(e.getPlayer());
 		Constants.canFly.remove(e.getPlayer().getName());
+		//if the player has his own main menu it gets deleted
 		if(PerksMenuMain.playerInventory.containsKey(e.getPlayer().getName()))
 			PerksMenuMain.playerInventory.remove(e.getPlayer().getName());
+		//if the player has his own personal perk menu it gets deleted
 		if(PlayerMenu.playerInventory.containsKey(e.getPlayer().getName()))
 			PlayerMenu.playerInventory.remove(e.getPlayer().getName());
 	}

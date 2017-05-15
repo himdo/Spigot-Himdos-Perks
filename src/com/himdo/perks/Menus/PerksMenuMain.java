@@ -78,7 +78,7 @@ public class PerksMenuMain implements Listener{
 		skullmeta.setOwner(p.getName());
 		playerSkull.setItemMeta(skullmeta);
 		ItemMeta itemMeta = playerSkull.getItemMeta();
-		itemMeta.setDisplayName(p.getName()+"'s Choosen Perks");
+		itemMeta.setDisplayName(p.getName()+"'s Chosen Perks");
 		itemMeta.setLore(Arrays.asList(MainPlugin.playerPerks.get(p).size()+"/9 Perks Choosen",CalculatePoints.getCurrentPoints(p)+"/"+MainPlugin.config.getInt("MaximumPerkPoints")+" Points"));
 		playerSkull.setItemMeta(itemMeta);
 		playerInv.setItem(16, playerSkull);

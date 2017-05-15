@@ -20,42 +20,39 @@ public class RunnableBuffManager extends BukkitRunnable{
 	
 	public void run(){
 		for(Player p : Bukkit.getOnlinePlayers()){
-			if(MainPlugin.playerPerks.get(p).contains("Night Vision")){
+			if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.NightVision.name"))){
 				p.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 400, 0),true);
 			}
-			if(MainPlugin.playerPerks.get(p).contains("Water Breathing")){
+			if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.WaterBreathing.name"))){
 				p.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, 400, 0),true);
 			}
-			if(MainPlugin.playerPerks.get(p).contains("Night Vision")){
-				p.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 400, 0),true);
-			}
-			if(MainPlugin.playerPerks.get(p).contains("Haste")){
+			if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.Haste.name"))){
 				p.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 400, 0),true);
 			}
-			if(MainPlugin.playerPerks.get(p).contains("Jump Boost")){
+			if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.Jump.name"))){
 				p.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 400, 0),true);
 			}
-			if(MainPlugin.playerPerks.get(p).contains("Speed Boost")){
+			if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.Speed.name"))){
 				p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 400, 0),true);
 			}
 			
-			if(MainPlugin.playerPerks.get(p).contains("Haste 2")){
+			if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.Haste2.name"))){
 				p.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 400, 1),true);
 			}
-			if(MainPlugin.playerPerks.get(p).contains("Jump Boost 2")){
+			if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.Jump2.name"))){
 				p.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 400, 1),true);
 			}
-			if(MainPlugin.playerPerks.get(p).contains("Speed Boost 2")){
+			if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.Speed2.name"))){
 				p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 400, 1),true);
 			}
 			
-			if(MainPlugin.playerPerks.get(p).contains("Mining Fatigue")){
+			if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.MiningFatigue.name"))){
 				p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 400, 0),true);
 			}
-			if(MainPlugin.playerPerks.get(p).contains("Slowness")){
+			if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.Slow.name"))){
 				p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 400, 0),true);
 			}
-			if(MainPlugin.playerPerks.get(p).contains("Blindness")){
+			if(MainPlugin.playerPerks.get(p).contains(MainPlugin.config.getString("Perks.Blind.name"))){
 				p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 400, 0),true);
 			}
 		}

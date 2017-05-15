@@ -19,30 +19,30 @@ public class onEntityDamageEvent  implements Listener{
 		}else{
 			return;
 		}
-		if(MainPlugin.playerPerks.get(player).contains("Immune Fire")){
+		if(MainPlugin.playerPerks.get(player).contains(MainPlugin.config.getString("Perks.ImmuneFire.name"))){
 			if(e.getCause().equals(DamageCause.FIRE)||e.getCause().equals(DamageCause.FIRE_TICK)
 			   ||e.getCause().equals(DamageCause.HOT_FLOOR)||e.getCause().equals(DamageCause.LAVA)){
 				player.setFireTicks(0);
 				e.setCancelled(true);
 			}
 		}
-		if(MainPlugin.playerPerks.get(player).contains("Immune Harm")){
+		if(MainPlugin.playerPerks.get(player).contains(MainPlugin.config.getString("Perks.ImmuneHarm.name"))){
 			if(e.getCause().equals(DamageCause.THORNS)){
 				e.setCancelled(true);
 			}
 		}
-		if(MainPlugin.playerPerks.get(player).contains("Immune Fall")){
+		if(MainPlugin.playerPerks.get(player).contains(MainPlugin.config.getString("Perks.ImmuneFall.name"))){
 			if(e.getCause().equals(DamageCause.FALL)){
 				e.setCancelled(true);
 			}
 		}
-		if(MainPlugin.playerPerks.get(player).contains("Immune Wither")){
+		if(MainPlugin.playerPerks.get(player).contains(MainPlugin.config.getString("Perks.ImmuneWither.name"))){
 			if(e.getCause().equals(DamageCause.WITHER)){
 				player.removePotionEffect(PotionEffectType.WITHER);
 				e.setCancelled(true);
 			}
 		}
-		if(MainPlugin.playerPerks.get(player).contains("Immune Poison")){
+		if(MainPlugin.playerPerks.get(player).contains(MainPlugin.config.getString("Perks.ImmunePoison.name"))){
 			if(e.getCause().equals(DamageCause.POISON)){
 				player.removePotionEffect(PotionEffectType.POISON);
 				e.setCancelled(true);

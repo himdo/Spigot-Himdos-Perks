@@ -61,7 +61,7 @@ public class FoodPerksMenu implements Listener{
 			return;
 		}
 		if(MainPlugin.playerPerks.get(player).size()>8){
-			player.sendMessage("Too Many Perks Choosen");
+			player.sendMessage("Too Many Perks Chosen");
 			return;
 		}
 		

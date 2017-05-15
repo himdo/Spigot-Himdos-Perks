@@ -53,6 +53,7 @@ import com.himdo.perks.Runnables.RunnableBuffManager;
 import com.himdo.perks.Runnables.RunnableFeedStarveHealHarm;
 import com.himdo.perks.Runnables.RunnableFlying;
 import com.himdo.perks.Runnables.RunnableImmunity;
+import com.himdo.perks.Runnables.RunnableParticles;
 import com.himdo.perks.hashMaps.FoodArrayList;
 import com.himdo.perks.hashMaps.MainDataBaseHashMap;
 import com.himdo.perks.hashMaps.PerkArrayList;
@@ -88,6 +89,8 @@ public class MainPlugin extends JavaPlugin implements Listener{
 	BukkitTask ImmunityTracker;
 	BukkitTask FeedPerks;
 	
+	BukkitTask particles;
+	
 	@Override
 	public void onEnable() {
 		//config file
@@ -117,6 +120,8 @@ public class MainPlugin extends JavaPlugin implements Listener{
 		//tracks feed perks every 10 seconds
 		FeedPerks = new RunnableFeedStarveHealHarm().runTaskTimer(this, 20, 20*10);
 		
+		
+		particles = new RunnableParticles().runTaskTimer(this, 1, 1);
 		
 		//setup perkHashMap
 		MainDataBaseHashMap.setHashMap();
@@ -182,10 +187,10 @@ public class MainPlugin extends JavaPlugin implements Listener{
 			} catch (InvalidConfigurationException e2) {
 				e2.printStackTrace();
 			}
-			if(playerData.get("ChoosenPerks")==null)
-				playerData.set("ChoosenPerks", new ArrayList<>());
+			if(playerData.get("ChosenPerks")==null)
+				playerData.set("ChosenPerks", new ArrayList<>());
 			
-			playerData.set("ChoosenPerks", PlayerDeleteInvaildPerks.Trim((ArrayList)playerData.get("ChoosenPerks")));
+			playerData.set("ChosenPerks", PlayerDeleteInvaildPerks.Trim((ArrayList)playerData.get("ChosenPerks")));
 			
 			try {
 				playerData.save(playerfile);
@@ -194,7 +199,7 @@ public class MainPlugin extends JavaPlugin implements Listener{
 			}
 			
 			//stores players info when player joins server
-			playerPerks.put(player, (ArrayList) playerData.get("ChoosenPerks"));
+			playerPerks.put(player, (ArrayList) playerData.get("ChosenPerks"));
 			
 			Constants.canFly.put(player.getName(), false);
 			

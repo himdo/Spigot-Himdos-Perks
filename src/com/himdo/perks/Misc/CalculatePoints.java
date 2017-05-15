@@ -19,7 +19,7 @@ public class CalculatePoints {
 		
 		YamlConfiguration playerConfig = YamlConfiguration.loadConfiguration(new File(MainPlugin.plugin.getDataFolder()+"/playerData/"+player.getUniqueId()+".yml"));
 		
-		ArrayList perks = (ArrayList) playerConfig.get("ChoosenPerks");
+		ArrayList perks = (ArrayList) playerConfig.get("ChosenPerks");
 		
 		for(int i=0;i<perks.size();i++){
 			totalPoints+=0;
